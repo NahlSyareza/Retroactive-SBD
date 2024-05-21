@@ -1,2 +1,2 @@
 You want to play? Let's play!
-![alt text]([https://www.google.com/url?sa=i&url=https%3A%2F%2Fplayvalorant.com%2Fid-id%2Fagents%2Fchamber%2F&psig=AOvVaw0VswuEpmy9O0HeOarQgVDF&ust=1716358381098000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIimoa2LnoYDFQAAAAAdAAAAABAE.png](https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt6f1392b30784e029/618d9da0d380f814d61f001c/WebUpdate_Chamber_KeyArt.png))
+![alt text](https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt6f1392b30784e029/618d9da0d380f814d61f001c/WebUpdate_Chamber_KeyArt.png)
