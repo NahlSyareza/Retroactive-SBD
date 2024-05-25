@@ -1,5 +1,7 @@
 // Import the Pool class from the pg (PostgreSQL) library to manage database connections.
 const { Pool } = require("pg");
+// Import bcrypt for password hashing.
+const bcrypt = require("bcrypt");
 
 // Configure the database connection pool using environment variables for security and flexibility.
 const pool = new Pool({
@@ -20,15 +22,15 @@ pool.connect().then(() => {
 // Define an asynchronous function to handle user registration requests.
 exports.registerEvent = async function registerEvent(req, res) {
   const { namaUser, emailUser, passwordUser } = req.body; // Destructure and extract user details from the request body.
-
+  const hashedPassword = await bcrypt.hash(passwordUser, 10); // Hash the user's password before storing it in the database.
   try {
     // Execute an SQL query to insert new user details into the user_data table and return the newly inserted row.
     const result = await pool.query(
       "INSERT INTO user_data (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
-      [namaUser, emailUser, passwordUser]
+      [namaUser, emailUser, hashedPassword]
     );
     // Send a 200 OK response along with the inserted user data.
-    res.status(200).json({ data: result });
+    res.status(200).json({ data: result.rows });
   } catch (err) {
     // If an error occurs, send a 500 Internal Server Error response with the error details.
     res.status(500).json(err);
@@ -43,18 +45,27 @@ exports.loginEvent = async function loginEvent(req, res) {
   try {
     // Execute an SQL query to find a user that matches the provided email and password.
     const result = await pool.query(
-      "SELECT * FROM user_data WHERE email_user = $1 AND password_user = $2 RETURNING *",
-      [emailUser, passwordUser]
+      "SELECT * FROM user_data WHERE email_user = $1 RETURNING *",
+      [emailUser]
     );
 
     // Check if the query returned any rows.
-    if (result.rowCount < 0) {
-      // If no rows are returned, respond with a 401 Unauthorized status and an error message.
-      res.status(401).json({ error: error });
-    } else {
-      // If the user is found, respond with a 200 OK status and the user data.
-      res.status(200).json({ data: result });
+    if (result.rowCount <= 0) {
+      // If no rows are returned, it will send an error message.
+      res.status(401).json({
+        message: "The user with email entered is not found.",
+        error: error,
+      });
     }
+    const user = result.rows[0]; // Storing the retrieved user data.
+    // Compare the provided password with the hashed password stored in the database.
+    const match = await bcrypt.compare(passwordUser, user.password_user);
+    if (!match) {
+      return res
+        .status(401)
+        .json({ message: "The password is not correct.", error: error }); // If the passwords do not match, it will send an error message.
+    }
+    res.status(200).json({ data: user });
   } catch (err) {
     // If an error occurs during query execution, respond with a 500 Internal Server Error.
     res.status(500).json(err);
@@ -63,18 +74,18 @@ exports.loginEvent = async function loginEvent(req, res) {
 
 // Define an asynchronous function to handle requests to edit a user's profile.
 exports.editProfile = async function editProfile(req, res) {
-  const { newName, newEmail, newPassword } = req.body; // Extract the new profile details from the request body.
+  const { newName, userEmail, newPassword } = req.body; // Extract the new profile details from the request body.
   let error = "The email that you've entered is not valid."; // Error message for invalid email.
 
   try {
     // Execute an SQL query to retrieve the existing user details based on the email provided.
     const result = await pool.query(
       "SELECT * FROM user_data WHERE email_user = $1",
-      [emailUser]
+      [userEmail]
     );
 
     // Check if any user data was found.
-    if (result.rowCount < 0) {
+    if (result.rowCount <= 0) {
       // If no user data is found, respond with a 401 Unauthorized status and an error message.
       res.status(401).json({ error: error });
     }
@@ -83,17 +94,17 @@ exports.editProfile = async function editProfile(req, res) {
     const user = result.rows[0];
 
     // Update user fields if new values are provided.
-    if (newName != undefined) user.nama_user = newName;
-    if (newEmail != undefined) user.email_user = newEmail;
-    if (newPassword != undefined) user.password_user = newPassword;
+    if (newName !== undefined) user.nama_user = newName;
+    if (newPassword !== undefined)
+      user.password_user = await bcrypt.hash(newPassword, 10);
 
     // Execute an SQL query to update the user's details in the user_data table and return the updated row.
     const insert = await pool.query(
-      "INSERT INTO user_data (nama_user, email_user, password_user) VALUES ($1, $2, $3) RETURNING *",
-      [user.nama_user, user.email_user, user.password_user]
+      "UPDATE user_data SET nama_user = $1, password_user = $2 WHERE email_user = $3 RETURNING *",
+      [user.nama_user, user.password_user, userEmail]
     );
     // Respond with a 200 OK status and the updated user data.
-    res.status(200).json({ data: insert });
+    res.status(200).json({ data: insert.rows });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);
@@ -137,7 +148,7 @@ exports.topUp = async function topUp(req, res) {
       [user.email_user, user.saldo_user]
     );
     // Respond with a 200 OK status and the updated balance data.
-    res.status(200).json({ data: insert });
+    res.status(200).json({ data: insert.rows });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);
@@ -157,7 +168,7 @@ exports.inventoryFunction = async function inventoryFunction(req, res) {
     );
 
     // Check if any user data was found.
-    if (result.rowCount < 0) {
+    if (result.rowCount <= 0) {
       // If no user data is found, respond with a 401 Unauthorized status and an error message.
       res.status(401).json({ error: error });
     }
@@ -169,5 +180,26 @@ exports.inventoryFunction = async function inventoryFunction(req, res) {
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);
+  }
+};
+
+// Define an asynchronous function to handle deletion of a user from the database.
+exports.deleteUser = async function deleteUser(req, res) {
+  const { emailUser } = req.body; // Extract user email from the request body.
+
+  try {
+    // Execute an SQL query to delete the user matching the provided email.
+    const result = await pool.query(
+      "DELETE FROM user_data WHERE email_user = $1 RETURNING *",
+      [emailUser]
+    );
+    if (result.rowCount <= 0) {
+      // Check if any rows were affected by the deletion query.
+      // If no rows were affected, the user with the provided email was not found.
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.status(200).json({ message: "User deleted successfully" }); // If the user was successfully deleted, respond with a success message.
+  } catch (err) {
+    res.status(500).json({ error: err.message }); // If an error occurs during the deletion process, respond with a 500 Internal Server Error.
   }
 };

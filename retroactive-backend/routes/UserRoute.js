@@ -22,5 +22,8 @@ router.put("/topUp", userController.topUp);
 router.get("/inventory", userController.inventoryFunction);
 // Defining a GET route '/inventory' that will invoke the inventoryFunction function from the userController when accessed.
 
+router.delete("/deleteUser", userController.deleteUser);
+// Defining a DELETE route '/deleteUser' that will invoke the deleteUser function from the userController when accessed.
+
 module.exports = router;
 // Exporting the router instance to be used by the main application file.

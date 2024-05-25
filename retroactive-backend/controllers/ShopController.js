@@ -1,5 +1,7 @@
 // Importing the Pool class from the pg package to handle connections to the PostgreSQL database.
 const { Pool } = require("pg");
+// Import bcrypt for password hashing.
+const bcrypt = require("bcrypt");
 
 // Creating a connection pool to manage and reuse PostgreSQL database connections.
 const pool = new Pool({
@@ -154,7 +156,9 @@ exports.editInventory = async function editInventory(req, res) {
           shopName,
         ]
       );
-      res.status(200).json({ data: insert.rows }); // Responding with the updated inventory data.
+      res
+        .status(200)
+        .json({ message: "Inventory updated successfully", data: insert.rows }); // Responding with the updated inventory data.
     }
   } catch (err) {
     res.status(500).json({ error: err.message }); // Handling errors and responding with a server error status.
@@ -177,7 +181,9 @@ exports.deleteShop = async function deleteShop(req, res) {
         .status(404)
         .json({ error: "The email that you've entered is not valid." }); // Sending an error message if the email is not valid.
     }
-    res.status(200).json({ message: "Shop deleted successfully!" }); // Sending a message if the shop was deleted successfully.
+    res
+      .status(200)
+      .json({ message: "Shop deleted successfully!", data: result.rows }); // Sending a message if the shop was deleted successfully.
   } catch (err) {
     res.status(500).json({ error: err.message }); // Handling errors and responding with a server error status.
   }
