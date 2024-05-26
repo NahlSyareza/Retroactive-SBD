@@ -1,84 +1,154 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './UserInfoPage.css'; 
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+interface UserData {
+  name: string;
+  email: string;
+  address: string;
+  phone: string;
 }
 
-.user-info-container {
-  padding: 20px;
+interface UserInfoPageProps {
+  userData: UserData | null;
 }
 
-.user-info-bubble {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+const UserInfoPage: React.FC<UserInfoPageProps> = ({ userData }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedUserData, setEditedUserData] = useState<UserData | null>(userData);
+  const [newPassword, setNewPassword] = useState<string>('');
+  const navigate = useNavigate();
 
-.title-bubble {
-  background-color: #00b87e8a;
-}
+  useEffect(() => {
+    setEditedUserData(userData);
+  }, [userData]);
 
-.content-bubble {
-  background-color: #fafafa;
-}
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (editedUserData) {
+      setEditedUserData({
+        ...editedUserData,
+        [name]: value
+      });
+    }
+  };
 
-.form-group {
-  margin-bottom: 15px;
-}
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPassword(e.target.value);
+  };
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
+  const handleSave = async () => {
+    if (editedUserData) {
+      try {
+        const response = await fetch('http://localhost:1466/user/editProfile', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            newName: editedUserData.name,
+            newEmail: editedUserData.email,
+            newPassword: newPassword,
+            emailUser: userData?.email 
+          })
+        });
 
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+        if (!response.ok) {
+          throw new Error('Failed to update profile');
+        }
 
-.nav-btn {
-  padding: 10px 20px;
-  background-color: #00b894;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-}
+        const result = await response.json();
+        console.log('User data saved:', result.data);
+        setEditedUserData(result.data);
+        setIsEditing(false); 
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error('Error updating profile:', error.message);
+        } else {
+          console.error('An unknown error occurred');
+        }
+      }
+    }
+  };
 
-.nav-btn:hover {
-  background-color: #00a783;
-}
+  const handleTopUp = () => {
+    navigate('/top-up'); 
+  };
 
-.top-up-btn {
-  background-color: #00b894; 
-}
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
 
-.top-up-btn:hover {
-  background-color: #009e7a;
-}
+  return (
+    <div className="user-info-container">
+      <div className="user-info-bubble title-bubble">
+        <h2>User Information</h2>
+      </div>
+      <div className="user-info-bubble content-bubble">
+        {isEditing ? (
+          <div>
+            <div className="form-group">
+              <label><strong>Name:</strong></label>
+              <input
+                type="text"
+                name="name"
+                value={editedUserData?.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label><strong>Email:</strong></label>
+              <input
+                type="email"
+                name="email"
+                value={editedUserData?.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label><strong>Address:</strong></label>
+              <input
+                type="text"
+                name="address"
+                value={editedUserData?.address}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label><strong>Phone:</strong></label>
+              <input
+                type="text"
+                name="phone"
+                value={editedUserData?.phone}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label><strong>New Password:</strong></label>
+              <input
+                type="password"
+                name="password"
+                value={newPassword}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <button className="nav-btn" onClick={handleSave}>Save</button>
+          </div>
+        ) : (
+          <div>
+            <p><strong>Name:</strong> {userData.name}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Address:</strong> {userData.address}</p>
+            <p><strong>Phone:</strong> {userData.phone}</p>
+            <button className="nav-btn" onClick={() => setIsEditing(true)}>Edit</button>
+          </div>
+        )}
+      </div>
+      {!isEditing && (
+        <button className="nav-btn top-up-btn" onClick={handleTopUp}>Top Up</button>
+      )}
+    </div>
+  );
+};
 
-.edit-btn {
-  background-color: #f39c12; 
-}
-
-.edit-btn:hover {
-  background-color: #e67e22;
-}
-
-.save-btn {
-  background-color: #27ae60; 
-}
-
-.save-btn:hover {
-  background-color: #2ecc71;
-}
+export default UserInfoPage;
