@@ -1,41 +1,53 @@
-/* UserInfoPage Specific Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .user-info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
+  padding: 20px;
 }
 
 .user-info-bubble {
-  background-color: #f0f0f0;
+  background-color: #fff;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 20px;
-  margin: 10px 0;
-  width: 50%;
-  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title-bubble {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #00b87e8a;
+}
+
+.content-bubble {
+  background-color: #fafafa;
 }
 
 .form-group {
-  margin: 10px 0;
-  text-align: left;
+  margin-bottom: 15px;
 }
 
-input {
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
   width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-button.nav-btn {
+.nav-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #00b894;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -43,6 +55,30 @@ button.nav-btn {
   margin-top: 10px;
 }
 
-button.nav-btn:hover {
-  background-color: #0056b3;
+.nav-btn:hover {
+  background-color: #00a783;
+}
+
+.top-up-btn {
+  background-color: #00b894; 
+}
+
+.top-up-btn:hover {
+  background-color: #009e7a;
+}
+
+.edit-btn {
+  background-color: #f39c12; 
+}
+
+.edit-btn:hover {
+  background-color: #e67e22;
+}
+
+.save-btn {
+  background-color: #27ae60; 
+}
+
+.save-btn:hover {
+  background-color: #2ecc71;
 }
