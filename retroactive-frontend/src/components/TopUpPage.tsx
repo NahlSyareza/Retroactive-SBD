@@ -1,14 +1,14 @@
 import React, { useState, ChangeEvent } from 'react';
-import './TopUpPage.css'; // Import the CSS file
+import './TopUpPage.css'; 
 
 interface TopUpPageProps {
   onTopUp: (amount: number, paymentMethod: string) => void;
 }
 
 const TopUpPage: React.FC<TopUpPageProps> = ({ onTopUp }) => {
-  const [amount, setAmount] = useState<string>('');  // Use string to handle input
+  const [amount, setAmount] = useState<string>('');  
   const [paymentMethod, setPaymentMethod] = useState<string>('');
-  const [statusMessage, setStatusMessage] = useState<string | null>(null); // To store status messages
+  const [statusMessage, setStatusMessage] = useState<string | null>(null); 
 
   const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
@@ -26,8 +26,8 @@ const TopUpPage: React.FC<TopUpPageProps> = ({ onTopUp }) => {
     }
     onTopUp(amountNumber, paymentMethod);
     setStatusMessage('Top-up successful!');
-    setAmount('');  // Clear the amount field
-    setPaymentMethod('');  // Clear the payment method field
+    setAmount('');  
+    setPaymentMethod(''); 
   };
 
   return (
