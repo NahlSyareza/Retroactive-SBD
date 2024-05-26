@@ -1,13 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  background-color: lightblue;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-  color: red;
-  text-align: center;
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #00b894; 
+  padding: 10px 0;
+  color: #000;
 }
 
-p {
-  font-family: verdana;
-  font-size: 20px;
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.menu-icon, .search-icon, .profile-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.profile-icon {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-content {
+  margin-top: 50px; 
+  padding: 20px;
 }
