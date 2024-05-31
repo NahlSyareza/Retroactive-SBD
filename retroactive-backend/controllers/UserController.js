@@ -24,7 +24,7 @@ exports.registerEvent = async function registerEvent(req, res) {
   const { namaUser, emailUser, passwordUser } = req.body; // Destructure and extract user details from the request body.
   const hashedPassword = await bcrypt.hash(passwordUser, 10); // Hash the user's password before storing it in the database.
   try {
-    // Execute an SQL query to insert new user details into the user_info table and return the newly inserted row.
+    // Execute an SQL query to insert new user details into the user_data table and return the newly inserted row.
     const result = await pool.query(
       "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
       [namaUser, emailUser, hashedPassword]
