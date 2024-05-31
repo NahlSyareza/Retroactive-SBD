@@ -24,9 +24,9 @@ exports.addShop = async function addShop(req, res) {
   const { shopName, shopEmail, shopPassword } = req.body; // Extracting shop details from the request body.
   const hashedPassword = await bcrypt.hash(shopPassword, 10); // Hash the password before storing
   try {
-    // Inserting the new shop's details into the 'toko' table and returning the newly created row.
+    // Inserting the new shop's details into the 'toko_info' table and returning the newly created row.
     const result = await pool.query(
-      "INSERT INTO toko (nama_toko, email_toko, password_toko, saldo_text) VALUES ($1, $2, $3, 0) RETURNING *",
+      "INSERT INTO toko_info (nama_toko_info, email_toko_info, password_toko_info, saldo_text) VALUES ($1, $2, $3, 0) RETURNING *",
       [shopName, shopEmail, hashedPassword]
     );
     res.status(201).json({ data: result.rows }); // Responding with the created shop data.
@@ -43,7 +43,7 @@ exports.editShop = async function editShop(req, res) {
   try {
     // Retrieving the shop based on email to check existence before update.
     const result = await pool.query(
-      "SELECT * FROM toko WHERE email_toko = $1",
+      "SELECT * FROM toko_info WHERE email_toko_info = $1",
       [shopEmail]
     );
 
@@ -54,13 +54,14 @@ exports.editShop = async function editShop(req, res) {
       const shop = result.rows[0]; // Storing the retrieved shop data.
 
       // Updating shop details if provided.
-      if (newShopName !== undefined) shop.nama_toko = newShopName;
-      if (newShopPassword !== undefined) shop.password_toko = newShopPassword;
+      if (newShopName !== undefined) shop.nama_toko_info = newShopName;
+      if (newShopPassword !== undefined)
+        shop.password_toko_info = newShopPassword;
 
       // Inserting updated shop details back into the database.
       const insert = await pool.query(
-        "UPDATE toko SET nama_toko = $1, password_toko = $2 WHERE email_toko = $3 RETURNING *",
-        [shop.nama_toko, shop.password_toko, shopEmail]
+        "UPDATE toko_info SET nama_toko_info = $1, password_toko_info = $2 WHERE email_toko_info = $3 RETURNING *",
+        [shop.nama_toko_info, shop.password_toko_info, shopEmail]
       );
       res
         .status(200)
@@ -80,7 +81,7 @@ exports.resetShopPassword = async function resetShopPassword(req, res) {
   try {
     // Attempt to update the shop's password in the database where the email matches.
     const result = await pool.query(
-      "UPDATE toko SET password_toko = $1 WHERE email_toko = $2 RETURNING *",
+      "UPDATE toko_info SET password_toko_info = $1 WHERE email_toko_info = $2 RETURNING *",
       [hashedPassword, shopEmail]
     );
     // Check if any rows were updated.
@@ -103,7 +104,7 @@ exports.addInventory = async function addInventory(req, res) {
   try {
     // Inserting new inventory items into the 'toko_inventory' table and returning the created entries.
     const result = await pool.query(
-      "INSERT INTO toko_inventory (nama_toko, nama_album, nama_artis, nama_label, jenis_media, harga_media) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      "INSERT INTO toko_inventory (nama_toko_info, nama_album, nama_artis, nama_label, jenis_media, harga_media) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
       [shopName, shopAlbum, shopArtist, shopLabel, mediaType, mediaPrice]
     );
     res.status(201).json({ data: result.rows }); // Responding with the added inventory data.
@@ -127,7 +128,7 @@ exports.editInventory = async function editInventory(req, res) {
   try {
     // Selecting existing inventory items to be updated.
     const result = await pool.query(
-      "SELECT * FROM toko_inventory WHERE nama_toko = $1",
+      "SELECT * FROM toko_inventory WHERE nama_toko_info = $1",
       [shopName]
     );
 
@@ -146,7 +147,7 @@ exports.editInventory = async function editInventory(req, res) {
 
       // Reinserting the updated inventory details back into the database.
       const insert = await pool.query(
-        "UPDATE toko_inventory SET nama_album = $1, nama_artis = $2, nama_label = $3, jenis_media = $4, harga_media = $5 WHERE nama_toko = $6 RETURNING *",
+        "UPDATE toko_inventory SET nama_album = $1, nama_artis = $2, nama_label = $3, jenis_media = $4, harga_media = $5 WHERE nama_toko_info = $6 RETURNING *",
         [
           shop.nama_album,
           shop.nama_artis,
@@ -172,7 +173,7 @@ exports.deleteShop = async function deleteShop(req, res) {
   try {
     // Executing a query to delete the shop based on the email and returning the deleted shop data.
     const result = await pool.query(
-      "DELETE FROM toko WHERE email_toko = $1 RETURNING *",
+      "DELETE FROM toko_info WHERE email_toko_info = $1 RETURNING *",
       [shopEmail]
     );
     // If no shop is deleted, it means the email was not found.
@@ -197,7 +198,7 @@ exports.searchShopByName = async function searchShopByName(req, res) {
   try {
     // Executing the SQL query to search for shops with a name matching the provided shopName, case-insensitive.
     const result = await pool.query(
-      "SELECT * FROM toko WHERE nama_toko ILIKE $1", // SQL query to search for matching shop names.
+      "SELECT * FROM toko_info WHERE nama_toko_info ILIKE $1", // SQL query to search for matching shop names.
       [`%${shopName}%`]
     );
     if (result.rowCount <= 0) {
@@ -218,9 +219,9 @@ exports.getShopDetails = async function getShopDetails(req, res) {
   const { shopEmail } = req.params;
 
   try {
-    // Execute a SQL query to select all columns from the 'toko' table where the 'email_toko' matches the provided email.
+    // Execute a SQL query to select all columns from the 'toko_info' table where the 'email_toko_info' matches the provided email.
     const result = await pool.query(
-      "SELECT * FROM toko WHERE email_toko = $1",
+      "SELECT * FROM toko_info WHERE email_toko_info = $1",
       [shopEmail]
     );
     // Check if the query returned any rows.
