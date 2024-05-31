@@ -39,67 +39,72 @@ function UserRegisterPage() {
 
   return (
     <div className="w-full max-w-xs">
-      <h1 className="font-sans my-10 flex justify-center">RETROACTIVE</h1>
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+        <form className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
+          <h1 className="font-sans flex text-4xl justify-center">
+            RETROACTIVE
+          </h1>
+        </form>
         <label
-          className="block font-sans text-gray-700 text-sm font-bold mb-2"
+          className="block font-sans text-gray-300 text-sm font-bold mb-2"
           form="namaUser"
         >
           Username
         </label>
         <input
-          className="bg-gray-100 font-sans mb-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="namaUser"
           onChange={handleNamaChange}
           placeholder="Nama User"
         />
         <label
-          className="block font-sans text-gray-700 text-sm font-bold mb-2 mr-5"
+          className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
           form="emailUser"
         >
           Email User
         </label>
         <input
-          className="bg-gray-100 font-sans mb-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline "
           type="text"
           name="emailUser"
           onChange={handleEmailChange}
           placeholder="Email User"
         />
         <label
-          className="block font-sans text-gray-700 text-sm font-bold mb-2 mr-5"
+          className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
           form="passwordUser"
         >
           Password User
         </label>
         <input
-          className="bg-gray-100 font-sans mb-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="passwordUser"
           onChange={handlePasswordChange}
           placeholder="Password User"
         />
+        <button
+          className="mt-3"
+          onClick={() => {
+            userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
+          }}
+        >
+          Register
+        </button>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </form>
-      <button
-        onClick={() => {
-          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
-        }}
-      >
-        Register
-      </button>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
     </div>
   );
 }

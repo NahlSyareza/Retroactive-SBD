@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const PasswordErrorMessage = () => (
@@ -13,7 +8,7 @@ const PasswordErrorMessage = () => (
   </p>
 );
 
-export const Login = () => {
+function UserLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState({ value: "", isTouched: false });
   const [loginError, setLoginError] = useState("");
@@ -32,19 +27,25 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/user/session`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password: password.value }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/session`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password: password.value }),
+        }
+      );
       const data = await response.json();
       const user = data.user;
       if (response.ok) {
-        localStorage.setItem("user", JSON.stringify({
-          name: user.name,
-          _id: user._id,
-          email: user.email
-        }));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            name: user.name,
+            _id: user._id,
+            email: user.email,
+          })
+        );
         toast.success("Successfully logged in.");
         navigate("/");
       } else {
@@ -56,66 +57,56 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#D5B98B] to-[#A67B5B]">
-      <div className="w-full max-w-lg p-8 bg-[#835C3B] rounded-xl shadow-2xl">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <h2 className="text-3xl font-semibold text-center text-[#dbc8a8]">
-            Login
-          </h2>
-          <div className="space-y-4">
-  <div>
-    <label className="block text-sm font-medium text-[#dbc8a8] mb-1">
-      Email Address <sup className="text-red-600">*</sup>
-    </label>
-    <input
-      type="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      placeholder="Email address"
-      className="w-full px-4 py-3 rounded-lg shadow-sm bg-[#584030] border-[#906040] text-[#dbc8a8] focus:border-[#a87040] focus:ring focus:ring-[#a87040] focus:ring-opacity-50"
-    />
-  </div>
-  <div>
-    <label className="block text-sm font-medium text-[#dbc8a8] mb-1">
-      Password <sup className="text-red-600">*</sup>
-    </label>
-    <input
-      type="password"
-      value={password.value}
-      onChange={(e) =>
-        setPassword({ ...password, value: e.target.value })
-      }
-      onBlur={() => setPassword({ ...password, isTouched: true })}
-      placeholder="Password"
-      className="w-full px-4 py-3 rounded-lg shadow-sm bg-[#584030] border-[#906040] text-[#dbc8a8] focus:border-[#a87040] focus:ring focus:ring-[#a87040] focus:ring-opacity-50"
-    />
-    {password.isTouched && password.value.length < 4 && (
-      <PasswordErrorMessage />
-    )}
-  </div>
-</div>
-          {loginError && (
-            <p className="text-red-500 text-center text-sm">{loginError}</p>
-          )}
-          <button
-            type="submit"
-            disabled={!getIsFormValid()}
-            className="w-full py-3 px-4 bg-[#5C3317] hover:bg-[#7b4921] rounded-lg text-[#dbc8a8] font-bold transition duration-300 ease-in-out transform hover:-translate-y-1"
-          >
-            Login
-          </button>
+    <div className="w-full max-w-xs">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-amber-950 shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4"
+      >
+        <form className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
+          <h1 className="font-sans flex text-4xl justify-center">
+            RETROACTIVE
+          </h1>
         </form>
-      </div>
+        <label className="block font-sans text-gray-300 text-sm font-bold mb-2">
+          Nama/Email User
+        </label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Nama/Email address"
+          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <label className="block font-sans text-gray-300 text-sm font-bold mb-2">
+          Password
+        </label>
+        <input
+          type="password"
+          value={password.value}
+          onChange={(e) => setPassword({ ...password, value: e.target.value })}
+          onBlur={() => setPassword({ ...password, isTouched: true })}
+          placeholder="Password"
+          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        {password.isTouched && password.value.length < 4 && (
+          <PasswordErrorMessage />
+        )}
+        {loginError && (
+          <p className="text-red-500 text-center text-sm">{loginError}</p>
+        )}
+        <button className="mt-3" type="submit" disabled={!getIsFormValid()}>
+          Login
+        </button>
+        <div className="mt-3" />
+        <a
+          className="text-orange-500 font-sans text-xs"
+          href="http://localhost:5173/register"
+        >
+          Belum memiliki akun? Silakan login!
+        </a>
+      </form>
     </div>
   );
-};
+}
 
-const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<Login />} />
-    </Routes>
-  </Router>
-);
-
-export default App;
+export default UserLoginPage;
