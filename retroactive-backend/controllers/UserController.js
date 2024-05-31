@@ -39,14 +39,14 @@ exports.registerEvent = async function registerEvent(req, res) {
 
 // Define an asynchronous function to handle user login requests.
 exports.loginEvent = async function loginEvent(req, res) {
-  const { emailUser, passwordUser } = req.body; // Extract login credentials from the request body.
+  const { dataUser, passwordUser } = req.body; // Extract login credentials from the request body.
   let error = "The account that you've entered is not valid."; // Error message for invalid credentials.
 
   try {
     // Execute an SQL query to find a user that matches the provided email and password.
     const result = await pool.query(
-      "SELECT * FROM user_data WHERE email_user = $1 RETURNING *",
-      [emailUser]
+      "SELECT * FROM user_data WHERE email_user=$1 RETURNING *",
+      [dataUser]
     );
 
     // Check if the query returned any rows.
