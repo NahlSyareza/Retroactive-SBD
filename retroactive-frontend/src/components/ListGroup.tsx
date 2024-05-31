@@ -5,7 +5,7 @@ function userRegisterEvent(
   namaUser: string,
   emailUser: string,
   passwordUser: string
-) {
+) { 
   axios
     .post("http://localhost:1466/user/register", {
       namaUser: namaUser,

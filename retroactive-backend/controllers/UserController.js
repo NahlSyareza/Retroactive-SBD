@@ -20,7 +20,7 @@ exports.registerEvent = async function registerEvent(req, res) {
 
   try {
     const query1 = await pool.query(
-      "INSERT INTO user_data (nama_user, email_user, password_user) VALUES ($1, $2, $3) RETURNING *",
+      "INSERT INTO user_data (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0.0) RETURNING *",
       [namaUser, emailUser, passwordUser]
     );
 
