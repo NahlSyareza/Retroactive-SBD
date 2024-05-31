@@ -1,76 +1,62 @@
-// Import the Pool class from the pg (PostgreSQL) library to manage database connections.
 const { Pool } = require("pg");
-// Import bcrypt for password hashing.
 const bcrypt = require("bcrypt");
 
-// Configure the database connection pool using environment variables for security and flexibility.
 const pool = new Pool({
   user: process.env.PGUSER,
   password: process.env.PGPASSWORD,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   ssl: {
-    require: true, // Ensures that SSL is required for database connections, enhancing security.
+    require: true,
   },
 });
 
-// Establish a connection to the PostgreSQL database and log a success message.
 pool.connect().then(() => {
   console.log("Connected to Postgres Server!");
 });
 
-// Define an asynchronous function to handle user registration requests.
 exports.registerEvent = async function registerEvent(req, res) {
-  const { namaUser, emailUser, passwordUser } = req.body; // Destructure and extract user details from the request body.
-  const hashedPassword = await bcrypt.hash(passwordUser, 10); // Hash the user's password before storing it in the database.
+  const { namaUser, emailUser, passwordUser } = req.body;
+  const hashedPassword = await bcrypt.hash(passwordUser, 10);
   try {
-    // Execute an SQL query to insert new user details into the user_data table and return the newly inserted row.
     const result = await pool.query(
       "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
       [namaUser, emailUser, hashedPassword]
     );
-    // Send a 200 OK response along with the inserted user data.
     res.status(200).json({
       data: result.rows,
       message: "Register akun " + namaUser + " berhasil",
     });
   } catch (err) {
-    // If an error occurs, send a 500 Internal Server Error response with the error details.
     res.status(500).json(err);
   }
 };
 
-// Define an asynchronous function to handle user login requests.
 exports.loginEvent = async function loginEvent(req, res) {
-  const { dataUser, passwordUser } = req.body; // Extract login credentials from the request body.
-  let error = "The account that you've entered is not valid."; // Error message for invalid credentials.
+  const { dataUser, passwordUser } = req.body;
+  let error = "The account that you've entered is not valid.";
 
   try {
-    // Execute an SQL query to find a user that matches the provided email and password.
     const result = await pool.query(
       "SELECT * FROM user_info WHERE email_user=$1 OR nama_user=$1",
       [dataUser]
     );
 
-    // Check if the query returned any rows.
     if (result.rowCount <= 0) {
-      // If no rows are returned, it will send an error message.
       res.status(401).json({
         message: "The user with email entered is not found.",
         error: error,
       });
     }
-    const user = result.rows[0]; // Storing the retrieved user data.
-    // Compare the provided password with the hashed password stored in the database.
+    const user = result.rows[0];
     const match = await bcrypt.compare(passwordUser, user.password_user);
     if (!match) {
       return res
         .status(401)
-        .json({ message: "The password is not correct.", error: error }); // If the passwords do not match, it will send an error message.
+        .json({ message: "The password is not correct.", error: error });
     }
     res.status(200).json({ data: user });
   } catch (err) {
-    // If an error occurs during query execution, respond with a 500 Internal Server Error.
     res.status(500).json(err);
   }
 };
@@ -92,28 +78,22 @@ exports.getEvent = async function getEvent(req, res) {
   }
 };
 
-// Define an asynchronous function to handle requests to edit a user's profile.
 exports.editEvent = async function editEvent(req, res) {
-  const { newName, userEmail, newPassword } = req.body; // Extract the new profile details from the request body.
-  let error = "The email that you've entered is not valid."; // Error message for invalid email.
+  const { newName, userEmail, newPassword } = req.body;
+  let error = "The email that you've entered is not valid.";
 
   try {
-    // Execute an SQL query to retrieve the existing user details based on the email provided.
     const result = await pool.query(
       "SELECT * FROM user_info WHERE email_user = $1",
       [userEmail]
     );
 
-    // Check if any user data was found.
     if (result.rowCount <= 0) {
-      // If no user data is found, respond with a 401 Unauthorized status and an error message.
       res.status(401).json({ error: error });
     }
 
-    // Retrieve the first row from the result as the user to be updated.
     const user = result.rows[0];
 
-    // Update user fields if new values are provided.
     if (newName !== undefined) user.nama_user = newName;
     if (newPassword !== undefined)
       user.password_user = await bcrypt.hash(newPassword, 10);

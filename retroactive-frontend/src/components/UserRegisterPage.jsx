@@ -14,15 +14,12 @@ function userRegisterEvent(namaUser, emailUser, passwordUser) {
     })
     .then((res) => {
       toast(res.data.message);
-      console.log(res.data.message);
+      console.log(res);
     })
     .catch((err) => {
-      toast("Error!");
+      toast(err.message);
       console.log(err);
-      return false;
     });
-
-  return true;
 }
 
 function UserRegisterPage() {
@@ -86,17 +83,7 @@ function UserRegisterPage() {
       </form>
       <button
         onClick={() => {
-          const status = userRegisterEvent(
-            getNamaUser,
-            getEmailUser,
-            getPasswordUser
-          );
-
-          if (status) {
-            console.log("Yes");
-          } else {
-            console.log("No");
-          }
+          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
         }}
       >
         Register
