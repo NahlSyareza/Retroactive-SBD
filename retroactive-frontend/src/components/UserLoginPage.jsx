@@ -57,7 +57,7 @@ function UserLoginPage() {
   };
 
   return (
-    <div className="w-full max-w-xs mx-auto">
+    <div className="w-full max-w-xs">
       <form
         onSubmit={handleSubmit}
         className="bg-amber-950 shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4"
