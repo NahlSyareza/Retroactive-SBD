@@ -29,8 +29,8 @@ function UserRegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-xs mx-auto mt-10">
-      <form className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+    <div className="w-full max-w-sm mx-auto mt-10">
+      <div className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
         <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
           <h1 className="font-sans flex text-4xl justify-center">
             RETROACTIVE
@@ -75,17 +75,20 @@ function UserRegisterPage() {
           onChange={handlePasswordChange}
           placeholder="Password User"
         />
-        <img
-          src={logo}
-          alt="Logo"
-          onClick={() => {
-            if (getPasswordField == "password") {
-              setPasswordField("text");
-            } else {
-              setPasswordField("password");
-            }
-          }}
-        />
+        <div className="flex ml-2">
+          <input
+            type="checkbox"
+            className="mr-3"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setPasswordField("text");
+              } else {
+                setPasswordField("password");
+              }
+            }}
+          />
+          <span className="text-sm">Show password</span>
+        </div>
         <div className="mt-3" />
         <button
           className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -116,7 +119,7 @@ function UserRegisterPage() {
         >
           Register
         </button>
-      </form>
+      </div>
       <ToastContainer
         position="bottom-center"
         autoClose={1500}
