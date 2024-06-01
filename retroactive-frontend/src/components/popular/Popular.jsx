@@ -10,7 +10,7 @@ export const Popular = () => {
   // Function to fetch data from API
   const fetchData = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/item`); // Fetching data from API
+      const response = await fetch(`http://localhost:1466/item`); // Fetching data from API
       const result = await response.json(); // Parsing JSON response
       setItemShop(result); // Updating state with fetched data
     } catch (err) {

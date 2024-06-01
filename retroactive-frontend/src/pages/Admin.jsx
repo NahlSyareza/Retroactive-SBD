@@ -25,6 +25,11 @@ function CreateItemForm() {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
     try {
+      setFormData({
+        ...formData,
+        harga_media: Number(formData["harga_media"]),
+        jumlah: Number(formData["jumlah"]),
+      });
       // Sending POST request to the server
       const response = await fetch("http://localhost:1466/item", {
         method: "POST",
@@ -99,13 +104,17 @@ function CreateItemForm() {
           <label className="text-left block text-sm font-medium mb-1">
             Media Type:
           </label>
-          <input
-            type="text"
+          <select
             name="jenis_media"
             value={formData.jenis_media}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded bg-white"
-          />
+          >
+            <option value="">Select Media Type</option>
+            <option value="Kaset">Kaset</option>
+            <option value="Vinyl">Vinyl</option>
+            <option value="CD">CD</option>
+          </select>
         </div>
         <div className="mb-4">
           <label className="text-left block text-sm font-medium mb-1">
