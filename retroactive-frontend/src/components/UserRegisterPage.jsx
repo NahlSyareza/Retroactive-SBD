@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { MouseEvent, Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function userRegisterEvent(namaUser, emailUser, passwordUser) {
+function userRegisterEvent(namaUser, emailUser, passwordUser, navigate) {
   axios
     .post("http://localhost:1466/user/register", {
       namaUser: namaUser,
@@ -14,6 +14,7 @@ function userRegisterEvent(namaUser, emailUser, passwordUser) {
     .then((res) => {
       toast(res.data.message);
       console.log(res);
+      navigate("/login"); 
     })
     .catch((err) => {
       toast(err.message);
@@ -25,6 +26,7 @@ function UserRegisterPage() {
   const [getNamaUser, setNamaUser] = useState("");
   const [getEmailUser, setEmailUser] = useState("");
   const [getPasswordUser, setPasswordUser] = useState("");
+  const navigate = useNavigate();
 
   const handleNamaChange = (event) => {
     setNamaUser(event.target.value);
@@ -89,7 +91,7 @@ function UserRegisterPage() {
         className="bg-orange-900"
         type="submit"
         onClick={() => {
-          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
+          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser, navigate);
         }}
       >
         Register
