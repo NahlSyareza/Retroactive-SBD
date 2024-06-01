@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const userRoute = require("./routes/UserRoute");
+const shopRoute = require("./routes/ShopRoute");
 
 const port = 1466;
 const app = express();
@@ -18,6 +19,7 @@ app.use(
 );
 
 app.use("/user", userRoute);
+app.use("/item", shopRoute);
 
 app.listen(port, () => {
   console.log("Server starting on port ", port);

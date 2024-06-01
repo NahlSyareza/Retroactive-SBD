@@ -3,8 +3,10 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import UserRegisterPage from "./components/UserRegisterPage";
-import UserLoginPage from "./components/UserLoginPage";
+import UserRegisterPage from "./pages/UserRegisterPage";
+import UserLoginPage from "./pages/UserLoginPage";
+import { Shop } from "./pages/Shop";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<Navigate to={"/login"} />} />
           <Route path="/register" element={<UserRegisterPage />} />
           <Route path="/login" element={<UserLoginPage />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </>
