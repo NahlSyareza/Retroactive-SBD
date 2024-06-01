@@ -1,14 +1,11 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import UserRegisterPage from "./pages/UserRegisterPage";
-import UserLoginPage from "./pages/UserLoginPage";
-import UserInfoPage from "./pages/UserInfoPage";
 import { Shop } from "./pages/Shop";
 import Admin from "./pages/Admin";
-import CartPage from "./pages/CartPage";
+import UserRegisterPage from "./components/UserRegisterPage";
+import UserInfoPage from "./components/UserInfoPage";
+import UserLoginPage from "./components/UserLoginPage";
+import CartPage from "./components/CartPage";
 
 function App() {
   return (
