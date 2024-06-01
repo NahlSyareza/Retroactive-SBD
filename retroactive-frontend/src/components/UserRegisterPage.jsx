@@ -24,7 +24,7 @@ function UserRegisterPage() {
     setPasswordUser(event.target.value);
   };
 
-  const handleRegister = () => {
+  const handleRegister = () => { 
     userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser, navigate);
   };
 
