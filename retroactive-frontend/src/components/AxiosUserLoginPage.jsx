@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const PasswordErrorMessage = () => (
-  <p className="text-red-500 text-xs italic mt-2">
-    Password should have at least 4 characters
-  </p>
-);
-
 function AxiosUserLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState({ value: "", isTouched: false });
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
+
+  const PasswordErrorMessage = () => (
+    <p className="text-red-500 text-xs italic mt-2">
+      Password should have at least 4 characters
+    </p>
+  );
 
   const getIsFormValid = () =>
     validateEmail(email) && password.value.length >= 4;
@@ -58,10 +58,7 @@ function AxiosUserLoginPage() {
 
   return (
     <div className="w-full max-w-xs">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-amber-950 shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4"
-      >
+      <form className="bg-amber-950 shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4">
         <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
           <h1 className="font-sans flex text-2xl justify-center">USER LOGIN</h1>
         </div>
@@ -102,8 +99,10 @@ function AxiosUserLoginPage() {
       <div className="mt-3" />
       <button
         className="bg-orange-900"
-        type="submit"
         disabled={!getIsFormValid()}
+        onClick={() => {
+          console.log("Hilang");
+        }}
       >
         Login
       </button>

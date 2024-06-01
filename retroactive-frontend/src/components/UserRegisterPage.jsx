@@ -3,11 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "../assets/react.svg";
 
 function UserRegisterPage() {
   const [getNamaUser, setNamaUser] = useState("");
   const [getEmailUser, setEmailUser] = useState("");
   const [getPasswordUser, setPasswordUser] = useState("");
+  const [getPasswordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
   const handleNamaChange = (event) => {
@@ -68,10 +70,21 @@ function UserRegisterPage() {
         </label>
         <input
           className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-          type="password"
+          type={getPasswordField}
           name="passwordUser"
           onChange={handlePasswordChange}
           placeholder="Password User"
+        />
+        <img
+          src={logo}
+          alt="Logo"
+          onClick={() => {
+            if (getPasswordField == "password") {
+              setPasswordField("text");
+            } else {
+              setPasswordField("password");
+            }
+          }}
         />
         <div className="mt-3" />
         <button
@@ -85,11 +98,15 @@ function UserRegisterPage() {
                 passwordUser: getPasswordUser,
               })
               .then((res) => {
-                toast.success("Berhasil Register");
+                if (res.data.state) {
+                  toast.success(res.data.message);
+                  setTimeout(() => {
+                    navigate("/login");
+                  }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                } else {
+                  toast.error(res.data.message);
+                }
                 console.log(res);
-                setTimeout(() => {
-                  navigate("/login");
-                }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
               })
               .catch((err) => {
                 toast.error(err.message);
