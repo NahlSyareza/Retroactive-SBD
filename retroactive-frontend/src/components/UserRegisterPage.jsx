@@ -33,7 +33,10 @@ function UserRegisterPage() {
       <div className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
         <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
           <h1 className="font-sans flex text-4xl justify-center">
-            USER REGISTER
+            RETROACTIVE
+          </h1>
+          <h1 className="font-sans flex text-2xl font-bold mt-2 justify-center">
+            User Register
           </h1>
         </div>
         <label
