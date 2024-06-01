@@ -3,7 +3,6 @@ import axios from "axios";
 import { MouseEvent, Fragment, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navigate, useNavigate } from "react-router-dom";
 
 function userRegisterEvent(namaUser, emailUser, passwordUser) {
   axios
@@ -84,27 +83,29 @@ function UserRegisterPage() {
           onChange={handlePasswordChange}
           placeholder="Password User"
         />
-        <button
-          className="mt-3"
-          onClick={() => {
-            userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
-          }}
-        >
-          Register
-        </button>
-        <ToastContainer
-          position="bottom-center"
-          autoClose={1500}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
+        <div className="mt-3" />
       </form>
+      <button
+        className="bg-orange-900"
+        type="submit"
+        onClick={() => {
+          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
+        }}
+      >
+        Register
+      </button>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

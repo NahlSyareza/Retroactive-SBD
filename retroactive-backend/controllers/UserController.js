@@ -20,12 +20,12 @@ exports.registerEvent = async function registerEvent(req, res) {
   const hashedPassword = await bcrypt.hash(passwordUser, 10);
   try {
     const result = await pool.query(
-      "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
+      "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0)",
       [namaUser, emailUser, hashedPassword]
     );
     res.status(200).json({
-      data: result.rows,
       message: "Register akun " + namaUser + " berhasil",
+      data: result.rows[0],
     });
   } catch (err) {
     res.status(500).json(err);
@@ -73,6 +73,11 @@ exports.getEvent = async function getEvent(req, res) {
     if (result.rows <= 0) {
       res.status(401).json({ message: "No such user exists!" });
     }
+
+    res.status(200).json({
+      message: "Account berhasil didapatkan!",
+      data: result.rows[0],
+    });
   } catch (err) {
     res.status(500).json(err);
   }
