@@ -4,26 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function userRegisterEvent(namaUser, emailUser, passwordUser, navigate) {
-  axios
-    .post("http://localhost:1466/user/register", {
-      namaUser: namaUser,
-      emailUser: emailUser,
-      passwordUser: passwordUser,
-    })
-    .then((res) => {
-      toast.success("Berhasil Register");
-      console.log(res);
-      setTimeout(() => {
-        navigate("/login"); 
-      }, 1500); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
-    })
-    .catch((err) => {
-      toast.error(err.message);
-      console.log(err);
-    });
-}
-
 function UserRegisterPage() {
   const [getNamaUser, setNamaUser] = useState("");
   const [getEmailUser, setEmailUser] = useState("");
@@ -97,7 +77,25 @@ function UserRegisterPage() {
         <button
           className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
-          onClick={handleRegister}
+          onClick={() => {
+            axios
+              .post("http://localhost:1466/user/register", {
+                namaUser: getNamaUser,
+                emailUser: getEmailUser,
+                passwordUser: getPasswordUser,
+              })
+              .then((res) => {
+                toast.success("Berhasil Register");
+                console.log(res);
+                setTimeout(() => {
+                  navigate("/login");
+                }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+              })
+              .catch((err) => {
+                toast.error(err.message);
+                console.log(err);
+              });
+          }}
         >
           Register
         </button>
