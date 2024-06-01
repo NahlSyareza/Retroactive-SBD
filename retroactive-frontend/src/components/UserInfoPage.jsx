@@ -24,14 +24,14 @@ function UserInfoPage() {
             .then((res) => {
               let isValid = res.data.state;
               if (isValid) {
-                toast(res.data.message);
+                toast.success(res.data.message);
               } else {
-                toast("Tour de Force");
+                toast.error(res.data.message);
               }
               console.log(res.data);
             })
             .catch((err) => {
-              toast(err.message);
+              toast.error(err.message);
               console.log(err.message);
             });
         }}
