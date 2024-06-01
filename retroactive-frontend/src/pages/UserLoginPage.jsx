@@ -94,17 +94,22 @@ function UserLoginPage() {
         {loginError && (
           <p className="text-red-500 text-center text-sm">{loginError}</p>
         )}
-        <button className="mt-3" type="submit" disabled={!getIsFormValid()}>
-          Login
-        </button>
-        <div className="mt-3" />
         <a
           className="text-orange-500 font-sans text-xs"
-          href="/register"
+          href="http://localhost:5173/register"
         >
           Belum memiliki akun? Silakan register!
         </a>
       </form>
+      <div className="mt-3" />
+      <button
+        className="bg-orange-900"
+        type="submit"
+        disabled={!getIsFormValid()}
+      >
+        Login
+      </button>
+      <div className="mt-3" />
     </div>
   );
 }

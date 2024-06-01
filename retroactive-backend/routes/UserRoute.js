@@ -13,6 +13,10 @@ router.post("/register", userController.registerEvent);
 router.get("/login", userController.loginEvent);
 // Defining a GET route '/login' that will invoke the loginEvent function from the userController when accessed.
 
+router.get("/get", userController.getEvent);
+
+router.get("/getAll", userController.getAllEvent);
+
 router.put("/edit", userController.editEvent);
 // Defining a PUT route '/editProfile' that will invoke the editProfile function from the userController when accessed.
 

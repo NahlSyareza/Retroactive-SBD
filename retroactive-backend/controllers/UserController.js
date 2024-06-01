@@ -19,16 +19,46 @@ exports.registerEvent = async function registerEvent(req, res) {
   const { namaUser, emailUser, passwordUser } = req.body;
   const hashedPassword = await bcrypt.hash(passwordUser, 10);
   try {
+    if (
+      namaUser.length == 0 ||
+      emailUser.length == 0 ||
+      passwordUser.length == 0
+    ) {
+      return res.status(201).json({
+        state: false,
+        message: "Semua field harus diisi!",
+        data: null,
+      });
+    } else {
+      if (passwordUser.length < 8) {
+        return res.status(201).json({
+          state: false,
+          message: "Password harus lebih dari 8 karakter!",
+          data: null,
+        });
+      }
+    }
+
     const result = await pool.query(
       "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
       [namaUser, emailUser, hashedPassword]
     );
-    res.status(200).json({
-      data: result.rows,
+
+    if (!result) {
+      return res.status(201).json({
+        state: false,
+        message: "Nama atau email sudah diambil!",
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      state: true,
       message: "Register akun " + namaUser + " berhasil",
+      data: result.rows,
     });
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 };
 
@@ -62,7 +92,7 @@ exports.loginEvent = async function loginEvent(req, res) {
 };
 
 exports.getEvent = async function getEvent(req, res) {
-  const { namaUser } = req.body;
+  const { namaUser } = req.query;
 
   try {
     const result = await pool.query(
@@ -70,11 +100,34 @@ exports.getEvent = async function getEvent(req, res) {
       [namaUser]
     );
 
-    if (result.rows <= 0) {
-      res.status(401).json({ message: "No such user exists!" });
+    if (result.rowCount <= 0) {
+      return res.status(201).json({
+        state: false,
+        message: "Account tidak berhasil didapatkan!",
+        data: result.rows,
+      });
     }
+
+    return res.status(200).json({
+      state: true,
+      message: "Akun berhasil didapatkan!",
+      data: result.rows,
+    });
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
+  }
+};
+
+exports.getAllEvent = async function getAllEvent(req, res) {
+  try {
+    const result = await pool.query("SELECT * FROM user_info");
+
+    return res.status(200).json({
+      message: "Semua akun berhasil didapatkan!",
+      data: result.rows,
+    });
+  } catch (err) {
+    return res.status(500).json(err);
   }
 };
 
