@@ -12,12 +12,14 @@ function userRegisterEvent(namaUser, emailUser, passwordUser, navigate) {
       passwordUser: passwordUser,
     })
     .then((res) => {
-      toast(res.data.message);
+      toast.success("Berhasil Register");
       console.log(res);
-      navigate("/login"); 
+      setTimeout(() => {
+        navigate("/login"); 
+      }, 1500); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
     })
     .catch((err) => {
-      toast(err.message);
+      toast.error(err.message);
       console.log(err);
     });
 }
@@ -31,24 +33,30 @@ function UserRegisterPage() {
   const handleNamaChange = (event) => {
     setNamaUser(event.target.value);
   };
+
   const handleEmailChange = (event) => {
     setEmailUser(event.target.value);
   };
+
   const handlePasswordChange = (event) => {
     setPasswordUser(event.target.value);
   };
 
+  const handleRegister = () => {
+    userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser, navigate);
+  };
+
   return (
-    <div className="w-full max-w-xs">
+    <div className="w-full max-w-xs mx-auto mt-10">
       <form className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
-        <form className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
+        <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
           <h1 className="font-sans flex text-4xl justify-center">
             RETROACTIVE
           </h1>
-        </form>
+        </div>
         <label
           className="block font-sans text-gray-300 text-sm font-bold mb-2"
-          form="namaUser"
+          htmlFor="namaUser"
         >
           Username
         </label>
@@ -61,7 +69,7 @@ function UserRegisterPage() {
         />
         <label
           className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
-          form="emailUser"
+          htmlFor="emailUser"
         >
           Email User
         </label>
@@ -74,28 +82,26 @@ function UserRegisterPage() {
         />
         <label
           className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
-          form="passwordUser"
+          htmlFor="passwordUser"
         >
           Password User
         </label>
         <input
           className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
+          type="password"
           name="passwordUser"
           onChange={handlePasswordChange}
           placeholder="Password User"
         />
         <div className="mt-3" />
+        <button
+          className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          onClick={handleRegister}
+        >
+          Register
+        </button>
       </form>
-      <button
-        className="bg-orange-900"
-        type="submit"
-        onClick={() => {
-          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser, navigate);
-        }}
-      >
-        Register
-      </button>
       <ToastContainer
         position="bottom-center"
         autoClose={1500}
