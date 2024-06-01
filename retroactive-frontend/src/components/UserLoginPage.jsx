@@ -102,7 +102,11 @@ function UserLoginPage() {
         </a>
       </form>
       <div className="mt-3" />
-      <button className="bg-orange-900" type="submit" disabled={!getIsFormValid()}>
+      <button
+        className="bg-orange-900"
+        type="submit"
+        disabled={!getIsFormValid()}
+      >
         Login
       </button>
       <div className="mt-3" />

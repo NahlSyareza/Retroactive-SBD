@@ -3,28 +3,13 @@ import axios from "axios";
 import { MouseEvent, Fragment, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-function userRegisterEvent(namaUser, emailUser, passwordUser) {
-  axios
-    .post("http://localhost:1466/user/register", {
-      namaUser: namaUser,
-      emailUser: emailUser,
-      passwordUser: passwordUser,
-    })
-    .then((res) => {
-      toast(res.data.message);
-      console.log(res);
-    })
-    .catch((err) => {
-      toast(err.message);
-      console.log(err);
-    });
-}
+import { useNavigate } from "react-router-dom";
 
 function UserRegisterPage() {
   const [getNamaUser, setNamaUser] = useState("");
   const [getEmailUser, setEmailUser] = useState("");
   const [getPasswordUser, setPasswordUser] = useState("");
+  const navigate = useNavigate();
 
   const handleNamaChange = (event) => {
     setNamaUser(event.target.value);
@@ -36,14 +21,23 @@ function UserRegisterPage() {
     setPasswordUser(event.target.value);
   };
 
+  const delay = async (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  const handleDelay = async () => {
+    await delay(2000);
+    navigate("/home");
+  };
+
   return (
     <div className="w-full max-w-xs">
       <form className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
-        <form className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
-          <h1 className="font-sans flex text-4xl justify-center">
-            RETROACTIVE
+        <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
+          <h1 className="font-sans flex text-2xl justify-center">
+            USER REGISTER
           </h1>
-        </form>
+        </div>
         <label
           className="block font-sans text-gray-300 text-sm font-bold mb-2"
           form="namaUser"
@@ -89,7 +83,24 @@ function UserRegisterPage() {
         className="bg-orange-900"
         type="submit"
         onClick={() => {
-          userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser);
+          axios
+            .post("http://localhost:1466/user/register", {
+              namaUser: getNamaUser,
+              emailUser: getEmailUser,
+              passwordUser: getPasswordUser,
+            })
+            .then((res) => {
+              toast(res.data.message);
+              console.log(res.data);
+              let state = res.data.state;
+              if (state) {
+                navigate("/login");
+              }
+            })
+            .catch((err) => {
+              toast(err.message);
+              console.log(err);
+            });
         }}
       >
         Register

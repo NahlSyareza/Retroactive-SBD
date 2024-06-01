@@ -15,6 +15,8 @@ router.get("/login", userController.loginEvent);
 
 router.get("/get", userController.getEvent);
 
+router.get("/getAll", userController.getAllEvent);
+
 router.put("/edit", userController.editEvent);
 // Defining a PUT route '/editProfile' that will invoke the editProfile function from the userController when accessed.
 

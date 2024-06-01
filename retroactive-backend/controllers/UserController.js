@@ -20,12 +20,22 @@ exports.registerEvent = async function registerEvent(req, res) {
   const hashedPassword = await bcrypt.hash(passwordUser, 10);
   try {
     const result = await pool.query(
-      "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0)",
+      "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
       [namaUser, emailUser, hashedPassword]
     );
+
+    if (!result) {
+      res.status(201).json({
+        state: false,
+        message: "Nama atau email sudah diambil!",
+        data: null,
+      });
+    }
+
     res.status(200).json({
+      state: true,
       message: "Register akun " + namaUser + " berhasil",
-      data: result.rows[0],
+      data: result.rows,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -62,7 +72,7 @@ exports.loginEvent = async function loginEvent(req, res) {
 };
 
 exports.getEvent = async function getEvent(req, res) {
-  const { namaUser } = req.body;
+  const { namaUser } = req.query;
 
   try {
     const result = await pool.query(
@@ -70,16 +80,34 @@ exports.getEvent = async function getEvent(req, res) {
       [namaUser]
     );
 
-    if (result.rows <= 0) {
-      res.status(401).json({ message: "No such user exists!" });
+    if (result.rowCount <= 0) {
+      return res.status(201).json({
+        state: false,
+        message: "Account tidak berhasil didapatkan!",
+        data: result.rows,
+      });
     }
 
-    res.status(200).json({
-      message: "Account berhasil didapatkan!",
-      data: result.rows[0],
+    return res.status(200).json({
+      state: true,
+      message: "Akun berhasil didapatkan!",
+      data: result.rows,
     });
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
+  }
+};
+
+exports.getAllEvent = async function getAllEvent(req, res) {
+  try {
+    const result = await pool.query("SELECT * FROM user_info");
+
+    return res.status(200).json({
+      message: "Semua akun berhasil didapatkan!",
+      data: result.rows,
+    });
+  } catch (err) {
+    return res.status(500).json(err);
   }
 };
 

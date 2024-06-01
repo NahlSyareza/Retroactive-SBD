@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import UserRegisterPage from "./components/UserRegisterPage";
 import UserInfoPage from "./components/UserInfoPage";
 import UserLoginPage from "./components/UserLoginPage";
+import AxiosUserLoginPage from "./components/AxiosUserLoginPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={"/home"} />} />
-          <Route path="/login" element={<UserLoginPage />} />
+          <Route path="/login" element={<AxiosUserLoginPage />} />
           <Route path="/register" element={<UserRegisterPage />} />
           <Route path="/info" element={<UserInfoPage />} />
         </Routes>
