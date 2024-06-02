@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/react.svg";
 import edit from "../assets/edit.svg";
 import topup from "../assets/topup.svg";
+import spin from "../assets/spin.svg";
 
 function UserInfoPage() {
   const [getNamaUser, setNamaUser] = useState("");
@@ -15,7 +16,7 @@ function UserInfoPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const namaUser = localStorage.getItem("UserLogin_namaUser");
+    const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
     const getUser = async () => {
       axios
         .get("http://localhost:1466/user/get", {
@@ -42,6 +43,23 @@ function UserInfoPage() {
     };
     getUser();
   }, []);
+
+  const handleOnEditClick = () => {
+    toast.success("Mengedit edit ya ges ya");
+    setTimeout(() => {
+      navigate("/edit");
+    }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+  };
+
+  const handleOnTopUpClick = () => {
+    toast.success("VOM");
+    // navigate("/topup");
+  };
+
+  const handleOnSpinClick = () => {
+    toast.success("ZOBBOP");
+    // navigate("/spin");
+  };
 
   return (
     <div className="w-full max-w-sm mx-auto mt-10 inline-flex">
@@ -94,15 +112,19 @@ function UserInfoPage() {
           theme="dark"
         />
       </div>
-      <div className="bg-amber-950 shadow-md rounded-3xl px-10 pt-3 pb-8 mb-4 ml-3">
+      <div className="bg-amber-950 shadow-md rounded-3xl px-10 pb-8 mb-4 ml-3">
         <div className="grid">
-          <img src={edit} className="ml-1 scale-125 mt-20" />
+          <img src={edit} className="ml-1 mt-3" onClick={handleOnEditClick} />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
             Edit
           </p>
-          <img src={topup} className="ml-1 mt-20 scale-125" />
+          <img src={topup} className="ml-1 mt-3" onClick={handleOnTopUpClick} />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
             Top Up
+          </p>
+          <img src={spin} className="ml-1 mt-3" onClick={handleOnSpinClick} />
+          <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
+            Spin
           </p>
         </div>
       </div>

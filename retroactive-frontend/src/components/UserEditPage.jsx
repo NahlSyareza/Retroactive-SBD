@@ -3,47 +3,51 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "../assets/react.svg";
 
-function UserLoginPage() {
-  const [dataUser, setDataUser] = useState("");
-  const [passwordUser, setPasswordUser] = useState("");
-  const [passwordField, setPasswordField] = useState("password");
+function UserRegisterPage() {
+  const [getNamaUser, setNamaUser] = useState("");
+  const [getEmailUser, setEmailUser] = useState("");
+  const [getPasswordUser, setPasswordUser] = useState("");
+  const [getPasswordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
-  const handleDataUserChange = (event) => {
-    setDataUser(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPasswordUser(event.target.value);
-  };
-
-  const handleLogin = () => {
+  const handleUserRegister = () => {
     axios
-      .post("http://localhost:1466/user/session", {
-        dataUser: dataUser,
-        passwordUser: passwordUser,
+      .put("http://localhost:1466/user/edit", {
+        namaUserOld: "Chamber",
+        namaUserNew: getNamaUser,
+        emailUserNew: getEmailUser,
+        passwordUserNew: getPasswordUser,
       })
       .then((res) => {
-        const response = res.data;
-        if (response.state) {
-          localStorage.setItem(
-            "StaticUtils_loggedNamaUser",
-            response.payload.nama_user
-          );
-          toast.success(response.message);
+        if (res.data.state) {
+          localStorage.setItem("StaticUtils_loggedNamaUser", getNamaUser);
+          toast.success(res.data.message);
           setTimeout(() => {
-            navigate("/home");
+            navigate("/info");
           }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
         } else {
-          toast.error(response.message);
+          toast.error(res.data.message);
         }
-        console.log(res.data);
+        console.log(res);
       })
       .catch((err) => {
         toast.error(err.message);
         console.log(err);
       });
+  };
+
+  const handleNamaChange = (event) => {
+    setNamaUser(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmailUser(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPasswordUser(event.target.value);
   };
 
   return (
@@ -54,34 +58,47 @@ function UserLoginPage() {
             RETROACTIVE
           </h1>
           <h1 className="font-sans text-white flex text-2xl font-bold mt-2 justify-center">
-            User Login
+            User Edit
           </h1>
         </div>
         <label
           className="block font-sans text-gray-300 text-sm font-bold mb-2"
-          htmlFor="dataUser"
+          htmlFor="namaUser"
         >
-          Email or Username
+          Username
         </label>
         <input
           className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
-          name="dataUser"
-          onChange={handleDataUserChange}
-          placeholder="Email or Username"
+          name="namaUser"
+          onChange={handleNamaChange}
+          placeholder="Nama User"
+        />
+        <label
+          className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
+          htmlFor="emailUser"
+        >
+          Email User
+        </label>
+        <input
+          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline "
+          type="text"
+          name="emailUser"
+          onChange={handleEmailChange}
+          placeholder="Email User"
         />
         <label
           className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
           htmlFor="passwordUser"
         >
-          Password
+          Password User
         </label>
         <input
           className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
-          type={passwordField}
+          type={getPasswordField}
           name="passwordUser"
           onChange={handlePasswordChange}
-          placeholder="Password"
+          placeholder="Password User"
         />
         <div className="flex ml-2">
           <input
@@ -97,21 +114,13 @@ function UserLoginPage() {
           />
           <span className="text-white text-sm">Show password</span>
         </div>
-        <div>
-          <a
-            href="http://localhost:5173/register"
-            className="text-orange-700 text-sm mt-3"
-          >
-            Belum memiliki akun? Silakan register!
-          </a>
-        </div>
         <div className="mt-3" />
         <button
           className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
-          onClick={handleLogin}
+          onClick={handleUserRegister}
         >
-          Login
+          Register
         </button>
       </div>
       <ToastContainer
@@ -130,4 +139,4 @@ function UserLoginPage() {
   );
 }
 
-export default UserLoginPage;
+export default UserRegisterPage;
