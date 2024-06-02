@@ -439,3 +439,12 @@
 2024-06-02 22:57:49:5749 [32minfo[39m: [32mServer starting on port [39m
 2024-06-02 22:57:50:5750 [32minfo[39m: [32mConnected to User backend![39m
 2024-06-02 22:57:50:5750 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-02 22:57:56:5756 [32minfo[39m: [32mServer starting on port [39m
+2024-06-02 22:57:57:5757 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-02 22:57:57:5757 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-02 22:58:16:5816 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-02 22:58:16:5816 [35mhttp[39m: [35m::1 PUT /user/edit 200 53 - 272.765 ms[39m
+[35m[39m
+2024-06-02 22:58:17:5817 [32minfo[39m: [32mSemua akun berhasil didapatkan![39m
+2024-06-02 22:58:17:5817 [35mhttp[39m: [35m::1 GET /user/getAll 200 208 - 23.999 ms[39m
+[35m[39m
