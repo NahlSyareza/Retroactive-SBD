@@ -12,6 +12,7 @@ function App() {
   const discs = [
     {
       id: 1,
+      image: "../src/assets/batch_1/IMG_0001.jpg",
       name: "Here Comes The Sun",
       album: "Abbey Road",
       band: "The Beatles",
@@ -19,6 +20,7 @@ function App() {
     },
     {
       id: 2,
+      image: "../src/assets/batch_1/IMG_0002.jpg",
       name: "Rocket Man",
       album: "Honky Chateau",
       band: "Elton John",
@@ -26,6 +28,7 @@ function App() {
     },
     {
       id: 3,
+      image: "../src/assets/batch_1/IMG_0003.jpg",
       name: "Dancing Queen",
       album: "Arrival",
       band: "The Beatles",
@@ -33,6 +36,7 @@ function App() {
     },
     {
       id: 4,
+      image: "../src/assets/batch_1/IMG_0004.jpg",
       name: "Bohemmian Rapsody",
       album: "A Night at the Opera",
       band: "Queen",
@@ -40,6 +44,7 @@ function App() {
     },
     {
       id: 5,
+      image: "../src/assets/batch_1/IMG_0005.jpg",
       name: "How Deep Is Your Love",
       album: "Saturday Night Fever",
       band: "Bee Gees",

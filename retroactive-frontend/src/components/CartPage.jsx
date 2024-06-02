@@ -21,7 +21,7 @@ function CartPage(props) {
           Anda Belum Memasukkan Barang Apapun!
         </p>
       )}
-      <ul className="list-group shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 max-w-sm mx-auto  justify-start">
+      <ul className="list-group list-group-horizontal shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-75 p-3   justify-start">
         {itemList.map((item, index) => (
           <li
             className={
@@ -37,6 +37,7 @@ function CartPage(props) {
             <p className="text-2xl font-bold leading-none">
               {item.name} &nbsp;
             </p>
+            <img src={item.image} />
             <p className="leading-none">{item.album} &nbsp;</p>
             <p>{item.band} &nbsp;</p>
             <p>{item.year} &nbsp;</p>
