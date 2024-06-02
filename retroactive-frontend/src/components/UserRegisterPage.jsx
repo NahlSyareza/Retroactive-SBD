@@ -24,7 +24,7 @@ function UserRegisterPage() {
     setPasswordUser(event.target.value);
   };
 
-  const handleRegister = () => { 
+  const handleRegister = () => {
     userRegisterEvent(getNamaUser, getEmailUser, getPasswordUser, navigate);
   };
 
@@ -32,10 +32,10 @@ function UserRegisterPage() {
     <div className="w-full max-w-sm mx-auto mt-10">
       <div className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
         <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
-          <h1 className="font-sans flex text-4xl justify-center">
+          <h1 className="font-sans text-white flex text-4xl justify-center">
             RETROACTIVE
           </h1>
-          <h1 className="font-sans flex text-2xl font-bold mt-2 justify-center">
+          <h1 className="font-sans text-white flex text-2xl font-bold mt-2 justify-center">
             User Register
           </h1>
         </div>
@@ -90,7 +90,7 @@ function UserRegisterPage() {
               }
             }}
           />
-          <span className="text-sm">Show password</span>
+          <span className="text-white text-sm">Show password</span>
         </div>
         <div className="mt-3" />
         <button
