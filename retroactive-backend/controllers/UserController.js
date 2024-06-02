@@ -1,5 +1,7 @@
 const { Pool } = require("pg");
 const bcrypt = require("bcrypt");
+const logger = require("../tools/Logger");
+const { log } = require("winston");
 
 const pool = new Pool({
   user: process.env.PGUSER,
@@ -12,7 +14,7 @@ const pool = new Pool({
 });
 
 pool.connect().then(() => {
-  console.log("Connected to Postgres Server!");
+  logger.info("Connected to User backend!");
 });
 
 exports.registerEvent = async function registerEvent(req, res) {
@@ -24,17 +26,19 @@ exports.registerEvent = async function registerEvent(req, res) {
       emailUser.length == 0 ||
       passwordUser.length == 0
     ) {
+      logger.warn("Semua field harus diisi!");
       return res.status(201).json({
         state: false,
         message: "Semua field harus diisi!",
-        data: null,
+        payload: null,
       });
     } else {
       if (passwordUser.length < 8) {
+        logger.warn("Password harus lebih dari 8 karakter!");
         return res.status(201).json({
           state: false,
           message: "Password harus lebih dari 8 karakter!",
-          data: null,
+          payload: null,
         });
       }
     }
@@ -44,27 +48,20 @@ exports.registerEvent = async function registerEvent(req, res) {
       [namaUser, emailUser, hashedPassword]
     );
 
-    if (!result) {
-      return res.status(201).json({
-        state: false,
-        message: "Nama atau email sudah diambil!",
-        data: null,
-      });
-    }
-
+    logger.info("Register akun " + namaUser + " berhasil");
     return res.status(200).json({
       state: true,
       message: "Register akun " + namaUser + " berhasil",
-      data: result.rows,
+      payload: result.rows,
     });
   } catch (err) {
+    logger.error(err);
     return res.status(500).json(err);
   }
 };
 
 exports.loginEvent = async function loginEvent(req, res) {
   const { dataUser, passwordUser } = req.body;
-  let error = "The account that you've entered is not valid.";
 
   try {
     const result = await pool.query(
@@ -73,27 +70,31 @@ exports.loginEvent = async function loginEvent(req, res) {
     );
 
     if (result.rowCount <= 0) {
-      return res.status(401).json({
+      logger.warn("User tidak dapat ditemukan!");
+      return res.status(201).json({
         state: false,
-        message: "The user with the provided email or username was not found",
-        error: error,
+        message: "User tidak dapat ditemukan",
+        payload: null,
       });
     }
 
     const user = result.rows[0];
     const match = await bcrypt.compare(passwordUser, user.password_user);
     if (!match) {
-      return res.status(401).json({
+      logger.warn("Data dan password tidak tepat!");
+      return res.status(201).json({
         state: false,
-        message: "The password is incorrect",
-        error: error,
+        message: "Data dan password tidak tepat!",
+        payload: result.rows[0],
       });
     }
 
-    res
+    logger.info("User berhasil login");
+    return res
       .status(200)
-      .json({ state: true, message: "User berhasil login", data: user });
+      .json({ state: true, message: "User berhasil login", payload: user });
   } catch (err) {
+    logger.error(err);
     res.status(500).json(err);
   }
 };
@@ -108,19 +109,22 @@ exports.getEvent = async function getEvent(req, res) {
     );
 
     if (result.rowCount <= 0) {
+      logger.warn("Account tidak berhasil didapatkan!");
       return res.status(201).json({
         state: false,
         message: "Account tidak berhasil didapatkan!",
-        data: result.rows,
+        payload: null,
       });
     }
 
+    logger.info("Akun berhasil didapatkan!");
     return res.status(200).json({
       state: true,
       message: "Akun berhasil didapatkan!",
-      data: result.rows,
+      payload: result.rows[0],
     });
   } catch (err) {
+    logger.error(err);
     return res.status(500).json(err);
   }
 };
@@ -129,44 +133,78 @@ exports.getAllEvent = async function getAllEvent(req, res) {
   try {
     const result = await pool.query("SELECT * FROM user_info");
 
+    logger.info("Semua akun berhasil didapatkan!");
     return res.status(200).json({
       message: "Semua akun berhasil didapatkan!",
-      data: result.rows,
+      payload: result.rows,
     });
   } catch (err) {
+    logger.error(err);
     return res.status(500).json(err);
   }
 };
 
 exports.editEvent = async function editEvent(req, res) {
-  const { newName, userEmail, newPassword } = req.body;
-  let error = "The email that you've entered is not valid.";
-
+  const { namaUserOld, namaUserNew, emailUserNew, passwordUserNew } = req.body;
+  const hashedPassword = await bcrypt.hash(passwordUserNew, 10);
   try {
-    const result = await pool.query(
-      "SELECT * FROM user_info WHERE email_user = $1",
-      [userEmail]
+    const initial = await pool.query(
+      "SELECT * FROM user_info WHERE nama_user=$1",
+      [namaUserOld]
     );
 
-    if (result.rowCount <= 0) {
-      res.status(401).json({ error: error });
+    if (initial.rowCount <= 0) {
+      logger.warn("User tidak dapat ditemukan!");
+      return res.status(201).json({
+        state: false,
+        message: "User tidak dapat ditemukan!",
+        payload: null,
+      });
     }
 
-    const user = result.rows[0];
+    const user = initial.rows[0];
 
-    if (newName !== undefined) user.nama_user = newName;
-    if (newPassword !== undefined)
-      user.password_user = await bcrypt.hash(newPassword, 10);
+    if (namaUserNew == user.nama_user) {
+      const result = await pool.query(
+        "UPDATE user_info SET email_user=$1,password_user=$2 WHERE nama_user=$3 RETURNING *",
+        [emailUserNew, hashedPassword, namaUserOld]
+      );
 
-    // Execute an SQL query to update the user's details in the user_info table and return the updated row.
-    const insert = await pool.query(
-      "UPDATE user_info SET nama_user = $1, password_user = $2 WHERE email_user = $3 RETURNING *",
-      [user.nama_user, user.password_user, userEmail]
+      logger.info("Email dan password user berhasil diubah!");
+      return res.status(200).json({
+        state: true,
+        message: "Nama dan password user berhasil diubah!",
+        payload: result.rows[0],
+      });
+    }
+
+    if (emailUserNew == user.email_user) {
+      const result = await pool.query(
+        "UPDATE user_info SET nama_user=$1,password_user=$2 WHERE nama_user=$3 RETURNING *",
+        [namaUserNew, hashedPassword, namaUserOld]
+      );
+
+      logger.info("Info user berhasil diubah!");
+      return res.status(200).json({
+        state: true,
+        message: "Nama, email, dan password user berhasil diubah!",
+        payload: result.rows[0],
+      });
+    }
+
+    const result = await pool.query(
+      "UPDATE user_info SET nama_user=$1,email_user=$2,password_user=$3 WHERE nama_user=$4 RETURNING *",
+      [namaUserNew, emailUserNew, hashedPassword, namaUserOld]
     );
-    // Respond with a 200 OK status and the updated user data.
-    res.status(200).json({ data: insert.rows });
+
+    logger.info("Info user berhasil diubah!");
+    return res.status(200).json({
+      state: true,
+      message: "Info user berhasil diubah!",
+      payload: result.rows[0],
+    });
   } catch (err) {
-    // If an error occurs during processing, respond with a 500 Internal Server Error.
+    logger.error(err);
     res.status(500).json(err);
   }
 };
@@ -186,8 +224,8 @@ exports.topUpEvent = async function topUpEvent(req, res) {
 
     // Check if any user data was found.
     if (result.rowCount < 0) {
-      // If no user data is found, respond with a 401 Unauthorized status and an error message.
-      res.status(401).json({ error: error });
+      // If no user data is found, respond with a 201 Unauthorized status and an error message.
+      res.status(201).json({ error: error });
     }
 
     // Retrieve the first row from the result as the user to update.
@@ -208,7 +246,7 @@ exports.topUpEvent = async function topUpEvent(req, res) {
       [user.email_user, user.saldo_user]
     );
     // Respond with a 200 OK status and the updated balance data.
-    res.status(200).json({ data: insert.rows });
+    res.status(200).json({ payload: insert.rows });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);
@@ -229,14 +267,14 @@ exports.inventoryFunction = async function inventoryFunction(req, res) {
 
     // Check if any user data was found.
     if (result.rowCount <= 0) {
-      // If no user data is found, respond with a 401 Unauthorized status and an error message.
-      res.status(401).json({ error: error });
+      // If no user data is found, respond with a 201 Unauthorized status and an error message.
+      res.status(201).json({ error: error });
     }
 
     // Retrieve the inventory information from the first row of the result.
     const user = result.rowCount[0];
     // Respond with a 200 OK status and the user's inventory data.
-    res.status(200).json({ data: user.inventory_user });
+    res.status(200).json({ payload: user.inventory_user });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);

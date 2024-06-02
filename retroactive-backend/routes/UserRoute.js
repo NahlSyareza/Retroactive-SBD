@@ -19,9 +19,8 @@ router.post("/session", loginEvent);
 router.post("/register", registerEvent);
 
 // GET route to get all users
-router.get("/all", getAllEvent);
+router.get("/getAll", getAllEvent);
 
-// PUT route to edit user
 router.put("/edit", editEvent);
 
 router.get("/get", getEvent);

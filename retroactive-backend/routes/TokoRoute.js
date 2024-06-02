@@ -2,7 +2,7 @@
 const express = require("express");
 
 // Importing the shopController from the 'Controllers' directory, which handles toko-related API endpoints.
-const shopController = require("../controllers/ShopController");
+const shopController = require("../controllers/TokoController");
 
 // Creating a new router object from Express to handle incoming HTTP requests and map them to corresponding controllers.
 const router = express.Router();

@@ -1,0 +1,4 @@
+2024-06-02 22:40:32:4032 [31merror[39m: [31mduplicate key value violates unique constraint "user_info_pkey"[39m
+2024-06-02 22:40:38:4038 [31merror[39m: [31mduplicate key value violates unique constraint "user_info_pkey"[39m
+2024-06-03 00:07:33:733 [31merror[39m: [31msyntax error at or near "RETURNIN"[39m
+2024-06-03 00:11:11:1111 [31merror[39m: [31mduplicate key value violates unique constraint "user_info_nama_user_key"[39m
