@@ -16,6 +16,22 @@ pool.connect().then(() => {
   logger.info("Connected to Toko backend!");
 });
 
+exports.GetFunction = async (req, res) => {
+  try {
+    // SQL query to select all items from the database
+    const query = "SELECT * FROM toko_inventory";
+    // Execute the query
+    const { rows } = await pool.query(query);
+    // Respond with all items
+    res.json(rows);
+  } catch (error) {
+    // Handle error
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching the data." });
+  }
+};
+
 exports.CreateFunction = async (req, res) => {
   // Destructure fields from request body
   const {
@@ -70,6 +86,27 @@ exports.getAllEvent = async (req, res) => {
     res
       .status(500)
       .json({ error: "An error occurred while fetching the data." });
+  }
+};
+
+exports.addToCart = async function addToCart(req, res) {
+  const { namaUser, namaAlbum } = req.body;
+
+  try {
+    const result = await pool.query(
+      "INSERT INTO cart VALUES ($1,$2) RETURNING *",
+      [namaUser, namaAlbum]
+    );
+
+    logger.info("Berhasil menambahkan ke cart!");
+    return res.status(200).json({
+      state: true,
+      message: "Berhasil menambahkan ke cart!",
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.statues(500).json({ err });
   }
 };
 

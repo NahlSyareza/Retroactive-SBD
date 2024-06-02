@@ -1385,3 +1385,379 @@
 2024-06-03 01:30:00:300 [32minfo[39m: [32mServer starting on port [39m
 2024-06-03 01:30:00:300 [32minfo[39m: [32mConnected to User backend![39m
 2024-06-03 01:30:00:300 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:33:03:333 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:33:03:333 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:33:03:333 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:33:19:3319 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 1.170 ms[39m
+[35m[39m
+2024-06-03 01:33:20:3320 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 01:33:20:3320 [35mhttp[39m: [35m::1 POST /user/session 200 209 - 301.941 ms[39m
+[35m[39m
+2024-06-03 01:33:23:3323 [35mhttp[39m: [35m::1 GET /item 404 143 - 3.350 ms[39m
+[35m[39m
+2024-06-03 01:33:23:3323 [35mhttp[39m: [35m::1 GET /item 404 143 - 1.145 ms[39m
+[35m[39m
+2024-06-03 01:33:31:3331 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.581 ms[39m
+[35m[39m
+2024-06-03 01:34:02:342 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.280 ms[39m
+[35m[39m
+2024-06-03 01:34:02:342 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.382 ms[39m
+[35m[39m
+2024-06-03 01:34:07:347 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.556 ms[39m
+[35m[39m
+2024-06-03 01:34:07:347 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.558 ms[39m
+[35m[39m
+2024-06-03 01:34:07:347 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.757 ms[39m
+[35m[39m
+2024-06-03 01:34:07:347 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.635 ms[39m
+[35m[39m
+2024-06-03 01:34:07:347 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.606 ms[39m
+[35m[39m
+2024-06-03 01:34:07:347 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.469 ms[39m
+[35m[39m
+2024-06-03 01:34:08:348 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.453 ms[39m
+[35m[39m
+2024-06-03 01:34:08:348 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.473 ms[39m
+[35m[39m
+2024-06-03 01:34:12:3412 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.441 ms[39m
+[35m[39m
+2024-06-03 01:34:12:3412 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.541 ms[39m
+[35m[39m
+2024-06-03 01:36:06:366 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:36:06:366 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:36:06:366 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:36:07:367 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:36:07:367 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:36:07:367 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:36:11:3611 [35mhttp[39m: [35m::1 GET /item 200 1477 - 183.627 ms[39m
+[35m[39m
+2024-06-03 01:36:11:3611 [35mhttp[39m: [35m::1 GET /item 304 - - 23.680 ms[39m
+[35m[39m
+2024-06-03 01:36:46:3646 [35mhttp[39m: [35m::1 GET /item 304 - - 341.865 ms[39m
+[35m[39m
+2024-06-03 01:36:50:3650 [35mhttp[39m: [35m::1 GET /shop 404 143 - 1.106 ms[39m
+[35m[39m
+2024-06-03 01:36:53:3653 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:36:54:3654 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:36:54:3654 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:36:54:3654 [35mhttp[39m: [35m::1 GET /shop 200 1477 - 182.606 ms[39m
+[35m[39m
+2024-06-03 01:36:54:3654 [35mhttp[39m: [35m::1 GET /shop 304 - - 25.603 ms[39m
+[35m[39m
+2024-06-03 01:37:00:370 [35mhttp[39m: [35m::1 GET /shop/get 200 1533 - 24.025 ms[39m
+[35m[39m
+2024-06-03 01:37:00:370 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 24.355 ms[39m
+[35m[39m
+2024-06-03 01:37:00:370 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 01:37:00:370 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 174.979 ms[39m
+[35m[39m
+2024-06-03 01:37:00:370 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 01:37:00:370 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.428 ms[39m
+[35m[39m
+2024-06-03 01:37:03:373 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.305 ms[39m
+[35m[39m
+2024-06-03 01:37:03:373 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.142 ms[39m
+[35m[39m
+2024-06-03 01:38:20:3820 [35mhttp[39m: [35m::1 GET /shop 304 - - 205.445 ms[39m
+[35m[39m
+2024-06-03 01:38:20:3820 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.436 ms[39m
+[35m[39m
+2024-06-03 01:38:36:3836 [35mhttp[39m: [35m::1 GET /shop 304 - - 178.864 ms[39m
+[35m[39m
+2024-06-03 01:38:37:3837 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.044 ms[39m
+[35m[39m
+2024-06-03 01:39:35:3935 [35mhttp[39m: [35m::1 GET /shop 304 - - 171.088 ms[39m
+[35m[39m
+2024-06-03 01:39:35:3935 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.587 ms[39m
+[35m[39m
+2024-06-03 01:39:50:3950 [35mhttp[39m: [35m::1 GET /shop 304 - - 170.629 ms[39m
+[35m[39m
+2024-06-03 01:39:50:3950 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.839 ms[39m
+[35m[39m
+2024-06-03 01:39:51:3951 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.396 ms[39m
+[35m[39m
+2024-06-03 01:39:51:3951 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.105 ms[39m
+[35m[39m
+2024-06-03 01:40:00:400 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.462 ms[39m
+[35m[39m
+2024-06-03 01:40:00:400 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.523 ms[39m
+[35m[39m
+2024-06-03 01:40:12:4012 [35mhttp[39m: [35m::1 GET /shop 304 - - 182.860 ms[39m
+[35m[39m
+2024-06-03 01:40:16:4016 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.557 ms[39m
+[35m[39m
+2024-06-03 01:40:20:4020 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.993 ms[39m
+[35m[39m
+2024-06-03 01:40:23:4023 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.017 ms[39m
+[35m[39m
+2024-06-03 01:40:25:4025 [35mhttp[39m: [35m::1 GET /shop 304 - - 27.191 ms[39m
+[35m[39m
+2024-06-03 01:40:27:4027 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.724 ms[39m
+[35m[39m
+2024-06-03 01:40:39:4039 [35mhttp[39m: [35m::1 GET /shop 304 - - 183.027 ms[39m
+[35m[39m
+2024-06-03 01:40:59:4059 [35mhttp[39m: [35m::1 GET /shop 304 - - 175.571 ms[39m
+[35m[39m
+2024-06-03 01:40:59:4059 [35mhttp[39m: [35m::1 GET /shop 304 - - 25.432 ms[39m
+[35m[39m
+2024-06-03 01:41:00:410 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.548 ms[39m
+[35m[39m
+2024-06-03 01:41:00:410 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.311 ms[39m
+[35m[39m
+2024-06-03 01:41:09:419 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.142 ms[39m
+[35m[39m
+2024-06-03 01:41:09:419 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.915 ms[39m
+[35m[39m
+2024-06-03 01:43:57:4357 [35mhttp[39m: [35m::1 GET /shop 304 - - 257.230 ms[39m
+[35m[39m
+2024-06-03 01:44:37:4437 [35mhttp[39m: [35m::1 GET /shop 304 - - 181.924 ms[39m
+[35m[39m
+2024-06-03 01:44:37:4437 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.099 ms[39m
+[35m[39m
+2024-06-03 01:45:57:4557 [35mhttp[39m: [35m::1 GET /shop 304 - - 177.743 ms[39m
+[35m[39m
+2024-06-03 01:45:57:4557 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.241 ms[39m
+[35m[39m
+2024-06-03 01:45:58:4558 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.116 ms[39m
+[35m[39m
+2024-06-03 01:45:58:4558 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.156 ms[39m
+[35m[39m
+2024-06-03 01:46:00:460 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.598 ms[39m
+[35m[39m
+2024-06-03 01:46:00:460 [35mhttp[39m: [35m::1 GET /shop 304 - - 26.954 ms[39m
+[35m[39m
+2024-06-03 01:46:01:461 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.608 ms[39m
+[35m[39m
+2024-06-03 01:46:01:461 [35mhttp[39m: [35m::1 GET /shop 304 - - 25.742 ms[39m
+[35m[39m
+2024-06-03 01:46:04:464 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.786 ms[39m
+[35m[39m
+2024-06-03 01:46:04:464 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.515 ms[39m
+[35m[39m
+2024-06-03 01:46:28:4628 [35mhttp[39m: [35m::1 GET /shop 304 - - 177.414 ms[39m
+[35m[39m
+2024-06-03 01:46:49:4649 [35mhttp[39m: [35m::1 GET /shop 304 - - 171.258 ms[39m
+[35m[39m
+2024-06-03 01:46:49:4649 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.086 ms[39m
+[35m[39m
+2024-06-03 01:47:10:4710 [35mhttp[39m: [35m::1 GET /shop 304 - - 179.589 ms[39m
+[35m[39m
+2024-06-03 01:47:11:4711 [35mhttp[39m: [35m::1 GET /shop 304 - - 28.539 ms[39m
+[35m[39m
+2024-06-03 01:47:12:4712 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.686 ms[39m
+[35m[39m
+2024-06-03 01:47:12:4712 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.080 ms[39m
+[35m[39m
+2024-06-03 01:47:15:4715 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.623 ms[39m
+[35m[39m
+2024-06-03 01:47:53:4753 [35mhttp[39m: [35m::1 GET /shop 304 - - 175.087 ms[39m
+[35m[39m
+2024-06-03 01:47:53:4753 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.302 ms[39m
+[35m[39m
+2024-06-03 01:49:42:4942 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:49:42:4942 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:49:42:4942 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:49:49:4949 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:49:49:4949 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:49:49:4949 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:49:57:4957 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:49:57:4957 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:49:57:4957 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:09:509 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:09:509 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:09:509 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:20:5020 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:20:5020 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:20:5020 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:24:5024 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:24:5024 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:24:5024 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:27:5027 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:27:5027 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:27:5027 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:31:5031 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:31:5031 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:31:5031 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:33:5033 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:33:5033 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:33:5033 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:35:5035 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:35:5035 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:35:5035 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:38:5038 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:38:5038 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:38:5038 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:45:5045 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:45:5045 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:50:45:5045 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:57:5057 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:50:57:5057 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:50:57:5057 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:00:510 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:00:510 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:00:510 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:08:518 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:08:518 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:08:518 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:13:5113 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:13:5113 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:13:5113 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:19:5119 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:19:5119 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:19:5119 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:21:5121 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:21:5121 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:21:5121 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:26:5126 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:26:5126 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:26:5126 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:37:5137 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:37:5137 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:37:5137 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:51:41:5141 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:51:41:5141 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:51:41:5141 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:52:12:5212 [35mhttp[39m: [35m::1 GET /shop 304 - - 169.660 ms[39m
+[35m[39m
+2024-06-03 01:53:34:5334 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:53:34:5334 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:53:34:5334 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:53:38:5338 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:53:38:5338 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:53:38:5338 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:55:07:557 [35mhttp[39m: [35m::1 OPTIONS /shop/addToCart 204 0 - 0.809 ms[39m
+[35m[39m
+2024-06-03 01:57:18:5718 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:57:18:5718 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:57:18:5718 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:57:20:5720 [35mhttp[39m: [35m::1 GET /shop 304 - - 178.163 ms[39m
+[35m[39m
+2024-06-03 01:57:20:5720 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.075 ms[39m
+[35m[39m
+2024-06-03 01:57:22:5722 [35mhttp[39m: [35m::1 OPTIONS /shop/addToCart 204 0 - 0.366 ms[39m
+[35m[39m
+2024-06-03 01:58:23:5823 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:58:23:5823 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:58:23:5823 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:58:38:5838 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:58:38:5838 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:58:38:5838 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:58:45:5845 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:58:46:5846 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:58:46:5846 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:58:48:5848 [35mhttp[39m: [35m::1 GET /shop 304 - - 182.065 ms[39m
+[35m[39m
+2024-06-03 01:58:48:5848 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.355 ms[39m
+[35m[39m
+2024-06-03 01:58:50:5850 [35mhttp[39m: [35m::1 OPTIONS /shop/addToCart 204 0 - 0.458 ms[39m
+[35m[39m
+2024-06-03 01:59:02:592 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:59:02:592 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 01:59:02:592 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:59:03:593 [35mhttp[39m: [35m::1 GET /shop 304 - - 170.786 ms[39m
+[35m[39m
+2024-06-03 01:59:03:593 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.676 ms[39m
+[35m[39m
+2024-06-03 01:59:07:597 [35mhttp[39m: [35m::1 OPTIONS /shop/addToCart 204 0 - 0.370 ms[39m
+[35m[39m
+2024-06-03 01:59:07:597 [32minfo[39m: [32mBerhasil menambahkan ke cart![39m
+2024-06-03 01:59:07:597 [35mhttp[39m: [35m::1 POST /shop/addToCart 200 111 - 72.404 ms[39m
+[35m[39m
+2024-06-03 01:59:13:5913 [35mhttp[39m: [35m::1 OPTIONS /shop/addToCart 204 0 - 0.124 ms[39m
+[35m[39m
+2024-06-03 01:59:13:5913 [32minfo[39m: [32mBerhasil menambahkan ke cart![39m
+2024-06-03 01:59:13:5913 [35mhttp[39m: [35m::1 POST /shop/addToCart 200 117 - 89.607 ms[39m
+[35m[39m
+2024-06-03 01:59:16:5916 [32minfo[39m: [32mBerhasil menambahkan ke cart![39m
+2024-06-03 01:59:16:5916 [35mhttp[39m: [35m::1 POST /shop/addToCart 200 111 - 64.799 ms[39m
+[35m[39m
+2024-06-03 02:00:50:050 [35mhttp[39m: [35m::1 GET /shop 304 - - 184.523 ms[39m
+[35m[39m
+2024-06-03 02:00:52:052 [35mhttp[39m: [35m::1 GET /shop 304 - - 26.179 ms[39m
+[35m[39m
+2024-06-03 02:00:52:052 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.596 ms[39m
+[35m[39m
+2024-06-03 02:00:54:054 [35mhttp[39m: [35m::1 GET /shop 304 - - 25.620 ms[39m
+[35m[39m
+2024-06-03 02:00:57:057 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.851 ms[39m
+[35m[39m
+2024-06-03 02:01:14:114 [35mhttp[39m: [35m::1 GET /shop 304 - - 176.620 ms[39m
+[35m[39m
+2024-06-03 02:01:14:114 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.346 ms[39m
+[35m[39m
+2024-06-03 02:01:17:117 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.645 ms[39m
+[35m[39m
+2024-06-03 02:01:17:117 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.741 ms[39m
+[35m[39m
+2024-06-03 02:01:20:120 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.944 ms[39m
+[35m[39m
+2024-06-03 02:01:21:121 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.687 ms[39m
+[35m[39m
+2024-06-03 02:01:21:121 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.420 ms[39m
+[35m[39m
+2024-06-03 02:01:33:133 [35mhttp[39m: [35m::1 GET /shop 304 - - 365.577 ms[39m
+[35m[39m
+2024-06-03 02:01:34:134 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.896 ms[39m
+[35m[39m
+2024-06-03 02:01:44:144 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.430 ms[39m
+[35m[39m
+2024-06-03 02:01:44:144 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.486 ms[39m
+[35m[39m
+2024-06-03 02:01:45:145 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.639 ms[39m
+[35m[39m
+2024-06-03 02:01:54:154 [35mhttp[39m: [35m::1 GET /shop 304 - - 21.885 ms[39m
+[35m[39m
+2024-06-03 02:02:03:23 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.612 ms[39m
+[35m[39m
+2024-06-03 02:02:03:23 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.983 ms[39m
+[35m[39m
+2024-06-03 02:02:34:234 [35mhttp[39m: [35m::1 GET /shop 304 - - 217.226 ms[39m
+[35m[39m
+2024-06-03 02:02:34:234 [35mhttp[39m: [35m::1 GET /shop 304 - - 27.413 ms[39m
+[35m[39m
+2024-06-03 02:02:34:234 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.362 ms[39m
+[35m[39m
+2024-06-03 02:09:40:940 [35mhttp[39m: [35m::1 GET /shop 304 - - 234.736 ms[39m
+[35m[39m
+2024-06-03 02:09:40:940 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.571 ms[39m
+[35m[39m
+2024-06-03 02:12:34:1234 [35mhttp[39m: [35m::1 GET /shop 304 - - 376.707 ms[39m
+[35m[39m
+2024-06-03 02:12:36:1236 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.891 ms[39m
+[35m[39m
+2024-06-03 02:12:38:1238 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.300 ms[39m
+[35m[39m
+2024-06-03 02:12:38:1238 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.290 ms[39m
+[35m[39m
+2024-06-03 02:12:45:1245 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.078 ms[39m
+[35m[39m
+2024-06-03 02:12:45:1245 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.005 ms[39m
+[35m[39m
+2024-06-03 02:12:47:1247 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.020 ms[39m
+[35m[39m
+2024-06-03 02:12:48:1248 [35mhttp[39m: [35m::1 GET /shop 304 - - 24.184 ms[39m
+[35m[39m
+2024-06-03 02:12:48:1248 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.580 ms[39m
+[35m[39m
+2024-06-03 02:13:00:130 [35mhttp[39m: [35m::1 GET /shop 304 - - 176.705 ms[39m
+[35m[39m
+2024-06-03 02:13:00:130 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.038 ms[39m
+[35m[39m
+2024-06-03 02:14:01:141 [35mhttp[39m: [35m::1 GET /shop 304 - - 176.715 ms[39m
+[35m[39m
+2024-06-03 02:14:03:143 [35mhttp[39m: [35m::1 GET /shop 304 - - 26.370 ms[39m
+[35m[39m
+2024-06-03 02:14:03:143 [35mhttp[39m: [35m::1 GET /shop 304 - - 21.184 ms[39m
+[35m[39m
+2024-06-03 02:14:13:1413 [35mhttp[39m: [35m::1 GET /shop - - - - ms[39m
+[35m[39m
+2024-06-03 02:14:13:1413 [35mhttp[39m: [35m::1 GET /shop 200 1477 - 24.802 ms[39m
+[35m[39m
+2024-06-03 02:14:13:1413 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.673 ms[39m
+[35m[39m
+2024-06-03 02:14:32:1432 [35mhttp[39m: [35m::1 GET /shop 304 - - 182.670 ms[39m
+[35m[39m
+2024-06-03 02:14:34:1434 [35mhttp[39m: [35m::1 GET /shop 304 - - 22.152 ms[39m
+[35m[39m
+2024-06-03 02:14:34:1434 [35mhttp[39m: [35m::1 GET /shop 304 - - 23.100 ms[39m
+[35m[39m
