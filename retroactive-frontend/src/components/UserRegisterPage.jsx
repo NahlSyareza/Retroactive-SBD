@@ -11,6 +11,7 @@ function UserRegisterPage() {
   const [getPasswordUser, setPasswordUser] = useState("");
   const [getPasswordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
+  const chamber = "Chamber";
 
   const handleUserRegister = () => {
     axios

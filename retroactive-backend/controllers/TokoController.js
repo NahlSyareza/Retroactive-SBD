@@ -1,25 +1,21 @@
-// Importing the Pool class from the pg package to handle connections to the PostgreSQL database.
 const { Pool } = require("pg");
-// Import bcrypt for password hashing.
 const bcrypt = require("bcrypt");
+const logger = require("../tools/Logger");
 
-// Creating a connection pool to manage and reuse PostgreSQL database connections.
 const pool = new Pool({
-  user: process.env.PGUSER, // Username for the PostgreSQL database from environment variables.
-  password: process.env.PGPASSWORD, // Password for the database from environment variables.
-  host: process.env.PGHOST, // Database host address from environment variables.
-  database: process.env.PGDATABASE, // Database name from environment variables.
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
   ssl: {
-    require: true, // Enforcing SSL to secure the database connections.
+    require: true,
   },
 });
 
-// Establishing a connection to the database and logging a confirmation message.
 pool.connect().then(() => {
-  console.log("Connected to Postgres Server!");
+  logger.info("Connected to Toko backend!");
 });
 
-// Controller for CREATE
 exports.CreateFunction = async (req, res) => {
   // Destructure fields from request body
   const {

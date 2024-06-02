@@ -3,13 +3,15 @@ const cors = require("cors");
 require("dotenv").config();
 
 const userRoute = require("./routes/UserRoute");
-const shopRoute = require("./routes/ShopRoute");
-
+const tokoRoute = require("./routes/TokoRoute");
+const logger = require("./tools/Logger");
+const middlewareLogger = require("./middlwares/MiddlewareLogging");
 const port = 1466;
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(middlewareLogger);
 
 app.use(
   cors({
@@ -18,8 +20,8 @@ app.use(
 );
 
 app.use("/user", userRoute);
-app.use("/shop", shopRoute);
+app.use("/shop", tokoRoute);
 
 app.listen(port, () => {
-  console.log("Server starting on port ", port);
+  logger.info("Server starting on port ", port);
 });
