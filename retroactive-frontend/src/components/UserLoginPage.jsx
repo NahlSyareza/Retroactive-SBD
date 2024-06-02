@@ -27,7 +27,7 @@ function UserLoginPage() {
       .then((res) => {
         if (res.status === 200) {
           // localStorage.setItem("UserLogin_namaUser", res.data.data.nama_user);
-          localStorage.setItem("UserLogin_namaUser", JSON.stringify(res.data));
+          localStorage.setItem("UserLogin_dataUser", JSON.stringify(res.data));
           toast.success(res.data.message);
           setTimeout(() => {
             navigate("/info");

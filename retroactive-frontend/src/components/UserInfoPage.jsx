@@ -19,7 +19,7 @@ function UserInfoPage() {
   useEffect(() => {
     // Parse digunakan untuk mengubah JSON.stringify menjadi JSON beneran
     // dan di-assign ke variabel bernama chamber
-    const chamber = JSON.parse(localStorage.getItem("UserLogin_namaUser"));
+    const chamber = JSON.parse(localStorage.getItem("UserLogin_dataUser"));
     const headhunter = chamber.data;
     const getUser = async () => {
       axios
