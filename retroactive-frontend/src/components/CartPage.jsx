@@ -14,6 +14,19 @@ function CartPage(props) {
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
+  const handlePay = () => {
+    axios
+      .post("http://localhost:1466/user/pay", {
+        totalBelanja: getTotal,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     const chamber = JSON.parse(localStorage.getItem("UserLogin_dataUser"));
     const headhunter = chamber.data;
@@ -80,9 +93,6 @@ function CartPage(props) {
           </div>
           <div className="text-2xl flex">Saldo Anda : {getSaldoUser} </div>
           <div className="text-2xl flex">Total belanja : {getTotal} </div>
-          {/* <div className="text-2xl flex">Total Belanja : {getTotal.map((item, index) => (
-
-          ))} </div> */}
         </div>
         <div className="flex space-x-4">
           <button
