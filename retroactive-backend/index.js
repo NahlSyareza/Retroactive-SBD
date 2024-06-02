@@ -18,7 +18,7 @@ app.use(
 );
 
 app.use("/user", userRoute);
-app.use("/item", shopRoute);
+app.use("/shop", shopRoute);
 
 app.listen(port, () => {
   console.log("Server starting on port ", port);

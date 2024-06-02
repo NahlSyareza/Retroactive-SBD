@@ -9,26 +9,35 @@ function CartPage(props) {
   const [getItemCount, setItemCount] = useState(0);
   const [getSaldoUser, setSaldoUser] = useState(0.0);
   const [getTotal, setTotal] = useState(0.0);
-
-  const itemList = props.items;
-
-  // let items = ["The Beatles", "Elton John", "ABBA", "Bee Gees", "Bon Jovi"];
+  const [getItems, setItems] = useState([]);
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:1466/shop/get")
+      .then((res) => {
+        console.log(res.data);
+        setItems(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <>
         <div>
           <h1 className="text-white">Cart List</h1>
-          {itemList.length === 0 && (
+          {getItems.length === 0 && (
             <p className="text-red-600 text-2xl bg-white">
               Anda Belum Memasukkan Barang Apapun!
             </p>
           )}
           <div className="flex justify-center">
             <ul className="list-group list-group-horizontal justify-center shadow-md rounded-xl  mb-4 w-75  xl:grid-cols-5   ">
-              {itemList.map((item, index) => (
+              {getItems.map((item, index) => (
                 <li
                   className={
                     selectedIndex === index
@@ -43,7 +52,7 @@ function CartPage(props) {
                   <p className="text-2xl font-bold leading-none">
                     {item.name} &nbsp;
                   </p>
-                  <img src={item.image} />
+                  <img src={item.gambar_media} />
                   <p className="leading-none">{item.album} &nbsp;</p>
                   <p>{item.band} &nbsp;</p>
                   <p>{item.year} &nbsp;</p>

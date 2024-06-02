@@ -58,14 +58,17 @@ exports.CreateFunction = async (req, res) => {
 };
 
 // Controller for READ (All items)
-exports.GetFunction = async (req, res) => {
+exports.getAllEvent = async (req, res) => {
   try {
     // SQL query to select all items from the database
-    const query = "SELECT * FROM toko_inventory";
     // Execute the query
-    const { rows } = await pool.query(query);
+    const result = await pool.query("SELECT * FROM toko_inventory");
     // Respond with all items
-    res.json(rows);
+    res.status(200).json({
+      state: true,
+      message: "Berhasil menarik data",
+      data: result.rows,
+    });
   } catch (error) {
     // Handle error
     res

@@ -101,9 +101,16 @@ function UserInfoPage() {
           theme="dark"
         />
       </div>
-      <div className="bg-amber-950 shadow-md rounded-3xl pl-5 pt-3 mb-4 ml-3">
-        <div className="flex justify-start">
-          <p className="text-sm mt-3 ml-2">Top</p>
+      <div className="bg-amber-950 shadow-md rounded-3xl px-10 pt-3 pb-8 mb-4 ml-3">
+        <div className="grid">
+          <img src={logo} className="ml-1 scale-125" />
+          <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
+            Top Up
+          </p>
+          <img src={logo} className="ml-1 scale-125" />
+          <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
+            Top Up
+          </p>
         </div>
       </div>
     </div>
