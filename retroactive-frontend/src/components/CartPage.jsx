@@ -10,6 +10,7 @@ function CartPage(props) {
   const [getSaldoUser, setSaldoUser] = useState(0.0);
   const [getTotal, setTotal] = useState(0.0);
   const [getItems, setItems] = useState([]);
+  const navigate = useNavigate();
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -19,6 +20,12 @@ function CartPage(props) {
       .then((res) => {
         console.log(res.data);
         setItems(res.data.data);
+
+        let a = 0;
+        for (let i = 0; i < res.data.data.length; i++) {
+          a += res.data.data[i].harga_media;
+          setTotal(a);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -74,6 +81,7 @@ function CartPage(props) {
             Payment Information
           </div>
           <div className="text-2xl flex">Saldo Anda : {getSaldoUser} </div>
+          <div className="text-2xl flex">Total belanja : {getTotal} </div>
           {/* <div className="text-2xl flex">Total Belanja : {getTotal.map((item, index) => (
 
           ))} </div> */}
@@ -83,6 +91,7 @@ function CartPage(props) {
             className="flex justify-start rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
             title="Confirm Payment"
             onClick={() => {
+              console.log("Test");
               toast.success("Masuk Ke Page Pembayaran");
               setTimeout(() => {
                 navigate("/home");
@@ -95,7 +104,7 @@ function CartPage(props) {
             className="flex justify-start rounded bg-red-600 text-white text-opacity-5 items-center font-bold  max-h-12 "
             title="Cancel"
             onClick={() => {
-              toast.success("Masuk Ke Page Pembayaran");
+              toast.error("Masuk Ke Page Pembayaran");
               setTimeout(() => {
                 navigate("/home");
               }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
@@ -105,6 +114,18 @@ function CartPage(props) {
           </button>
         </div>
       </ul>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

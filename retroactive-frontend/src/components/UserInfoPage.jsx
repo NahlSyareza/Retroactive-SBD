@@ -13,6 +13,8 @@ function UserInfoPage() {
   const [getEmailUser, setEmailUser] = useState("");
   const [getSaldoUser, setSaldoUser] = useState(0.0);
   const navigate = useNavigate();
+  const [getTestArr, setTestArr] = useState([]);
+  const [getTestValule, setTestValue] = useState(0);
 
   useEffect(() => {
     // Parse digunakan untuk mengubah JSON.stringify menjadi JSON beneran
@@ -35,7 +37,6 @@ function UserInfoPage() {
             toast.error(res.data.message);
           }
           console.log(chamber);
-
           // Mengakses data-data lain dari JSON yang sudah diberikan
           setNamaUser(headhunter.nama_user);
           setEmailUser(headhunter.email_user);
@@ -46,7 +47,6 @@ function UserInfoPage() {
           console.log(err.message);
         });
     };
-
     getUser();
   }, []);
 
