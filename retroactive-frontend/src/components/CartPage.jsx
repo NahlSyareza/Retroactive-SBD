@@ -31,7 +31,7 @@ function CartPage(props) {
     toast.success("Pembayaran Berhasil!");
     setTimeout(() => {
       navigate("/home");
-    }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+    }, 2000);
   };
 
   useEffect(() => {
