@@ -1360,3 +1360,6 @@
 [35m[39m
 2024-06-03 01:29:48:2948 [35mhttp[39m: [35m::1 GET /item 404 143 - 0.418 ms[39m
 [35m[39m
+2024-06-03 01:30:00:300 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 01:30:00:300 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 01:30:00:300 [32minfo[39m: [32mConnected to Toko backend![39m
