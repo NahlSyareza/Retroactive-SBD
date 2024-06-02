@@ -12,6 +12,30 @@ function UserRegisterPage() {
   const [getPasswordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
+  const handleUserRegister = () => {
+    axios
+      .post("http://localhost:1466/user/register", {
+        namaUser: getNamaUser,
+        emailUser: getEmailUser,
+        passwordUser: getPasswordUser,
+      })
+      .then((res) => {
+        if (res.data.state) {
+          toast.success(res.data.message);
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+        } else {
+          toast.error(res.data.message);
+        }
+        console.log(res);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err);
+      });
+  };
+
   const handleNamaChange = (event) => {
     setNamaUser(event.target.value);
   };
@@ -96,29 +120,7 @@ function UserRegisterPage() {
         <button
           className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
-          onClick={() => {
-            axios
-              .post("http://localhost:1466/user/register", {
-                namaUser: getNamaUser,
-                emailUser: getEmailUser,
-                passwordUser: getPasswordUser,
-              })
-              .then((res) => {
-                if (res.data.state) {
-                  toast.success(res.data.message);
-                  setTimeout(() => {
-                    navigate("/login");
-                  }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
-                } else {
-                  toast.error(res.data.message);
-                }
-                console.log(res);
-              })
-              .catch((err) => {
-                toast.error(err.message);
-                console.log(err);
-              });
-          }}
+          onClick={handleUserRegister}
         >
           Register
         </button>

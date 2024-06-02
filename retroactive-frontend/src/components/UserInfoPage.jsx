@@ -19,7 +19,7 @@ function UserInfoPage() {
       axios
         .get("http://localhost:1466/user/get", {
           params: {
-            namaUser: "Chamber",
+            namaUser: localStorage.getItem("UserLogin_namaUser"),
           },
         })
         .then((res) => {
@@ -29,10 +29,6 @@ function UserInfoPage() {
           } else {
             toast.error(res.data.message);
           }
-          console.log(res.data.data[0].nama_user);
-          console.log(res.data.data[0].email_user);
-          console.log(res.data.data[0].nama_user);
-
           setNamaUser(res.data.data[0].nama_user);
           setEmailUser(res.data.data[0].email_user);
           setNamaUser(res.data.data[0].nama_user);

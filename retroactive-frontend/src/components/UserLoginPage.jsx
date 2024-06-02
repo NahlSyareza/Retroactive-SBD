@@ -26,15 +26,15 @@ function UserLoginPage() {
       })
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("user", JSON.stringify(res.data.data));
+          localStorage.setItem("UserLogin_namaUser", res.data.data.nama_user);
           toast.success("Login successful!");
           setTimeout(() => {
-            navigate("/");
+            navigate("/info");
           }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
         } else {
           toast.error(res.data.message);
         }
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
@@ -96,6 +96,14 @@ function UserLoginPage() {
             }}
           />
           <span className="text-white text-sm">Show password</span>
+        </div>
+        <div>
+          <a
+            href="http://localhost:5173/register"
+            className="text-orange-700 text-sm mt-2"
+          >
+            Belum memiliki akun? Silakan register!
+          </a>
         </div>
         <div className="mt-3" />
         <button
