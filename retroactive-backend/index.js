@@ -20,7 +20,7 @@ app.use(
 );
 
 app.use("/user", userRoute);
-app.use("/shop", tokoRoute);
+app.use("/item", tokoRoute);
 
 app.listen(port, () => {
   logger.info("Server starting on port ", port);
