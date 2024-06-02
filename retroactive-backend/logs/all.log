@@ -496,3 +496,487 @@
 [35m[39m
 2024-06-02 23:11:35:1135 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.086 ms[39m
 [35m[39m
+2024-06-02 23:11:48:1148 [32minfo[39m: [32mServer starting on port [39m
+2024-06-02 23:11:49:1149 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-02 23:11:49:1149 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-02 23:11:57:1157 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.677 ms[39m
+[35m[39m
+2024-06-02 23:11:58:1158 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-02 23:11:58:1158 [35mhttp[39m: [35m::1 PUT /user/edit 200 53 - 310.402 ms[39m
+[35m[39m
+2024-06-02 23:12:00:120 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:12:00:120 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 200 216 - 65.838 ms[39m
+[35m[39m
+2024-06-02 23:12:00:120 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:12:00:120 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.208 ms[39m
+[35m[39m
+2024-06-02 23:12:49:1249 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force - - - - ms[39m
+[35m[39m
+2024-06-02 23:12:49:1249 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:32:1732 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:32:1732 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 200 216 - 540.959 ms[39m
+[35m[39m
+2024-06-02 23:17:33:1733 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:33:1733 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.241 ms[39m
+[35m[39m
+2024-06-02 23:17:38:1738 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:38:1738 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.762 ms[39m
+[35m[39m
+2024-06-02 23:17:43:1743 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:43:1743 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 73.536 ms[39m
+[35m[39m
+2024-06-02 23:17:47:1747 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:47:1747 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 64.785 ms[39m
+[35m[39m
+2024-06-02 23:17:50:1750 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:50:1750 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.358 ms[39m
+[35m[39m
+2024-06-02 23:17:53:1753 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:53:1753 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 29.534 ms[39m
+[35m[39m
+2024-06-02 23:17:55:1755 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:55:1755 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.820 ms[39m
+[35m[39m
+2024-06-02 23:17:57:1757 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:17:57:1757 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.647 ms[39m
+[35m[39m
+2024-06-02 23:18:00:180 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:00:180 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.882 ms[39m
+[35m[39m
+2024-06-02 23:18:03:183 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:03:183 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 54.358 ms[39m
+[35m[39m
+2024-06-02 23:18:05:185 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:05:185 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 26.450 ms[39m
+[35m[39m
+2024-06-02 23:18:08:188 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:08:188 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.089 ms[39m
+[35m[39m
+2024-06-02 23:18:11:1811 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:11:1811 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.785 ms[39m
+[35m[39m
+2024-06-02 23:18:18:1818 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:18:1818 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 64.185 ms[39m
+[35m[39m
+2024-06-02 23:18:27:1827 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:27:1827 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.644 ms[39m
+[35m[39m
+2024-06-02 23:18:29:1829 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:29:1829 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.170 ms[39m
+[35m[39m
+2024-06-02 23:18:32:1832 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:32:1832 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.669 ms[39m
+[35m[39m
+2024-06-02 23:18:37:1837 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:37:1837 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 64.999 ms[39m
+[35m[39m
+2024-06-02 23:18:42:1842 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:18:42:1842 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.538 ms[39m
+[35m[39m
+2024-06-02 23:19:06:196 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:06:196 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 223.133 ms[39m
+[35m[39m
+2024-06-02 23:19:09:199 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:09:199 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.503 ms[39m
+[35m[39m
+2024-06-02 23:19:10:1910 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:10:1910 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 27.462 ms[39m
+[35m[39m
+2024-06-02 23:19:13:1913 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:13:1913 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.347 ms[39m
+[35m[39m
+2024-06-02 23:19:27:1927 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:27:1927 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 226.179 ms[39m
+[35m[39m
+2024-06-02 23:19:38:1938 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:38:1938 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 235.871 ms[39m
+[35m[39m
+2024-06-02 23:19:41:1941 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:41:1941 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.848 ms[39m
+[35m[39m
+2024-06-02 23:19:43:1943 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:43:1943 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.481 ms[39m
+[35m[39m
+2024-06-02 23:19:57:1957 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:19:57:1957 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 369.181 ms[39m
+[35m[39m
+2024-06-02 23:20:00:200 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:20:00:200 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.174 ms[39m
+[35m[39m
+2024-06-02 23:20:07:207 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:20:07:207 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.238 ms[39m
+[35m[39m
+2024-06-02 23:20:11:2011 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:20:11:2011 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 38.414 ms[39m
+[35m[39m
+2024-06-02 23:20:13:2013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:20:13:2013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.991 ms[39m
+[35m[39m
+2024-06-02 23:20:18:2018 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:20:18:2018 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.213 ms[39m
+[35m[39m
+2024-06-02 23:20:57:2057 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:20:57:2057 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 425.761 ms[39m
+[35m[39m
+2024-06-02 23:21:06:216 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:21:06:216 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.289 ms[39m
+[35m[39m
+2024-06-02 23:21:08:218 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:21:08:218 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 95.466 ms[39m
+[35m[39m
+2024-06-02 23:21:08:218 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:21:08:218 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.824 ms[39m
+[35m[39m
+2024-06-02 23:21:35:2135 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:21:35:2135 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 238.626 ms[39m
+[35m[39m
+2024-06-02 23:21:35:2135 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:21:35:2135 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 64.863 ms[39m
+[35m[39m
+2024-06-02 23:21:49:2149 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:21:49:2149 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 375.657 ms[39m
+[35m[39m
+2024-06-02 23:22:28:2228 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:28:2228 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 412.174 ms[39m
+[35m[39m
+2024-06-02 23:22:28:2228 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:28:2228 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.258 ms[39m
+[35m[39m
+2024-06-02 23:22:34:2234 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:34:2234 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.008 ms[39m
+[35m[39m
+2024-06-02 23:22:38:2238 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:38:2238 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 63.446 ms[39m
+[35m[39m
+2024-06-02 23:22:45:2245 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:45:2245 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.492 ms[39m
+[35m[39m
+2024-06-02 23:22:47:2247 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:47:2247 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.555 ms[39m
+[35m[39m
+2024-06-02 23:22:51:2251 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:22:51:2251 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 63.974 ms[39m
+[35m[39m
+2024-06-02 23:23:01:231 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:23:01:231 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 251.519 ms[39m
+[35m[39m
+2024-06-02 23:23:01:231 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:23:01:231 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.503 ms[39m
+[35m[39m
+2024-06-02 23:23:16:2316 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:23:16:2316 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 227.574 ms[39m
+[35m[39m
+2024-06-02 23:23:19:2319 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:23:19:2319 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.091 ms[39m
+[35m[39m
+2024-06-02 23:23:24:2324 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:23:24:2324 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.191 ms[39m
+[35m[39m
+2024-06-02 23:23:25:2325 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-02 23:23:25:2325 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.834 ms[39m
+[35m[39m
+2024-06-03 00:00:13:013 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:00:13:013 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:00:13:013 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:00:25:025 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 2.224 ms[39m
+[35m[39m
+2024-06-03 00:00:25:025 [33mwarn[39m: [33mUser tidak dapat ditemukan![39m
+2024-06-03 00:00:25:025 [35mhttp[39m: [35m::1 POST /user/session 201 69 - 254.949 ms[39m
+[35m[39m
+2024-06-03 00:00:35:035 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.224 ms[39m
+[35m[39m
+2024-06-03 00:00:36:036 [33mwarn[39m: [33mData dan password tidak tepat![39m
+2024-06-03 00:00:36:036 [35mhttp[39m: [35m::1 POST /user/session 201 222 - 289.196 ms[39m
+[35m[39m
+2024-06-03 00:00:40:040 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:00:40:040 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 124.003 ms[39m
+[35m[39m
+2024-06-03 00:00:44:044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:00:44:044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 81.954 ms[39m
+[35m[39m
+2024-06-03 00:00:44:044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:00:44:044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.386 ms[39m
+[35m[39m
+2024-06-03 00:00:56:056 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.237 ms[39m
+[35m[39m
+2024-06-03 00:00:56:056 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-03 00:00:56:056 [35mhttp[39m: [35m::1 PUT /user/edit 200 53 - 476.245 ms[39m
+[35m[39m
+2024-06-03 00:00:59:059 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:00:59:059 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 73.456 ms[39m
+[35m[39m
+2024-06-03 00:00:59:059 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:00:59:059 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 65.819 ms[39m
+[35m[39m
+2024-06-03 00:01:12:112 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:01:12:112 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 233.400 ms[39m
+[35m[39m
+2024-06-03 00:01:13:113 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:01:13:113 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 67.154 ms[39m
+[35m[39m
+2024-06-03 00:01:15:115 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:01:15:115 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 70.372 ms[39m
+[35m[39m
+2024-06-03 00:01:15:115 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:01:15:115 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 69.838 ms[39m
+[35m[39m
+2024-06-03 00:02:21:221 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:02:21:221 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 225.319 ms[39m
+[35m[39m
+2024-06-03 00:02:21:221 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:02:21:221 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 64.508 ms[39m
+[35m[39m
+2024-06-03 00:02:52:252 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:02:52:252 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:02:52:252 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:03:45:345 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 1.223 ms[39m
+[35m[39m
+2024-06-03 00:03:46:346 [33mwarn[39m: [33mUser tidak dapat ditemukan![39m
+2024-06-03 00:03:46:346 [35mhttp[39m: [35m::1 POST /user/session 201 69 - 226.736 ms[39m
+[35m[39m
+2024-06-03 00:04:00:40 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.119 ms[39m
+[35m[39m
+2024-06-03 00:04:00:40 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:04:00:40 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 272.361 ms[39m
+[35m[39m
+2024-06-03 00:04:04:44 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:04:04:44 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 29.736 ms[39m
+[35m[39m
+2024-06-03 00:04:04:44 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:04:04:44 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.764 ms[39m
+[35m[39m
+2024-06-03 00:04:26:426 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.090 ms[39m
+[35m[39m
+2024-06-03 00:04:26:426 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-03 00:04:26:426 [35mhttp[39m: [35m::1 PUT /user/edit 200 53 - 270.946 ms[39m
+[35m[39m
+2024-06-03 00:04:28:428 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:04:28:428 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 67.157 ms[39m
+[35m[39m
+2024-06-03 00:04:29:429 [33mwarn[39m: [33mAccount tidak berhasil didapatkan![39m
+2024-06-03 00:04:29:429 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 201 77 - 65.308 ms[39m
+[35m[39m
+2024-06-03 00:05:06:56 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:05:06:56 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:05:06:56 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:06:09:69 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 1.224 ms[39m
+[35m[39m
+2024-06-03 00:06:09:69 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:06:09:69 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 291.596 ms[39m
+[35m[39m
+2024-06-03 00:06:14:614 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:06:14:614 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.971 ms[39m
+[35m[39m
+2024-06-03 00:06:14:614 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:06:14:614 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 67.915 ms[39m
+[35m[39m
+2024-06-03 00:06:47:647 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:06:47:647 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:06:47:647 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:07:03:73 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.675 ms[39m
+[35m[39m
+2024-06-03 00:07:04:74 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:07:04:74 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 476.230 ms[39m
+[35m[39m
+2024-06-03 00:07:15:715 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.121 ms[39m
+[35m[39m
+2024-06-03 00:07:16:716 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:07:16:716 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 430.584 ms[39m
+[35m[39m
+2024-06-03 00:07:21:721 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:07:21:721 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 68.197 ms[39m
+[35m[39m
+2024-06-03 00:07:21:721 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:07:21:721 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 66.099 ms[39m
+[35m[39m
+2024-06-03 00:07:33:733 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.111 ms[39m
+[35m[39m
+2024-06-03 00:07:33:733 [31merror[39m: [31msyntax error at or near "RETURNIN"[39m
+2024-06-03 00:07:33:733 [35mhttp[39m: [35m::1 PUT /user/edit 500 210 - 228.485 ms[39m
+[35m[39m
+2024-06-03 00:07:40:740 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:07:40:740 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:07:40:740 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:07:41:741 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.738 ms[39m
+[35m[39m
+2024-06-03 00:07:42:742 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-03 00:07:42:742 [35mhttp[39m: [35m::1 PUT /user/edit 200 214 - 513.947 ms[39m
+[35m[39m
+2024-06-03 00:07:45:745 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:07:45:745 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 200 213 - 23.735 ms[39m
+[35m[39m
+2024-06-03 00:07:45:745 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:07:45:745 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 304 - - 66.627 ms[39m
+[35m[39m
+2024-06-03 00:08:14:814 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.193 ms[39m
+[35m[39m
+2024-06-03 00:08:15:815 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-03 00:08:15:815 [35mhttp[39m: [35m::1 PUT /user/edit 200 217 - 462.731 ms[39m
+[35m[39m
+2024-06-03 00:08:17:817 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:08:17:817 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 200 216 - 67.086 ms[39m
+[35m[39m
+2024-06-03 00:08:17:817 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:08:17:817 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Tour+de+Force 304 - - 65.427 ms[39m
+[35m[39m
+2024-06-03 00:08:29:829 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.136 ms[39m
+[35m[39m
+2024-06-03 00:08:29:829 [33mwarn[39m: [33mUser tidak dapat ditemukan![39m
+2024-06-03 00:08:29:829 [35mhttp[39m: [35m::1 PUT /user/edit 201 70 - 279.709 ms[39m
+[35m[39m
+2024-06-03 00:09:14:914 [35mhttp[39m: [35m::1 OPTIONS /user/register 204 0 - 0.224 ms[39m
+[35m[39m
+2024-06-03 00:09:14:914 [32minfo[39m: [32mRegister akun Cecep berhasil[39m
+2024-06-03 00:09:14:914 [35mhttp[39m: [35m::1 POST /user/register 200 214 - 288.168 ms[39m
+[35m[39m
+2024-06-03 00:09:23:923 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.228 ms[39m
+[35m[39m
+2024-06-03 00:09:23:923 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:09:23:923 [35mhttp[39m: [35m::1 POST /user/session 200 203 - 117.076 ms[39m
+[35m[39m
+2024-06-03 00:09:27:927 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:09:27:927 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Cecep 200 209 - 29.339 ms[39m
+[35m[39m
+2024-06-03 00:09:27:927 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:09:27:927 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Cecep 304 - - 67.829 ms[39m
+[35m[39m
+2024-06-03 00:10:02:102 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.150 ms[39m
+[35m[39m
+2024-06-03 00:10:03:103 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-03 00:10:03:103 [35mhttp[39m: [35m::1 PUT /user/edit 200 212 - 309.502 ms[39m
+[35m[39m
+2024-06-03 00:10:05:105 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:10:05:105 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 200 211 - 67.298 ms[39m
+[35m[39m
+2024-06-03 00:10:05:105 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:10:05:105 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 304 - - 66.263 ms[39m
+[35m[39m
+2024-06-03 00:11:10:1110 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.117 ms[39m
+[35m[39m
+2024-06-03 00:11:11:1111 [31merror[39m: [31mduplicate key value violates unique constraint "user_info_nama_user_key"[39m
+2024-06-03 00:11:11:1111 [35mhttp[39m: [35m::1 PUT /user/edit 500 337 - 576.379 ms[39m
+[35m[39m
+2024-06-03 00:11:26:1126 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 0.106 ms[39m
+[35m[39m
+2024-06-03 00:11:26:1126 [32minfo[39m: [32mInfo user berhasil diubah![39m
+2024-06-03 00:11:26:1126 [35mhttp[39m: [35m::1 PUT /user/edit 200 216 - 271.313 ms[39m
+[35m[39m
+2024-06-03 00:11:28:1128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:11:28:1128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Klottering 200 215 - 66.756 ms[39m
+[35m[39m
+2024-06-03 00:11:28:1128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:11:28:1128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Klottering 304 - - 64.614 ms[39m
+[35m[39m
+2024-06-03 00:12:04:124 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:04:124 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:04:124 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:05:125 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:06:126 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:06:126 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:30:1230 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:30:1230 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:30:1230 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:32:1232 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:32:1232 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:32:1232 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:33:1233 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:34:1234 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:34:1234 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:37:1237 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:38:1238 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:38:1238 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:41:1241 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:41:1241 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:41:1241 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:12:44:1244 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:12:45:1245 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:12:45:1245 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:13:11:1311 [35mhttp[39m: [35m::1 OPTIONS /user/edit 204 0 - 1.339 ms[39m
+[35m[39m
+2024-06-03 00:13:12:1312 [33mwarn[39m: [33mUser tidak dapat ditemukan![39m
+2024-06-03 00:13:12:1312 [35mhttp[39m: [35m::1 PUT /user/edit 201 70 - 300.455 ms[39m
+[35m[39m
+2024-06-03 00:13:35:1335 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:13:35:1335 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:13:35:1335 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:13:42:1342 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:13:43:1343 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:13:43:1343 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:13:51:1351 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:13:52:1352 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:13:52:1352 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:13:59:1359 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:13:59:1359 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:13:59:1359 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:14:00:140 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:14:01:141 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:14:01:141 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:14:06:146 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:14:06:146 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:14:06:146 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:14:21:1421 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:14:21:1421 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:14:21:1421 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:14:46:1446 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:14:47:1447 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:14:47:1447 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:14:52:1452 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:14:53:1453 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:14:53:1453 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:15:02:152 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:15:02:152 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:15:02:152 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:15:03:153 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:15:03:153 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:15:03:153 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:15:09:159 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:15:10:1510 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:15:10:1510 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:15:11:1511 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:15:11:1511 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:15:12:1512 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:15:12:1512 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:15:13:1513 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:15:13:1513 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:34:1634 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:34:1634 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:34:1634 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:16:43:1643 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:43:1643 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:16:43:1643 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:45:1645 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:46:1646 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:46:1646 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:16:47:1647 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:47:1647 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:16:47:1647 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:49:1649 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:49:1649 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:49:1649 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:16:53:1653 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:53:1653 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:54:1654 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:16:56:1656 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:16:56:1656 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:16:56:1656 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:05:175 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:05:175 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:17:05:175 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:15:1715 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:15:1715 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:15:1715 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:17:19:1719 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:19:1719 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:17:19:1719 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:26:1726 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:26:1726 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:26:1726 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:17:29:1729 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:29:1729 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:17:29:1729 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:31:1731 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:31:1731 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:31:1731 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:17:33:1733 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:17:33:1733 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:17:33:1733 [32minfo[39m: [32mConnected to Toko backend![39m

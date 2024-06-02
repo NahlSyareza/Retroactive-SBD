@@ -14,7 +14,7 @@ function App() {
       {/* Import Dummy Data */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={"/home"} />} />
+          <Route path="/" element={<Navigate to={"/login"} />} />
           <Route path="/login" element={<UserLoginPage />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/admin" element={<Admin />} />

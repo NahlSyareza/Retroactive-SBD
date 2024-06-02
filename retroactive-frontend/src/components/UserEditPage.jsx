@@ -3,34 +3,37 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../assets/react.svg";
 
-function UserRegisterPage() {
+function UserEditPage() {
   const [getNamaUser, setNamaUser] = useState("");
   const [getEmailUser, setEmailUser] = useState("");
   const [getPasswordUser, setPasswordUser] = useState("");
   const [getPasswordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
-  const handleUserRegister = () => {
+  const handleOnEditClick = () => {
+    const currentLoggedAccount = localStorage.getItem(
+      "StaticUtils_loggedNamaUser"
+    );
     axios
       .put("http://localhost:1466/user/edit", {
-        namaUserOld: "Chamber",
+        namaUserOld: currentLoggedAccount,
         namaUserNew: getNamaUser,
         emailUserNew: getEmailUser,
         passwordUserNew: getPasswordUser,
       })
       .then((res) => {
-        if (res.data.state) {
+        const response = res.data;
+        if (response.state) {
           localStorage.setItem("StaticUtils_loggedNamaUser", getNamaUser);
-          toast.success(res.data.message);
+          toast.success(response.message);
           setTimeout(() => {
             navigate("/info");
           }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
         } else {
-          toast.error(res.data.message);
+          toast.error(response.message);
         }
-        console.log(res);
+        console.log(response);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -118,9 +121,9 @@ function UserRegisterPage() {
         <button
           className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
-          onClick={handleUserRegister}
+          onClick={handleOnEditClick}
         >
-          Register
+          Edit
         </button>
       </div>
       <ToastContainer
@@ -139,4 +142,4 @@ function UserRegisterPage() {
   );
 }
 
-export default UserRegisterPage;
+export default UserEditPage;

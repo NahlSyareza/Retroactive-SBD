@@ -148,12 +148,12 @@ exports.editEvent = async function editEvent(req, res) {
   const { namaUserOld, namaUserNew, emailUserNew, passwordUserNew } = req.body;
   const hashedPassword = await bcrypt.hash(passwordUserNew, 10);
   try {
-    const result = await pool.query(
-      "UPDATE user_info SET nama_user=$1,email_user=$2,password_user=$3 WHERE nama_user=$4",
-      [namaUserNew, emailUserNew, hashedPassword, namaUserOld]
+    const initial = await pool.query(
+      "SELECT * FROM user_info WHERE nama_user=$1",
+      [namaUserOld]
     );
 
-    if (!result) {
+    if (initial.rowCount <= 0) {
       logger.warn("User tidak dapat ditemukan!");
       return res.status(201).json({
         state: false,
@@ -161,6 +161,41 @@ exports.editEvent = async function editEvent(req, res) {
         payload: null,
       });
     }
+
+    const user = initial.rows[0];
+
+    if (namaUserNew == user.nama_user) {
+      const result = await pool.query(
+        "UPDATE user_info SET email_user=$1,password_user=$2 WHERE nama_user=$3 RETURNING *",
+        [emailUserNew, hashedPassword, namaUserOld]
+      );
+
+      logger.info("Email dan password user berhasil diubah!");
+      return res.status(200).json({
+        state: true,
+        message: "Nama dan password user berhasil diubah!",
+        payload: result.rows[0],
+      });
+    }
+
+    if (emailUserNew == user.email_user) {
+      const result = await pool.query(
+        "UPDATE user_info SET nama_user=$1,password_user=$2 WHERE nama_user=$3 RETURNING *",
+        [namaUserNew, hashedPassword, namaUserOld]
+      );
+
+      logger.info("Info user berhasil diubah!");
+      return res.status(200).json({
+        state: true,
+        message: "Nama, email, dan password user berhasil diubah!",
+        payload: result.rows[0],
+      });
+    }
+
+    const result = await pool.query(
+      "UPDATE user_info SET nama_user=$1,email_user=$2,password_user=$3 WHERE nama_user=$4 RETURNING *",
+      [namaUserNew, emailUserNew, hashedPassword, namaUserOld]
+    );
 
     logger.info("Info user berhasil diubah!");
     return res.status(200).json({
