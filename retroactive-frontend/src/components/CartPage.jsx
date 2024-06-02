@@ -29,7 +29,7 @@ function CartPage(props) {
     <div className="flex flex-col justify-center items-center min-h-screen">
       <>
         <div>
-          <h1 className="text-white">Cart List</h1>
+          <h1 className="text-black bg-white">Cart List</h1>
           {getItems.length === 0 && (
             <p className="text-red-600 text-2xl bg-white">
               Anda Belum Memasukkan Barang Apapun!
@@ -53,9 +53,14 @@ function CartPage(props) {
                     {item.name} &nbsp;
                   </p>
                   <img src={item.gambar_media} />
-                  <p className="leading-none">{item.album} &nbsp;</p>
-                  <p>{item.band} &nbsp;</p>
-                  <p>{item.year} &nbsp;</p>
+                  <p className="leading-none font-semibold">
+                    {item.nama_album} &nbsp;
+                  </p>
+                  <p>{item.nama_artis} &nbsp;</p>
+                  <p>{item.jenis_media} &nbsp;</p>
+                  <p className="text-red-500 font-bold">
+                    {item.harga_media} &nbsp;
+                  </p>
                 </li>
               ))}
             </ul>
@@ -65,15 +70,13 @@ function CartPage(props) {
 
       <ul className="list-group list-group-horizontal shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-75 p-3 justify-between bg-white ">
         <div>
-          <div className="text-2xl flex font-semibold text-center ">
+          <div className="text-2xl flex font-bold text-center ">
             Payment Information
           </div>
-          <div className="text-2xl flex font-semibold ">
-            Saldo Anda : {getSaldoUser}{" "}
-          </div>
-          <div className="text-2xl flex font-semibold">
-            Total Belanja : {getTotal}{" "}
-          </div>
+          <div className="text-2xl flex">Saldo Anda : {getSaldoUser} </div>
+          {/* <div className="text-2xl flex">Total Belanja : {getTotal.map((item, index) => (
+
+          ))} </div> */}
         </div>
         <div className="flex space-x-4">
           <button
