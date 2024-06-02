@@ -9,6 +9,7 @@ const {
   topUpEvent,
   inventoryFunction,
   deleteEvent,
+  payEvent,
 } = require("../controllers/UserController");
 
 // POST route for user login
@@ -30,6 +31,9 @@ router.post("/topup", topUpEvent);
 
 // POST route for inventory
 router.post("/inventory", inventoryFunction);
+
+//POST
+router.post("/pay", payEvent);
 
 // DELETE route to delete user
 router.delete("/delete", deleteEvent);

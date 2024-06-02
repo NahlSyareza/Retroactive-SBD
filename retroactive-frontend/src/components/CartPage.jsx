@@ -14,6 +14,19 @@ function CartPage(props) {
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
+  const handlePay = () => {
+    axios
+      .post("http://localhost:1466/user/pay", {
+        totalBelanja: getTotal,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:1466/shop/get")
@@ -82,21 +95,12 @@ function CartPage(props) {
           </div>
           <div className="text-2xl flex">Saldo Anda : {getSaldoUser} </div>
           <div className="text-2xl flex">Total belanja : {getTotal} </div>
-          {/* <div className="text-2xl flex">Total Belanja : {getTotal.map((item, index) => (
-
-          ))} </div> */}
         </div>
         <div className="flex space-x-4">
           <button
             className="flex justify-start rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
             title="Confirm Payment"
-            onClick={() => {
-              console.log("Test");
-              toast.success("Masuk Ke Page Pembayaran");
-              setTimeout(() => {
-                navigate("/home");
-              }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
-            }}
+            onClick={handlePay}
           >
             Confirm Payment
           </button>

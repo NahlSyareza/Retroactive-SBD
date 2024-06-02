@@ -263,3 +263,18 @@ exports.deleteEvent = async function deleteEvent(req, res) {
     res.status(500).json({ error: err.message }); // If an error occurs during the deletion process, respond with a 500 Internal Server Error.
   }
 };
+
+exports.payEvent = async function payEvent(req, res) {
+  const { totalBelanja } = req.body;
+
+  try {
+    const result = await pool.query(
+      "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user = 'Chamber'",
+      [totalBelanja]
+    );
+
+    return res.status(200).json({ message: "User Payment Successfully" });
+  } catch (err) {
+    res.status(500).json({ error: err.message }); // If an error occurs during the deletion process, respond with a 500 Internal Server Error.
+  }
+};
