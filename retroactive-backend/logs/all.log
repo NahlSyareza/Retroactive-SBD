@@ -1021,3 +1021,393 @@
 2024-06-03 00:19:13:1913 [32minfo[39m: [32mAkun berhasil didapatkan![39m
 2024-06-03 00:19:13:1913 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Chamber 304 - - 64.807 ms[39m
 [35m[39m
+2024-06-03 00:25:51:2551 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:25:51:2551 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:25:52:2552 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:26:02:262 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.691 ms[39m
+[35m[39m
+2024-06-03 00:26:03:263 [33mwarn[39m: [33mUser tidak dapat ditemukan![39m
+2024-06-03 00:26:03:263 [35mhttp[39m: [35m::1 POST /user/session 201 69 - 435.666 ms[39m
+[35m[39m
+2024-06-03 00:26:23:2623 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.182 ms[39m
+[35m[39m
+2024-06-03 00:26:23:2623 [33mwarn[39m: [33mData dan password tidak tepat![39m
+2024-06-03 00:26:23:2623 [35mhttp[39m: [35m::1 POST /user/session 201 222 - 477.235 ms[39m
+[35m[39m
+2024-06-03 00:26:29:2629 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.109 ms[39m
+[35m[39m
+2024-06-03 00:26:29:2629 [33mwarn[39m: [33mData dan password tidak tepat![39m
+2024-06-03 00:26:29:2629 [35mhttp[39m: [35m::1 POST /user/session 201 222 - 118.206 ms[39m
+[35m[39m
+2024-06-03 00:26:35:2635 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.140 ms[39m
+[35m[39m
+2024-06-03 00:26:35:2635 [33mwarn[39m: [33mData dan password tidak tepat![39m
+2024-06-03 00:26:35:2635 [35mhttp[39m: [35m::1 POST /user/session 201 222 - 114.314 ms[39m
+[35m[39m
+2024-06-03 00:26:45:2645 [35mhttp[39m: [35m::1 OPTIONS /user/register 204 0 - 0.073 ms[39m
+[35m[39m
+2024-06-03 00:26:45:2645 [32minfo[39m: [32mRegister akun Nahl berhasil[39m
+2024-06-03 00:26:45:2645 [35mhttp[39m: [35m::1 POST /user/register 200 211 - 84.775 ms[39m
+[35m[39m
+2024-06-03 00:26:53:2653 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.098 ms[39m
+[35m[39m
+2024-06-03 00:26:53:2653 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:26:53:2653 [35mhttp[39m: [35m::1 POST /user/session 200 201 - 73.967 ms[39m
+[35m[39m
+2024-06-03 00:29:09:299 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:09:299 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 200 207 - 436.698 ms[39m
+[35m[39m
+2024-06-03 00:29:09:299 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:09:299 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.359 ms[39m
+[35m[39m
+2024-06-03 00:29:16:2916 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:16:2916 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.798 ms[39m
+[35m[39m
+2024-06-03 00:29:16:2916 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:16:2916 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.705 ms[39m
+[35m[39m
+2024-06-03 00:29:22:2922 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:22:2922 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.423 ms[39m
+[35m[39m
+2024-06-03 00:29:22:2922 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:22:2922 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.685 ms[39m
+[35m[39m
+2024-06-03 00:29:24:2924 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:24:2924 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.743 ms[39m
+[35m[39m
+2024-06-03 00:29:24:2924 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:24:2924 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.519 ms[39m
+[35m[39m
+2024-06-03 00:29:27:2927 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:27:2927 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.956 ms[39m
+[35m[39m
+2024-06-03 00:29:27:2927 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:27:2927 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.773 ms[39m
+[35m[39m
+2024-06-03 00:29:28:2928 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:28:2928 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.601 ms[39m
+[35m[39m
+2024-06-03 00:29:28:2928 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:28:2928 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.362 ms[39m
+[35m[39m
+2024-06-03 00:29:32:2932 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:32:2932 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.625 ms[39m
+[35m[39m
+2024-06-03 00:29:32:2932 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:32:2932 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.560 ms[39m
+[35m[39m
+2024-06-03 00:29:41:2941 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:41:2941 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.968 ms[39m
+[35m[39m
+2024-06-03 00:29:41:2941 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:41:2941 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.690 ms[39m
+[35m[39m
+2024-06-03 00:29:44:2944 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:44:2944 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.014 ms[39m
+[35m[39m
+2024-06-03 00:29:45:2945 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:45:2945 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.205 ms[39m
+[35m[39m
+2024-06-03 00:29:45:2945 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:45:2945 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.902 ms[39m
+[35m[39m
+2024-06-03 00:29:45:2945 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:45:2945 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.415 ms[39m
+[35m[39m
+2024-06-03 00:29:58:2958 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:58:2958 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 230.345 ms[39m
+[35m[39m
+2024-06-03 00:29:58:2958 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:29:58:2958 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.500 ms[39m
+[35m[39m
+2024-06-03 00:30:04:304 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:04:304 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.366 ms[39m
+[35m[39m
+2024-06-03 00:30:04:304 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:04:304 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.619 ms[39m
+[35m[39m
+2024-06-03 00:30:05:305 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:05:305 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.879 ms[39m
+[35m[39m
+2024-06-03 00:30:05:305 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:05:305 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 70.622 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.146 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.064 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 201.976 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.231 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.898 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.295 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.615 ms[39m
+[35m[39m
+2024-06-03 00:30:10:3010 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:10:3010 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.432 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 27.631 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 29.763 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 78.330 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 77.355 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.158 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 63.218 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.598 ms[39m
+[35m[39m
+2024-06-03 00:30:13:3013 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:13:3013 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 62.597 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 182.387 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 416.981 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.008 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.692 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.852 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.504 ms[39m
+[35m[39m
+2024-06-03 00:30:44:3044 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:44:3044 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.019 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.571 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 22.443 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.364 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 63.913 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 63.519 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.677 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 63.046 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.205 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.205 ms[39m
+[35m[39m
+2024-06-03 00:30:45:3045 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:30:45:3045 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.882 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 291.373 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 69.784 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 410.495 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.701 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.249 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.313 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 69.734 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.400 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.328 ms[39m
+[35m[39m
+2024-06-03 00:31:00:310 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:00:310 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.971 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 185.885 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 180.611 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.368 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.922 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.620 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.799 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 71.965 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.907 ms[39m
+[35m[39m
+2024-06-03 00:31:28:3128 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:28:3128 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.601 ms[39m
+[35m[39m
+2024-06-03 00:31:31:3131 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:31:3131 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 26.421 ms[39m
+[35m[39m
+2024-06-03 00:31:31:3131 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:31:3131 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.052 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 24.334 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.384 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.713 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.825 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.029 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.837 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.341 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 26.016 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 71.212 ms[39m
+[35m[39m
+2024-06-03 00:31:38:3138 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:38:3138 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 69.857 ms[39m
+[35m[39m
+2024-06-03 00:31:41:3141 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 22.780 ms[39m
+[35m[39m
+2024-06-03 00:31:41:3141 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:41:3141 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.448 ms[39m
+[35m[39m
+2024-06-03 00:31:41:3141 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:41:3141 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.069 ms[39m
+[35m[39m
+2024-06-03 00:31:42:3142 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.280 ms[39m
+[35m[39m
+2024-06-03 00:31:42:3142 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.566 ms[39m
+[35m[39m
+2024-06-03 00:31:42:3142 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:42:3142 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.104 ms[39m
+[35m[39m
+2024-06-03 00:31:42:3142 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:42:3142 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 73.610 ms[39m
+[35m[39m
+2024-06-03 00:31:42:3142 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:42:3142 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.257 ms[39m
+[35m[39m
+2024-06-03 00:31:42:3142 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:42:3142 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.823 ms[39m
+[35m[39m
+2024-06-03 00:31:56:3156 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 177.729 ms[39m
+[35m[39m
+2024-06-03 00:31:56:3156 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.980 ms[39m
+[35m[39m
+2024-06-03 00:31:58:3158 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.496 ms[39m
+[35m[39m
+2024-06-03 00:31:58:3158 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 22.919 ms[39m
+[35m[39m
+2024-06-03 00:31:58:3158 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:58:3158 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 420.492 ms[39m
+[35m[39m
+2024-06-03 00:31:58:3158 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:58:3158 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.379 ms[39m
+[35m[39m
+2024-06-03 00:31:58:3158 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:58:3158 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.064 ms[39m
+[35m[39m
+2024-06-03 00:31:58:3158 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:31:58:3158 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.758 ms[39m
+[35m[39m
+2024-06-03 00:32:00:320 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 24.222 ms[39m
+[35m[39m
+2024-06-03 00:32:00:320 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:00:320 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.973 ms[39m
+[35m[39m
+2024-06-03 00:32:06:326 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 25.482 ms[39m
+[35m[39m
+2024-06-03 00:32:06:326 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:06:326 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 25.057 ms[39m
+[35m[39m
+2024-06-03 00:32:06:326 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.168 ms[39m
+[35m[39m
+2024-06-03 00:32:06:326 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:06:326 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.247 ms[39m
+[35m[39m
+2024-06-03 00:32:11:3211 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 24.104 ms[39m
+[35m[39m
+2024-06-03 00:32:11:3211 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 37.126 ms[39m
+[35m[39m
+2024-06-03 00:32:11:3211 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:11:3211 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.325 ms[39m
+[35m[39m
+2024-06-03 00:32:11:3211 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:11:3211 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.695 ms[39m
+[35m[39m
+2024-06-03 00:32:18:3218 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 22.824 ms[39m
+[35m[39m
+2024-06-03 00:32:18:3218 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:18:3218 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 67.968 ms[39m
+[35m[39m
+2024-06-03 00:32:19:3219 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 28.380 ms[39m
+[35m[39m
+2024-06-03 00:32:19:3219 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 29.505 ms[39m
+[35m[39m
+2024-06-03 00:32:19:3219 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:19:3219 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 72.678 ms[39m
+[35m[39m
+2024-06-03 00:32:19:3219 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:32:19:3219 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 66.866 ms[39m
+[35m[39m
+2024-06-03 00:33:21:3321 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 0.145 ms[39m
+[35m[39m
+2024-06-03 00:33:22:3322 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:33:22:3322 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 469.041 ms[39m
+[35m[39m
+2024-06-03 00:33:26:3326 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:33:26:3326 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 200 216 - 66.516 ms[39m
+[35m[39m
+2024-06-03 00:33:26:3326 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:33:26:3326 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.740 ms[39m
+[35m[39m
+2024-06-03 00:33:26:3326 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 183.798 ms[39m
+[35m[39m
+2024-06-03 00:33:26:3326 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.203 ms[39m
+[35m[39m
