@@ -15,11 +15,13 @@ function CartPage(props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const handlePay = () => {
+    setSaldoUser(headhunter.saldo_user);
     axios
       .post("http://localhost:1466/user/pay", {
         totalBelanja: getTotal,
       })
       .then((res) => {
+        console.log(headhunter.saldo_user);
         console.log(res.data);
       })
       .catch((err) => {
@@ -28,8 +30,6 @@ function CartPage(props) {
   };
 
   useEffect(() => {
-    const chamber = JSON.parse(localStorage.getItem("UserLogin_dataUser"));
-    const headhunter = chamber.data;
     setSaldoUser(headhunter.saldo_user);
     axios
       .get("http://localhost:1466/shop/get")
@@ -98,10 +98,7 @@ function CartPage(props) {
           <button
             className="flex justify-start rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
             title="Confirm Payment"
-            onClick={() => {
-              console.log("Test");
-              toast.success("Masuk Ke Page Pembayaran");
-            }}
+            onClick={handlePay}
           >
             Confirm Payment
           </button>

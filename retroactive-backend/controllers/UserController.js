@@ -27,14 +27,14 @@ exports.registerEvent = async function registerEvent(req, res) {
       return res.status(201).json({
         state: false,
         message: "Semua field harus diisi!",
-        data: null,
+        payload: null,
       });
     } else {
       if (passwordUser.length < 8) {
         return res.status(201).json({
           state: false,
           message: "Password harus lebih dari 8 karakter!",
-          data: null,
+          payload: null,
         });
       }
     }
@@ -48,14 +48,14 @@ exports.registerEvent = async function registerEvent(req, res) {
       return res.status(201).json({
         state: false,
         message: "Nama atau email sudah diambil!",
-        data: null,
+        payload: null,
       });
     }
 
     return res.status(200).json({
       state: true,
       message: "Register akun " + namaUser + " berhasil",
-      data: result.rows,
+      payload: result.rows,
     });
   } catch (err) {
     return res.status(500).json(err);
@@ -92,7 +92,7 @@ exports.loginEvent = async function loginEvent(req, res) {
 
     res
       .status(200)
-      .json({ state: true, message: "User berhasil login", data: user });
+      .json({ state: true, message: "User berhasil login", payload: user });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -111,14 +111,14 @@ exports.getEvent = async function getEvent(req, res) {
       return res.status(201).json({
         state: false,
         message: "Account tidak berhasil didapatkan!",
-        data: result.rows,
+        payload: result.rows[0],
       });
     }
 
     return res.status(200).json({
       state: true,
       message: "Akun berhasil didapatkan!",
-      data: result.rows,
+      payload: result.rows[0],
     });
   } catch (err) {
     return res.status(500).json(err);
@@ -131,7 +131,7 @@ exports.getAllEvent = async function getAllEvent(req, res) {
 
     return res.status(200).json({
       message: "Semua akun berhasil didapatkan!",
-      data: result.rows,
+      payload: result.rows,
     });
   } catch (err) {
     return res.status(500).json(err);
@@ -164,7 +164,7 @@ exports.editEvent = async function editEvent(req, res) {
       [user.nama_user, user.password_user, userEmail]
     );
     // Respond with a 200 OK status and the updated user data.
-    res.status(200).json({ data: insert.rows });
+    res.status(200).json({ payload: insert.rows });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);
@@ -208,7 +208,7 @@ exports.topUpEvent = async function topUpEvent(req, res) {
       [user.email_user, user.saldo_user]
     );
     // Respond with a 200 OK status and the updated balance data.
-    res.status(200).json({ data: insert.rows });
+    res.status(200).json({ payload: insert.rows });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);
@@ -236,7 +236,7 @@ exports.inventoryFunction = async function inventoryFunction(req, res) {
     // Retrieve the inventory information from the first row of the result.
     const user = result.rowCount[0];
     // Respond with a 200 OK status and the user's inventory data.
-    res.status(200).json({ data: user.inventory_user });
+    res.status(200).json({ payload: user.inventory_user });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
     res.status(500).json(err);

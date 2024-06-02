@@ -5,42 +5,35 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/react.svg";
+import edit from "../assets/edit.svg";
+import topup from "../assets/topup.svg";
 
 function UserInfoPage() {
-  const [getUserArray, setUserArray] = useState([]);
-  const [isValid, setValid] = useState(false);
   const [getNamaUser, setNamaUser] = useState("");
   const [getEmailUser, setEmailUser] = useState("");
   const [getSaldoUser, setSaldoUser] = useState(0.0);
   const navigate = useNavigate();
-  const [getTestArr, setTestArr] = useState([]);
-  const [getTestValule, setTestValue] = useState(0);
 
   useEffect(() => {
-    // Parse digunakan untuk mengubah JSON.stringify menjadi JSON beneran
-    // dan di-assign ke variabel bernama chamber
-    const chamber = JSON.parse(localStorage.getItem("UserLogin_dataUser"));
-    const headhunter = chamber.data;
+    const namaUser = localStorage.getItem("UserLogin_namaUser");
     const getUser = async () => {
       axios
         .get("http://localhost:1466/user/get", {
           params: {
-            // Mengakses data dengan menggunakan titik, seperti contoh chamber.nama_user
-            namaUser: headhunter.nama_user,
+            namaUser: namaUser,
           },
         })
         .then((res) => {
-          let isValid = res.data.message;
+          const response = res.data;
+          let isValid = response.message;
           if (isValid) {
-            toast.success(res.data.message);
+            toast.success(response.message);
           } else {
-            toast.error(res.data.message);
+            toast.error(response.message);
           }
-          console.log(chamber);
-          // Mengakses data-data lain dari JSON yang sudah diberikan
-          setNamaUser(headhunter.nama_user);
-          setEmailUser(headhunter.email_user);
-          setNamaUser(headhunter.nama_user);
+          setNamaUser(response.payload.nama_user);
+          setEmailUser(response.payload.email_user);
+          setSaldoUser(response.payload.saldo_user);
         })
         .catch((err) => {
           toast.error(err.message);
@@ -103,11 +96,11 @@ function UserInfoPage() {
       </div>
       <div className="bg-amber-950 shadow-md rounded-3xl px-10 pt-3 pb-8 mb-4 ml-3">
         <div className="grid">
-          <img src={logo} className="ml-1 scale-125" />
+          <img src={edit} className="ml-1 scale-125 mt-20" />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
-            Top Up
+            Edit
           </p>
-          <img src={logo} className="ml-1 scale-125" />
+          <img src={topup} className="ml-1 mt-20 scale-125" />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
             Top Up
           </p>

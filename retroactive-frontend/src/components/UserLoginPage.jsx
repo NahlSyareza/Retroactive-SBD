@@ -25,24 +25,23 @@ function UserLoginPage() {
         passwordUser: passwordUser,
       })
       .then((res) => {
-        if (res.status === 200) {
-          // localStorage.setItem("UserLogin_namaUser", res.data.data.nama_user);
-          localStorage.setItem("UserLogin_dataUser", JSON.stringify(res.data));
-          toast.success(res.data.message);
+        const response = res.data;
+        if (response.state) {
+          localStorage.setItem(
+            "UserLogin_namaUser",
+            response.payload.nama_user
+          );
+          toast.success(response.message);
           setTimeout(() => {
-            navigate("/info");
+            navigate("/home");
           }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
         } else {
-          toast.error(res.data.message);
+          toast.error(response.message);
         }
         console.log(res.data);
       })
       .catch((err) => {
-        if (err.response && err.response.status === 401) {
-          toast.error(err.response.data.message);
-        } else {
-          toast.error("An error occurred. Please try again later.");
-        }
+        toast.error(err.message);
         console.log(err);
       });
   };
