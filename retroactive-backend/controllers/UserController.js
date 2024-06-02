@@ -303,16 +303,22 @@ exports.deleteEvent = async function deleteEvent(req, res) {
 };
 
 exports.payEvent = async function payEvent(req, res) {
-  const { totalBelanja } = req.body;
+  const { totalBelanja, namaUser } = req.body;
 
   try {
     const result = await pool.query(
-      "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user = 'Chamber'",
-      [totalBelanja]
+      "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user=$2",
+      [totalBelanja, namaUser]
     );
 
-    return res.status(200).json({ message: "User Payment Successfully" });
+    return res
+      .status(200)
+      .json({
+        state: true,
+        message: "User Payment Successfully",
+        payload: result.rows[0],
+      });
   } catch (err) {
-    res.status(500).json({ error: err.message }); // If an error occurs during the deletion process, respond with a 500 Internal Server Error.
+    res.status(500).json({ error: err.message });
   }
 };

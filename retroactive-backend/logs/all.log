@@ -1411,3 +1411,174 @@
 [35m[39m
 2024-06-03 00:33:26:3326 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.203 ms[39m
 [35m[39m
+2024-06-03 00:54:52:5452 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:54:52:5452 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:54:52:5452 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:55:05:555 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 1.159 ms[39m
+[35m[39m
+2024-06-03 00:55:05:555 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 00:55:05:555 [35mhttp[39m: [35m::1 POST /user/session 200 210 - 290.032 ms[39m
+[35m[39m
+2024-06-03 00:55:16:5516 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 371.038 ms[39m
+[35m[39m
+2024-06-03 00:55:16:5516 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.945 ms[39m
+[35m[39m
+2024-06-03 00:55:16:5516 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:55:16:5516 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 428.789 ms[39m
+[35m[39m
+2024-06-03 00:55:16:5516 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:55:16:5516 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.165 ms[39m
+[35m[39m
+2024-06-03 00:55:27:5527 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.132 ms[39m
+[35m[39m
+2024-06-03 00:55:27:5527 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 224.515 ms[39m
+[35m[39m
+2024-06-03 00:55:41:5541 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:55:41:5541 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:55:41:5541 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:55:45:5545 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:55:45:5545 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:55:45:5545 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:55:51:5551 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:55:51:5551 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:55:51:5551 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:56:02:562 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 307.051 ms[39m
+[35m[39m
+2024-06-03 00:56:02:562 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 61.389 ms[39m
+[35m[39m
+2024-06-03 00:56:02:562 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:02:562 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 417.170 ms[39m
+[35m[39m
+2024-06-03 00:56:03:563 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:03:563 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.984 ms[39m
+[35m[39m
+2024-06-03 00:56:04:564 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.385 ms[39m
+[35m[39m
+2024-06-03 00:56:04:564 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 66.097 ms[39m
+[35m[39m
+2024-06-03 00:56:12:5612 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.156 ms[39m
+[35m[39m
+2024-06-03 00:56:12:5612 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 411.671 ms[39m
+[35m[39m
+2024-06-03 00:56:17:5617 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 406.419 ms[39m
+[35m[39m
+2024-06-03 00:56:27:5627 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:56:27:5627 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:56:27:5627 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:56:29:5629 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 179.090 ms[39m
+[35m[39m
+2024-06-03 00:56:29:5629 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 27.679 ms[39m
+[35m[39m
+2024-06-03 00:56:29:5629 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:29:5629 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 219.087 ms[39m
+[35m[39m
+2024-06-03 00:56:29:5629 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:29:5629 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 64.279 ms[39m
+[35m[39m
+2024-06-03 00:56:31:5631 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.431 ms[39m
+[35m[39m
+2024-06-03 00:56:31:5631 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 66.617 ms[39m
+[35m[39m
+2024-06-03 00:56:45:5645 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 167.912 ms[39m
+[35m[39m
+2024-06-03 00:56:45:5645 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:45:5645 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 354.533 ms[39m
+[35m[39m
+2024-06-03 00:56:48:5648 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.134 ms[39m
+[35m[39m
+2024-06-03 00:56:48:5648 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 66.320 ms[39m
+[35m[39m
+2024-06-03 00:56:54:5654 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 22.669 ms[39m
+[35m[39m
+2024-06-03 00:56:54:5654 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 24.822 ms[39m
+[35m[39m
+2024-06-03 00:56:55:5655 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:55:5655 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 407.345 ms[39m
+[35m[39m
+2024-06-03 00:56:55:5655 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:55:5655 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.201 ms[39m
+[35m[39m
+2024-06-03 00:56:56:5656 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 25.868 ms[39m
+[35m[39m
+2024-06-03 00:56:56:5656 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 26.941 ms[39m
+[35m[39m
+2024-06-03 00:56:56:5656 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:56:5656 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 68.172 ms[39m
+[35m[39m
+2024-06-03 00:56:56:5656 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:56:56:5656 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.349 ms[39m
+[35m[39m
+2024-06-03 00:56:57:5657 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.083 ms[39m
+[35m[39m
+2024-06-03 00:56:57:5657 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 65.281 ms[39m
+[35m[39m
+2024-06-03 00:57:23:5723 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:57:23:5723 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:57:23:5723 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:57:29:5729 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:57:29:5729 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:57:29:5729 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:57:32:5732 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 174.347 ms[39m
+[35m[39m
+2024-06-03 00:57:32:5732 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 23.183 ms[39m
+[35m[39m
+2024-06-03 00:57:32:5732 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:57:32:5732 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 231.422 ms[39m
+[35m[39m
+2024-06-03 00:57:32:5732 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:57:32:5732 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.756 ms[39m
+[35m[39m
+2024-06-03 00:57:33:5733 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.316 ms[39m
+[35m[39m
+2024-06-03 00:57:33:5733 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 65.017 ms[39m
+[35m[39m
+2024-06-03 00:57:43:5743 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:57:43:5743 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:57:43:5743 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:57:50:5750 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:57:50:5750 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:57:50:5750 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:57:52:5752 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 1.160 ms[39m
+[35m[39m
+2024-06-03 00:57:52:5752 [35mhttp[39m: [35m::1 POST /user/pay 500 86 - 220.374 ms[39m
+[35m[39m
+2024-06-03 00:57:55:5755 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:57:55:5755 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:57:55:5755 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:57:56:5756 [35mhttp[39m: [35m::1 POST /user/pay 200 39 - 2.036 ms[39m
+[35m[39m
+2024-06-03 00:57:59:5759 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:57:59:5759 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:57:59:5759 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:58:08:588 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:58:08:588 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:58:08:588 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:58:11:5811 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:58:12:5812 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:58:12:5812 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:58:13:5813 [35mhttp[39m: [35m::1 OPTIONS /user/pay 204 0 - 0.654 ms[39m
+[35m[39m
+2024-06-03 00:58:13:5813 [35mhttp[39m: [35m::1 POST /user/pay 200 39 - 227.036 ms[39m
+[35m[39m
+2024-06-03 00:58:17:5817 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:58:17:5817 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 200 215 - 67.467 ms[39m
+[35m[39m
+2024-06-03 00:58:17:5817 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 00:58:17:5817 [35mhttp[39m: [35m::1 GET /user/get?namaUser=Nahl 304 - - 65.762 ms[39m
+[35m[39m
+2024-06-03 00:58:17:5817 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 183.765 ms[39m
+[35m[39m
+2024-06-03 00:58:17:5817 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 22.347 ms[39m
+[35m[39m
+2024-06-03 00:58:25:5825 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:58:25:5825 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:58:26:5826 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:58:27:5827 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:58:27:5827 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:58:27:5827 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:58:33:5833 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:58:33:5833 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:58:33:5833 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 00:58:37:5837 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 00:58:37:5837 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 00:58:37:5837 [32minfo[39m: [32mConnected to User backend![39m
