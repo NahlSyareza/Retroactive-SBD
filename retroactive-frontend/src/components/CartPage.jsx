@@ -9,7 +9,7 @@ function CartPage(props) {
   const [getItemCount, setItemCount] = useState(0);
   const itemList = props.items;
 
-  let items = ["The Beatles", "Elton John", "ABBA", "Bee Gees", "Bon Jovi"];
+  // let items = ["The Beatles", "Elton John", "ABBA", "Bee Gees", "Bon Jovi"];
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -21,7 +21,7 @@ function CartPage(props) {
           Anda Belum Memasukkan Barang Apapun!
         </p>
       )}
-      <ul className="list-group bg-white shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+      <ul className="list-group shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 max-w-sm mx-auto  justify-start">
         {itemList.map((item, index) => (
           <li
             className={
@@ -34,7 +34,12 @@ function CartPage(props) {
               setSelectedIndex(index);
             }}
           >
-            {item.name} : &nbsp;
+            <p className="text-2xl font-bold leading-none">
+              {item.name} &nbsp;
+            </p>
+            <p className="leading-none">{item.album} &nbsp;</p>
+            <p>{item.band} &nbsp;</p>
+            <p>{item.year} &nbsp;</p>
           </li>
         ))}
       </ul>

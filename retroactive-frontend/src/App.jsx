@@ -50,7 +50,6 @@ function App() {
   return (
     <>
       {/* Import Dummy Data */}
-      <List items={discs} category="Discs" />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={"/home"} />} />
@@ -59,7 +58,10 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/register" element={<UserRegisterPage />} />
           <Route path="/info" element={<UserInfoPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/cart"
+            element={<CartPage items={discs} category="Discs" />}
+          />
         </Routes>
       </BrowserRouter>
     </>
