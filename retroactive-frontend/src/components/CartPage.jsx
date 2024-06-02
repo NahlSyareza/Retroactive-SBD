@@ -14,6 +14,35 @@ function CartPage(props) {
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
+  const mfauzan = JSON.parse(localStorage.getItem("UserLogin_namaUser"));
+  const headhunter = mfauzan.data;
+  const getUser = async () => {
+    axios
+      .get("http://localhost:1466/user/get", {
+        params: {
+          // Mengakses data dengan menggunakan titik, seperti contoh chamber.nama_user
+          namaUser: headhunter.nama_user,
+        },
+      })
+      .then((res) => {
+        let isValid = res.data.message;
+        if (isValid) {
+          toast.success(res.data.message);
+        } else {
+          toast.error(res.data.message);
+        }
+        console.log(mfauzan);
+        // Mengakses data-data lain dari JSON yang sudah diberikan
+
+        setSaldoUser(headhunter.saldo_user);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err.message);
+      });
+  };
+  getUser();
+
   const handlePay = () => {
     axios
       .post("http://localhost:1466/user/pay", {
