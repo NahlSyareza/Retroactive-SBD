@@ -15,9 +15,11 @@ function CartPage(props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const handlePay = () => {
+    const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
     axios
       .post("http://localhost:1466/user/pay", {
         totalBelanja: getTotal,
+        namaUser: namaUser,
       })
       .then((res) => {
         console.log(res.data);
@@ -25,6 +27,11 @@ function CartPage(props) {
       .catch((err) => {
         console.log(err);
       });
+
+    toast.success("Pembayaran Berhasil!");
+    setTimeout(() => {
+      navigate("/home");
+    }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
   };
 
   useEffect(() => {
@@ -49,7 +56,6 @@ function CartPage(props) {
     axios
       .get("http://localhost:1466/user/get", {
         params: {
-          // Mengakses data dengan menggunakan titik, seperti contoh chamber.nama_user
           namaUser: namaUser,
         },
       })
