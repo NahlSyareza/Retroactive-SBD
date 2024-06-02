@@ -73,23 +73,24 @@ exports.loginEvent = async function loginEvent(req, res) {
     );
 
     if (result.rowCount <= 0) {
-      res.status(401).json({
-        message: "The user with email entered is not found.",
+      return res.status(401).json({
+        message: "The user with the provided email or username was not found.",
         error: error,
       });
     }
+
     const user = result.rows[0];
     const match = await bcrypt.compare(passwordUser, user.password_user);
     if (!match) {
-      return res
-        .status(401)
-        .json({ message: "The password is not correct.", error: error });
+      return res.status(401).json({ message: "The password is incorrect.", error: error });
     }
+
     res.status(200).json({ data: user });
   } catch (err) {
     res.status(500).json(err);
   }
 };
+
 
 exports.getEvent = async function getEvent(req, res) {
   const { namaUser } = req.query;

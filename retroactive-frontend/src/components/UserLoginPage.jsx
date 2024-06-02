@@ -1,115 +1,123 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
-const PasswordErrorMessage = () => (
-  <p className="text-red-500 text-xs italic mt-2">
-    Password should have at least 4 characters
-  </p>
-);
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UserLoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState({ value: "", isTouched: false });
-  const [loginError, setLoginError] = useState("");
+  const [dataUser, setDataUser] = useState("");
+  const [passwordUser, setPasswordUser] = useState("");
+  const [passwordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
-  const getIsFormValid = () =>
-    validateEmail(email) && password.value.length >= 4;
+  const handleDataUserChange = (event) => {
+    setDataUser(event.target.value);
+  };
 
-  const validateEmail = (email) =>
-    String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
+  const handlePasswordChange = (event) => {
+    setPasswordUser(event.target.value);
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/user/session`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password: password.value }),
+  const handleLogin = () => {
+    axios
+      .post("http://localhost:1466/user/session", {
+        dataUser: dataUser,
+        passwordUser: passwordUser,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem("user", JSON.stringify(res.data.data));
+          toast.success("Login successful!");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+        } else {
+          toast.error(res.data.message);
         }
-      );
-      const data = await response.json();
-      const user = data.user;
-      if (response.ok) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            name: user.name,
-            _id: user._id,
-            email: user.email,
-          })
-        );
-        toast.success("Successfully logged in.");
-        navigate("/");
-      } else {
-        setLoginError(data.message);
-      }
-    } catch (error) {
-      setLoginError("An error occurred. Please try again later.");
-    }
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 401) {
+          toast.error(err.response.data.message);
+        } else {
+          toast.error("An error occurred. Please try again later.");
+        }
+        console.log(err);
+      });
   };
 
   return (
-    <div className="w-full max-w-xs">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-amber-950 shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4"
-      >
-        <form className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
-          <h1 className="font-sans flex text-4xl justify-center">
+    <div className="w-full max-w-sm mx-auto mt-10">
+      <div className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+        <div className="bg-orange-900 shadow-md scale-110 rounded-2xl px-8 pt-6 pb-8 mb-4">
+          <h1 className="font-sans text-white flex text-4xl justify-center">
             RETROACTIVE
           </h1>
-        </form>
-        <label className="block font-sans text-gray-300 text-sm font-bold mb-2">
-          Nama/Email User
+          <h1 className="font-sans text-white flex text-2xl font-bold mt-2 justify-center">
+            User Login
+          </h1>
+        </div>
+        <label
+          className="block font-sans text-gray-300 text-sm font-bold mb-2"
+          htmlFor="dataUser"
+        >
+          Email or Username
         </label>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Nama/Email address"
           className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+          type="text"
+          name="dataUser"
+          onChange={handleDataUserChange}
+          placeholder="Email or Username"
         />
-        <label className="block font-sans text-gray-300 text-sm font-bold mb-2">
+        <label
+          className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
+          htmlFor="passwordUser"
+        >
           Password
         </label>
         <input
-          type="password"
-          value={password.value}
-          onChange={(e) => setPassword({ ...password, value: e.target.value })}
-          onBlur={() => setPassword({ ...password, isTouched: true })}
-          placeholder="Password"
           className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+          type={passwordField}
+          name="passwordUser"
+          onChange={handlePasswordChange}
+          placeholder="Password"
         />
-        {password.isTouched && password.value.length < 4 && (
-          <PasswordErrorMessage />
-        )}
-        {loginError && (
-          <p className="text-red-500 text-center text-sm">{loginError}</p>
-        )}
-        <a
-          className="text-orange-500 font-sans text-xs"
-          href="http://localhost:5173/register"
+        <div className="flex ml-2">
+          <input
+            type="checkbox"
+            className="mr-3"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setPasswordField("text");
+              } else {
+                setPasswordField("password");
+              }
+            }}
+          />
+          <span className="text-white text-sm">Show password</span>
+        </div>
+        <div className="mt-3" />
+        <button
+          className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          onClick={handleLogin}
         >
-          Belum memiliki akun? Silakan register!
-        </a>
-      </form>
-      <div className="mt-3" />
-      <button
-        className="bg-orange-900"
-        type="submit"
-        disabled={!getIsFormValid()}
-      >
-        Login
-      </button>
-      <div className="mt-3" />
+          Login
+        </button>
+      </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }
