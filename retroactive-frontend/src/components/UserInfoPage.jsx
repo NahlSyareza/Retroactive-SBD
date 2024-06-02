@@ -15,23 +15,31 @@ function UserInfoPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Parse digunakan untuk mengubah JSON.stringify menjadi JSON beneran
+    // dan di-assign ke variabel bernama chamber
+    const chamber = JSON.parse(localStorage.getItem("UserLogin_namaUser"));
+    const headhunter = chamber.data;
     const getUser = async () => {
       axios
         .get("http://localhost:1466/user/get", {
           params: {
-            namaUser: localStorage.getItem("UserLogin_namaUser"),
+            // Mengakses data dengan menggunakan titik, seperti contoh chamber.nama_user
+            namaUser: headhunter.nama_user,
           },
         })
         .then((res) => {
-          let isValid = res.data.state;
+          let isValid = res.data.message;
           if (isValid) {
             toast.success(res.data.message);
           } else {
             toast.error(res.data.message);
           }
-          setNamaUser(res.data.data[0].nama_user);
-          setEmailUser(res.data.data[0].email_user);
-          setNamaUser(res.data.data[0].nama_user);
+          console.log(chamber);
+
+          // Mengakses data-data lain dari JSON yang sudah diberikan
+          setNamaUser(headhunter.nama_user);
+          setEmailUser(headhunter.email_user);
+          setNamaUser(headhunter.nama_user);
         })
         .catch((err) => {
           toast.error(err.message);

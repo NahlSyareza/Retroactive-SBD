@@ -26,8 +26,9 @@ function UserLoginPage() {
       })
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("UserLogin_namaUser", res.data.data.nama_user);
-          toast.success("Login successful!");
+          // localStorage.setItem("UserLogin_namaUser", res.data.data.nama_user);
+          localStorage.setItem("UserLogin_namaUser", JSON.stringify(res.data));
+          toast.success(res.data.message);
           setTimeout(() => {
             navigate("/info");
           }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
@@ -100,7 +101,7 @@ function UserLoginPage() {
         <div>
           <a
             href="http://localhost:5173/register"
-            className="text-orange-700 text-sm mt-2"
+            className="text-orange-700 text-sm mt-3"
           >
             Belum memiliki akun? Silakan register!
           </a>

@@ -74,7 +74,8 @@ exports.loginEvent = async function loginEvent(req, res) {
 
     if (result.rowCount <= 0) {
       return res.status(401).json({
-        message: "The user with the provided email or username was not found.",
+        state: false,
+        message: "The user with the provided email or username was not found",
         error: error,
       });
     }
@@ -82,15 +83,20 @@ exports.loginEvent = async function loginEvent(req, res) {
     const user = result.rows[0];
     const match = await bcrypt.compare(passwordUser, user.password_user);
     if (!match) {
-      return res.status(401).json({ message: "The password is incorrect.", error: error });
+      return res.status(401).json({
+        state: false,
+        message: "The password is incorrect",
+        error: error,
+      });
     }
 
-    res.status(200).json({ data: user });
+    res
+      .status(200)
+      .json({ state: true, message: "User berhasil login", data: user });
   } catch (err) {
     res.status(500).json(err);
   }
 };
-
 
 exports.getEvent = async function getEvent(req, res) {
   const { namaUser } = req.query;
