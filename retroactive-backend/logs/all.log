@@ -1385,3 +1385,47 @@
 2024-06-03 01:30:00:300 [32minfo[39m: [32mServer starting on port [39m
 2024-06-03 01:30:00:300 [32minfo[39m: [32mConnected to User backend![39m
 2024-06-03 01:30:00:300 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 22:17:07:177 [32minfo[39m: [32mServer starting on port [39m
+2024-06-03 22:17:08:178 [32minfo[39m: [32mConnected to Toko backend![39m
+2024-06-03 22:17:08:178 [32minfo[39m: [32mConnected to User backend![39m
+2024-06-03 22:17:16:1716 [35mhttp[39m: [35m::1 OPTIONS /user/session 204 0 - 1.200 ms[39m
+[35m[39m
+2024-06-03 22:17:16:1716 [32minfo[39m: [32mUser berhasil login[39m
+2024-06-03 22:17:16:1716 [35mhttp[39m: [35m::1 POST /user/session 200 213 - 314.672 ms[39m
+[35m[39m
+2024-06-03 22:17:18:1718 [35mhttp[39m: [35m::1 GET /shop 200 1477 - 213.939 ms[39m
+[35m[39m
+2024-06-03 22:17:18:1718 [35mhttp[39m: [35m::1 GET /shop 304 - - 28.452 ms[39m
+[35m[39m
+2024-06-03 22:17:25:1725 [35mhttp[39m: [35m::1 GET /shop/get 200 1533 - 22.988 ms[39m
+[35m[39m
+2024-06-03 22:17:25:1725 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 22:17:25:1725 [35mhttp[39m: [35m::1 GET /user/get?namaUser=mfauzan 304 - - 24.366 ms[39m
+[35m[39m
+2024-06-03 22:17:25:1725 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 24.377 ms[39m
+[35m[39m
+2024-06-03 22:17:25:1725 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 22:17:25:1725 [35mhttp[39m: [35m::1 GET /user/get?namaUser=mfauzan 304 - - 64.070 ms[39m
+[35m[39m
+2024-06-03 22:17:37:1737 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 179.077 ms[39m
+[35m[39m
+2024-06-03 22:17:37:1737 [35mhttp[39m: [35m::1 GET /shop/get 304 - - 25.923 ms[39m
+[35m[39m
+2024-06-03 22:17:37:1737 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 22:17:37:1737 [35mhttp[39m: [35m::1 GET /user/get?namaUser=mfauzan 304 - - 244.474 ms[39m
+[35m[39m
+2024-06-03 22:17:37:1737 [32minfo[39m: [32mAkun berhasil didapatkan![39m
+2024-06-03 22:17:37:1737 [35mhttp[39m: [35m::1 GET /user/get?namaUser=mfauzan 304 - - 65.746 ms[39m
+[35m[39m
+2024-06-03 22:17:42:1742 [35mhttp[39m: [35m::1 GET /shop 304 - - 29.566 ms[39m
+[35m[39m
+2024-06-03 22:17:42:1742 [35mhttp[39m: [35m::1 GET /shop 304 - - 25.523 ms[39m
+[35m[39m
+2024-06-03 22:17:46:1746 [35mhttp[39m: [35m::1 GET /shop 304 - - 25.020 ms[39m
+[35m[39m
+2024-06-03 22:17:46:1746 [35mhttp[39m: [35m::1 GET /shop 304 - - 21.217 ms[39m
+[35m[39m
+2024-06-03 22:17:50:1750 [35mhttp[39m: [35m::1 GET /shop 304 - - 21.398 ms[39m
+[35m[39m
+2024-06-03 22:17:50:1750 [35mhttp[39m: [35m::1 GET /shop 304 - - 20.809 ms[39m
+[35m[39m
