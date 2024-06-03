@@ -93,10 +93,14 @@ exports.addToCart = async function addToCart(req, res) {
   const { namaUser, namaAlbum } = req.body;
 
   try {
-    const result = await pool.query(
-      "INSERT INTO cart VALUES ($1,$2) RETURNING *",
-      [namaUser, namaAlbum]
-    );
+    const initial = await pool.query("SELECT * FROM cart WHERE nama_user=$1,nama_album=$2",[
+      
+    ])
+
+    // const result = await pool.query(
+    //   "INSERT INTO cart VALUES ($1,$2) RETURNING *",
+    //   [namaUser, namaAlbum]
+    // );
 
     logger.info("Berhasil menambahkan ke cart!");
     return res.status(200).json({
