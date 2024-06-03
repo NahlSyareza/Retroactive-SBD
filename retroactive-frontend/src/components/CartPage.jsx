@@ -14,6 +14,18 @@ function CartPage(props) {
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
+  const [itemShop, setItemShop] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
+      const result = await response.json(); // Parsing JSON response
+      setItemShop(result); // Updating state with fetched data
+    } catch (err) {
+      toast.error("Error fetching data"); // Showing error notification
+    }
+  };
+
   const handlePay = () => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
     axios
@@ -35,6 +47,8 @@ function CartPage(props) {
   };
 
   useEffect(() => {
+    fetchData();
+
     axios
       .get("http://localhost:1466/shop/get")
       .then((res) => {
@@ -88,7 +102,7 @@ function CartPage(props) {
           </p>
         )}
         <div className="flex justify-center">
-          <ul className="list-group list-group-horizontal justify-center shadow-md rounded-xl  mb-4 w-75  xl:grid-cols-5   ">
+          <ul className="list-group justify-center shadow-md rounded-xl  mb-4 w-100  ">
             {getItems.map((item, index) => (
               <li
                 className={
@@ -101,7 +115,9 @@ function CartPage(props) {
                   setSelectedIndex(index);
                 }}
               >
-                <img src={item.gambar_media} className="h-56" />
+                <div className="justify-center items-center">
+                  <img src={item.gambar_media} className="h-56" />
+                </div>
                 <div className="align-bottom">
                   <p className="text-nowrap font-semibold">{item.nama_album}</p>
                   <p className="text-nowrap">{item.nama_artis}</p>
@@ -109,6 +125,33 @@ function CartPage(props) {
                   <p className="text-red-500 font-bold">
                     {item.harga_media} ({item.jumlah})
                   </p>
+                </div>
+
+                <div className="flex justify-center items-center">
+                  <div className="space-x-4 flex">
+                    <button
+                      className="flex justify-center rounded bg-green-500 text-white text-opacity-5 items-center font-bold h-7 w-7"
+                      title="Confirm Payment"
+                      onClick={handlePay}
+                    >
+                      +
+                    </button>
+
+                    <p className="font-bold">A</p>
+
+                    <button
+                      className="flex justify-center rounded bg-red-600 text-white text-opacity-5 items-center font-bold  h-7 w-7 "
+                      title="Cancel"
+                      onClick={() => {
+                        toast.error("Masuk Ke Page Pembayaran");
+                        setTimeout(() => {
+                          navigate("/home");
+                        }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                      }}
+                    >
+                      -
+                    </button>
+                  </div>
                 </div>
               </li>
             ))}
@@ -120,9 +163,28 @@ function CartPage(props) {
           <div className="text-2xl flex font-bold text-center ">
             Payment Information
           </div>
-          <div className="text-2xl flex">Saldo Anda : {getSaldoUser} </div>
+
+          <ul>
+            {getItems.map((item, index) => (
+              <li>
+                <div className="align-bottom flex">
+                  <p className="text-nowrap font-semibold jus">
+                    {index + 1}. {item.nama_album} - {item.nama_artis} -{" "}
+                    {item.jenis_media} - {item.harga_media} -{" "}
+                    {item.harga_media * 2}{" "}
+                    {/* 2 nanti diganti sama jumlah pembelian */}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="text-2xl flex font-bold text-green-500">
+            Saldo Anda : {getSaldoUser}{" "}
+          </div>
           <div className="text-2xl flex">Total belanja : {getTotal} </div>
         </div>
+
         <div className="flex space-x-4">
           <button
             className="flex justify-start rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
