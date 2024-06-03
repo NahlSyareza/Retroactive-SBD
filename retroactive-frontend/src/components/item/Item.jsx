@@ -1,5 +1,7 @@
 import React from "react"; // Importing the React library
 import { Link } from "react-router-dom"; // Importing the Link component from react-router-dom for navigation
+import cart from "../../assets/cart.svg";
+import axios from "axios";
 
 // Defining the Item functional component
 export const Item = ({
@@ -14,10 +16,7 @@ export const Item = ({
 }) => {
   return (
     // Link component for navigation to a specific item's page using id
-    <Link
-      to={`/${id}`}
-      className="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-out transform hover:scale-110 hover:shadow-2xl"
-    >
+    <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg transition duration-300 ease-out transform hover:scale-110 hover:shadow-2xl">
       {/* Image section with updated source and alt attributes */}
       <img
         src={gambar_media}
@@ -39,8 +38,30 @@ export const Item = ({
           <p className="text-lg text-red-600 font-bold">${harga_media}</p>
           {/* Displaying the quantity */}
           <p className="text-sm text-gray-500">Qty: {jumlah}</p>
+          <button
+            className="text-xs text-white bg-orange-900"
+            onClick={() => {
+              const namaUser = localStorage.getItem(
+                "StaticUtils_loggedNamaUser"
+              );
+              axios
+                .post("http://localhost:1466/shop/addToCart", {
+                  namaUser: namaUser,
+                  namaAlbum: nama_album,
+                })
+                .then((res) => {
+                  const response = res.data;
+                  console.log(response);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }}
+          >
+            Add
+          </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

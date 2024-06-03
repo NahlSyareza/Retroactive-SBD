@@ -10,8 +10,11 @@ const router = express.Router();
 // Route for Item
 // Route for Create
 router.post("/", shopController.CreateFunction);
+
+router.get("/", shopController.GetFunction);
 // Route for Read
 router.get("/get", shopController.getAllEvent);
+router.post("/addToCart", shopController.addToCart);
 // Route for Read Detail Data
 router.get("/:id", shopController.GetDetailFunction);
 // Route for Update
