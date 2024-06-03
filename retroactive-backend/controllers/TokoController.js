@@ -93,14 +93,46 @@ exports.addToCart = async function addToCart(req, res) {
   const { namaUser, namaAlbum } = req.body;
 
   try {
-    const initial = await pool.query("SELECT * FROM cart WHERE nama_user=$1,nama_album=$2",[
-      
-    ])
+    const initial = await pool.query(
+      "SELECT * FROM cart WHERE nama_user=$1 AND nama_album=$2",
+      [namaUser, namaAlbum]
+    );
 
-    // const result = await pool.query(
-    //   "INSERT INTO cart VALUES ($1,$2) RETURNING *",
-    //   [namaUser, namaAlbum]
-    // );
+    if (initial.rowCount <= 0) {
+      const result = await pool.query(
+        "INSERT INTO cart VALUES ($1,$2,1) RETURNING *",
+        [namaUser, namaAlbum]
+      );
+      logger.info("Berhasil menambahkan ke cart awal!");
+      return res.status(200).json({
+        state: true,
+        message: "Berhasil menambahkan ke cart awal!",
+        payload: result.rows[0],
+      });
+    }
+
+    const middle = await pool.query(
+      "SELECT * FROM toko_inventory WHERE nama_album=$1",
+      [namaAlbum]
+    );
+
+    const settle = await pool.query("SELECT * FROM cart WHERE nama_album=$1", [
+      namaAlbum,
+    ]);
+
+    if (settle.rows[0].jumlah >= middle.rows[0].jumlah) {
+      logger.warn("Jumlah sudah max!");
+      return res.status(201).json({
+        state: false,
+        message: "Jumlah sudah max!",
+        payload: null,
+      });
+    }
+
+    const result = await pool.query(
+      "UPDATE cart SET jumlah=jumlah+1 WHERE nama_user=$1 AND nama_album=$2 RETURNING *",
+      [namaUser, namaAlbum]
+    );
 
     logger.info("Berhasil menambahkan ke cart!");
     return res.status(200).json({
@@ -110,7 +142,48 @@ exports.addToCart = async function addToCart(req, res) {
     });
   } catch (err) {
     logger.error(err);
-    return res.statues(500).json({ err });
+    return res.status(500).json({ err });
+  }
+};
+
+exports.deleteFromCart = async function deleteFromCart(req, res) {
+  const { namaUser, namaAlbum } = req.body;
+
+  try {
+    const initial = await pool.query(
+      "SELECT * FROM cart WHERE nama_user=$1 AND nama_album=$2",
+      [namaUser, namaAlbum]
+    );
+
+    const initialRes = initial.rows[0];
+
+    if (initialRes.jumlah <= 0) {
+      logger.warn("Jumlah item tidak bisa negatif!");
+      return res.status(201).json({
+        state: false,
+        message: "Jumlah item tidak bisa negatif!",
+        payload: null,
+      });
+    }
+
+    const result = await pool.query(
+      "UPDATE cart SET jumlah=jumlah-1 WHERE nama_user=$1 AND nama_album=$2",
+      [namaUser, namaAlbum]
+    );
+
+    logger.info("Berhasil mengurangi jumlah!");
+    res.status(201).json({
+      state: true,
+      message: "Berhasil mengurangi jumlah!",
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
   }
 };
 
