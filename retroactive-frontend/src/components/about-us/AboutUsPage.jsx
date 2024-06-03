@@ -4,11 +4,11 @@ function AboutUs() {
   // Returning JSX to render the component
   return (
     // A div with relative positioning and styling for background and padding
-    <div className="relative bg-gray-50 py-12">
+    <div className="relative  bg-white py-12">
       {/* An empty absolute positioned div for potential background elements */}
       <div className="absolute inset-0"></div>
       {/* A relative positioned div for the main content with styling for container, background, and shadows */}
-      <div className="relative container mx-auto px-4 bg-white bg-opacity-80 rounded-lg shadow-lg">
+      <div className="relative container mx-auto px-4 bg-white bg-opacity-50 rounded-lg shadow-lg">
         {/* Main heading with styling */}
         <h1 className="text-4xl font-serif mb-4 text-center text-gray-800">
           About Us
