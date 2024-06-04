@@ -49,43 +49,14 @@ function CartPage(props) {
       })
       .then((res) => {
         const response = res.data;
+        console.log("Perhitungan total di sini");
         console.log(response);
         setItems(response.payload);
-        // let a = 0;
-        // for (let i = 0; i < response.payload.length; i++) {
-        //   a += response.payload[i].harga_media;
-        //   setTotal(a);
-        // }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
-    //     const result = await response.json(); // Parsing JSON response
-    //     setItemShop(result); // Updating state with fetched data
-    //   } catch (err) {
-    //     toast.error("Error fetching data"); // Showing error notification
-    //   }
-    // };
-
-    axios
-      .get("http://localhost:1466/shop", {
-        params: {
-          namaUser: namaUser,
-        },
-      })
-      .then((res) => {
-        const response = res.data;
-        console.log(response);
-        setCartDetail(response.payload);
         let a = 0;
         for (let i = 0; i < response.payload.length; i++) {
-          a += response.payload[i].harga_media;
+          const aa =
+            response.payload[i].harga_media * response.payload[i].cart_jumlah;
+          a += aa;
           setTotal(a);
         }
       })
@@ -93,6 +64,38 @@ function CartPage(props) {
         console.log(err);
       });
   }, []);
+
+  // useEffect(() => {
+  //   // const fetchData = async () => {
+  //   //   try {
+  //   //     const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
+  //   //     const result = await response.json(); // Parsing JSON response
+  //   //     setItemShop(result); // Updating state with fetched data
+  //   //   } catch (err) {
+  //   //     toast.error("Error fetching data"); // Showing error notification
+  //   //   }
+  //   // };
+
+  //   axios
+  //     .get("http://localhost:1466/shop", {
+  //       params: {
+  //         namaUser: namaUser,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       const response = res.data;
+  //       console.log(response);
+  //       setCartDetail(response.payload);
+  //       let a = 0;
+  //       for (let i = 0; i < response.payload.length; i++) {
+  //         a += response.payload[i].harga_media;
+  //         setTotal(a);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   useEffect(() => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
@@ -105,9 +108,9 @@ function CartPage(props) {
       .then((res) => {
         const response = res.data;
         if (response.state) {
-          toast.success(res.data.message);
+          toast.success(response.message);
         } else {
-          toast.error(res.data.message);
+          toast.error(response.message);
         }
         console.log(response);
         // Mengakses data-data lain dari JSON yang sudah diberikan
@@ -158,27 +161,62 @@ function CartPage(props) {
                 </div>
                 <div className="ml-5  w-36 flex text-left">
                   <p className="text-red-500 font-bold">
-                    {item.harga_media} ({item.jumlah})
+                    {item.harga_media} ({item.toko_jumlah})
                   </p>
                 </div>
               </div>
               <div className="flex justify-end">
                 <button
                   className="flex justify-center rounded bg-green-500 text-white text-opacity-5 items-center font-bold h-7 w-7"
-                  title="Confirm Payment"
-                  onClick={handlePay}
+                  title="Add"
+                  onClick={() => {
+                    axios
+                      .post("http://localhost:1466/shop/addToCart", {
+                        namaUser: item.nama_user,
+                        namaAlbum: item.nama_album,
+                      })
+                      .then((res) => {
+                        const response = res.data;
+                        if (response.state) {
+                          const changedItems = getItems.map((it, i) => {
+                            if (i == id) {
+                              it.cart_jumlah = it.cart_jumlah + 1;
+                            }
+                            return it;
+                          });
+                          let a = 0;
+                          for (let i = 0; i < changedItems.length; i++) {
+                            const aa =
+                              changedItems[i].harga_media *
+                              changedItems[i].cart_jumlah;
+                            a += aa;
+                            setTotal(a);
+                          }
+                          console.log(a);
+                          setItems(changedItems);
+                        }
+                        console.log(response.message);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                  }}
                 >
                   +
                 </button>
-                <p className="font-bold">A</p>
+                <p className="font-bold">{item.cart_jumlah}</p>
                 <button
                   className="flex justify-center rounded bg-red-600 text-white text-opacity-5 items-center font-bold  h-7 w-7 "
-                  title="Cancel"
+                  title="Delete"
                   onClick={() => {
-                    toast.error("Masuk Ke Page Pembayaran");
-                    setTimeout(() => {
-                      navigate("/home");
-                    }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                    const changedItems = getItems.map((it, i) => {
+                      if (i == id) {
+                        it.cart_jumlah = it.cart_jumlah - 1;
+                      }
+                      return it;
+                    });
+                    console.log(changedItems);
+                    setItems(changedItems);
                   }}
                 >
                   -

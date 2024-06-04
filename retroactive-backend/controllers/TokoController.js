@@ -191,9 +191,10 @@ exports.getFromCart = async function getFromCart(req, res) {
   const { namaUser } = req.query;
 
   try {
-    const result = await pool.query("SELECT * FROM cart WHERE nama_user=$1", [
-      namaUser,
-    ]);
+    const result = await pool.query(
+      "SELECT cart.nama_user,toko_inventory.nama_album,cart.jumlah AS cart_jumlah,toko_inventory.jumlah AS toko_jumlah,toko_inventory.nama_artis,toko_inventory.jenis_media,toko_inventory.harga_media,toko_inventory.gambar_media FROM toko_inventory JOIN cart ON toko_inventory.nama_album IN (SELECT nama_album FROM cart WHERE nama_user=$1) AND cart.nama_user=$1 AND toko_inventory.nama_album=cart.nama_album;",
+      [namaUser]
+    );
 
     logger.info("Tipis manis kucoba beli-beli");
     return res.status(200).json({
