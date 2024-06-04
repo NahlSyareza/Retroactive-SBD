@@ -6,25 +6,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 function CartPage(props) {
-  const [getItemCount, setItemCount] = useState(0);
   const [getSaldoUser, setSaldoUser] = useState(0.0);
   const [getTotal, setTotal] = useState(0.0);
   const [getItems, setItems] = useState([]);
+  const [getCartDetail, setCartDetail] = useState([]);
   const navigate = useNavigate();
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const [itemShop, setItemShop] = useState([]);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
-  //     const result = await response.json(); // Parsing JSON response
-  //     setItemShop(result); // Updating state with fetched data
-  //   } catch (err) {
-  //     toast.error("Error fetching data"); // Showing error notification
-  //   }
-  // };
 
   const handlePay = () => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
@@ -61,6 +51,38 @@ function CartPage(props) {
         const response = res.data;
         console.log(response);
         setItems(response.payload);
+        // let a = 0;
+        // for (let i = 0; i < response.payload.length; i++) {
+        //   a += response.payload[i].harga_media;
+        //   setTotal(a);
+        // }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
+    //     const result = await response.json(); // Parsing JSON response
+    //     setItemShop(result); // Updating state with fetched data
+    //   } catch (err) {
+    //     toast.error("Error fetching data"); // Showing error notification
+    //   }
+    // };
+
+    axios
+      .get("http://localhost:1466/shop", {
+        params: {
+          namaUser: namaUser,
+        },
+      })
+      .then((res) => {
+        const response = res.data;
+        console.log(response);
+        setCartDetail(response.payload);
         let a = 0;
         for (let i = 0; i < response.payload.length; i++) {
           a += response.payload[i].harga_media;
@@ -213,7 +235,7 @@ function CartPage(props) {
             title="Cancel"
             name="cancel"
             onClick={() => {
-              toast.error("Masuk Ke Page Pembayaran");
+              toast.error("Pembayaran dibatalkan, kembali ke home");
               setTimeout(() => {
                 navigate("/home");
               }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
