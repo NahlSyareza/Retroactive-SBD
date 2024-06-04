@@ -22,19 +22,6 @@ function Popular() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const changeColorOnScroll = () => {
-  //     const scrollPosition = window.scrollY; // Getting the current scroll position
-  //     if (scrollPosition < 150) setBgColor("bg-white");
-  //     else if (scrollPosition < 300) setBgColor("bg-gray-100");
-  //     else if (scrollPosition < 450) setBgColor("bg-gray-200");
-  //     else setBgColor("bg-gray-300");
-  //   };
-
-  //   window.addEventListener("scroll", changeColorOnScroll); // Adding scroll event listener
-  //   return () => window.removeEventListener("scroll", changeColorOnScroll); // Cleaning up the event listener
-  // }, []);
-
   return (
     <div className={`transition-colors duration-500 ease-in-out py-12`}>
       {" "}

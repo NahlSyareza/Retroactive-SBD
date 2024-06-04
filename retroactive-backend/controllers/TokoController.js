@@ -187,6 +187,30 @@ exports.deleteFromCart = async function deleteFromCart(req, res) {
   }
 };
 
+exports.getFromCart = async function getFromCart(req, res) {
+  const { namaUser } = req.query;
+
+  try {
+    const result = await pool.query("SELECT * FROM cart WHERE nama_user=$1", [
+      namaUser,
+    ]);
+
+    logger.info("Tipis manis kucoba beli-beli");
+    return res.status(200).json({
+      state: true,
+      message: "Tipis manis kucoba beli-beli",
+      payload: result.rows,
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 // Controller for READ (Detail)
 exports.GetDetailFunction = async (req, res) => {
   try {

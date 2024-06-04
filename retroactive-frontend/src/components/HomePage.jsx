@@ -1,7 +1,7 @@
 import React from "react"; // Importing the React library
-import { Hero } from "../components/hero/Hero"; // Importing the Hero component from the specified path
-import Popular from "../components/popular/PopularPage"; // Importing the Popular component from the specified path
-import AboutUs from "../components/about-us/AboutUsPage"; // Importing the AboutUs component from the specified path
+import { Hero } from "./hero/Hero"; // Importing the Hero component from the specified path
+import Popular from "./popular/PopularPage"; // Importing the Popular component from the specified path
+import AboutUs from "./AboutUsPage"; // Importing the AboutUs component from the specified path
 import logoretroactive from "../assets/logo.png";
 import logocart from "../assets/cart.svg";
 import logoprofile from "../assets/person.svg";

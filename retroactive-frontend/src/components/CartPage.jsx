@@ -16,15 +16,15 @@ function CartPage(props) {
 
   const [itemShop, setItemShop] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
-      const result = await response.json(); // Parsing JSON response
-      setItemShop(result); // Updating state with fetched data
-    } catch (err) {
-      toast.error("Error fetching data"); // Showing error notification
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
+  //     const result = await response.json(); // Parsing JSON response
+  //     setItemShop(result); // Updating state with fetched data
+  //   } catch (err) {
+  //     toast.error("Error fetching data"); // Showing error notification
+  //   }
+  // };
 
   const handlePay = () => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
@@ -47,16 +47,23 @@ function CartPage(props) {
   };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
+
+    const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
 
     axios
-      .get("http://localhost:1466/shop/get")
+      .get("http://localhost:1466/shop/getFromCart", {
+        params: {
+          namaUser: namaUser,
+        },
+      })
       .then((res) => {
-        console.log(res.data);
-        setItems(res.data.data);
+        const response = res.data;
+        console.log(response);
+        setItems(response.payload);
         let a = 0;
-        for (let i = 0; i < res.data.data.length; i++) {
-          a += res.data.data[i].harga_media;
+        for (let i = 0; i < response.payload.length; i++) {
+          a += response.payload[i].harga_media;
           setTotal(a);
         }
       })
@@ -91,111 +98,120 @@ function CartPage(props) {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
-      <div>
-        <div className="mb-3">
-          <h1 className="text-white font-bold">Cart List</h1>
-        </div>
-        {getItems.length === 0 && (
-          <p className="text-red-600 text-2xl bg-white">
-            Anda Belum Memasukkan Barang Apapun!
-          </p>
-        )}
-        <div className="flex justify-center">
-          <ul className="list-group justify-center shadow-md rounded-xl  mb-4 w-100  ">
-            {getItems.map((item, index) => (
-              <li
-                className={
-                  selectedIndex === index
-                    ? "list-group-item active"
-                    : "list-group-item"
-                }
-                key={item.name}
-                onClick={() => {
-                  setSelectedIndex(index);
-                }}
-              >
-                <div className="justify-center items-center">
-                  <img src={item.gambar_media} className="h-56" />
+    <div className="flex-col justify-center items-center min-h-screen mt-3 mb-3 ml-64 mr-64">
+      <div className="m-3">
+        <h1 className="text-white font-bold">Cart List</h1>
+      </div>
+      {getItems.length === 0 && (
+        <p className="text-red-600 text-2xl bg-white">
+          Anda Belum Memasukkan Barang Apapun!
+        </p>
+      )}
+      <div className="flex-col justify-center">
+        <ul className="list-group justify-center shadow-md rounded-xl mb-4">
+          {getItems.map((item, id) => (
+            <li
+              className={
+                selectedIndex === id
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              key={item.nama_album}
+              onClick={() => {
+                setSelectedIndex(id);
+              }}
+            >
+              <div className="flex">
+                <div className="w-20 justify-center text-wrap flex left-0 ">
+                  <img src={item.gambar_media} className="h-20" />
                 </div>
-                <div className="align-bottom">
-                  <p className="text-nowrap font-semibold">{item.nama_album}</p>
-                  <p className="text-nowrap">{item.nama_artis}</p>
+                <div className="ml-5 w-24 text-left flex">
+                  <p className="font-semibold">{item.nama_album}</p>
+                </div>
+                <div className="ml-5  w-24 flex text-left">
+                  <p>{item.nama_artis}</p>
+                </div>
+                <div className="ml-5  w-12 flex text-left">
                   <p className="text-nowrap font-bold">{item.jenis_media}</p>
+                </div>
+                <div className="ml-5  w-36 flex text-left">
                   <p className="text-red-500 font-bold">
                     {item.harga_media} ({item.jumlah})
                   </p>
                 </div>
-
-                <div className="flex justify-center items-center">
-                  <div className="space-x-4 flex">
-                    <button
-                      className="flex justify-center rounded bg-green-500 text-white text-opacity-5 items-center font-bold h-7 w-7"
-                      title="Confirm Payment"
-                      onClick={handlePay}
-                    >
-                      +
-                    </button>
-
-                    <p className="font-bold">A</p>
-
-                    <button
-                      className="flex justify-center rounded bg-red-600 text-white text-opacity-5 items-center font-bold  h-7 w-7 "
-                      title="Cancel"
-                      onClick={() => {
-                        toast.error("Masuk Ke Page Pembayaran");
-                        setTimeout(() => {
-                          navigate("/home");
-                        }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
-                      }}
-                    >
-                      -
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+              </div>
+              <div className="flex justify-end">
+                <button
+                  className="flex justify-center rounded bg-green-500 text-white text-opacity-5 items-center font-bold h-7 w-7"
+                  title="Confirm Payment"
+                  onClick={handlePay}
+                >
+                  +
+                </button>
+                <p className="font-bold">A</p>
+                <button
+                  className="flex justify-center rounded bg-red-600 text-white text-opacity-5 items-center font-bold  h-7 w-7 "
+                  title="Cancel"
+                  onClick={() => {
+                    toast.error("Masuk Ke Page Pembayaran");
+                    setTimeout(() => {
+                      navigate("/home");
+                    }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                  }}
+                >
+                  -
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="list-group list-group-horizontal shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-75 p-3 justify-between bg-white ">
+      <div className="list-group list-group-horizontal shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-75 p-3 justify-between bg-white font-sans">
         <div>
-          <div className="text-2xl flex font-bold text-center ">
+          <div className="mb-3 text-2xl flex font-bold text-center">
             Payment Information
           </div>
 
-          <ul>
+          {/* <ul className="mt-2 mb-2 max-h-48 overflow-x-hidden overflow-y-auto">
             {getItems.map((item, index) => (
-              <li>
-                <div className="align-bottom flex">
-                  <p className="text-nowrap font-semibold jus">
-                    {index + 1}. {item.nama_album} - {item.nama_artis} -{" "}
-                    {item.jenis_media} - {item.harga_media} -{" "}
-                    {item.harga_media * 2}{" "}
-                    {/* 2 nanti diganti sama jumlah pembelian */}
-                  </p>
-                </div>
+              <li className="mb-1 flex bg-gray-200 rounded-lg">
+                <p className="ml-1 text-nowrap">
+                  {index + 1}. {item.nama_album} - {item.nama_artis} -{" "}
+                  {item.jenis_media} - {item.harga_media} -{" "}
+                  {item.harga_media * 2}{" "}
+                </p>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
-          <div className="text-2xl flex font-bold text-green-500">
+          <div className="text-xl flex font-semibold text-green-500">
             Saldo Anda : {getSaldoUser}{" "}
           </div>
-          <div className="text-2xl flex">Total belanja : {getTotal} </div>
+
+          <div
+            className={
+              getSaldoUser < getTotal
+                ? "text-xl font-semibold flex text-red-700"
+                : "text-xl font-semibold flex"
+            }
+          >
+            Total belanja : {getTotal}{" "}
+          </div>
         </div>
 
-        <div className="flex space-x-4">
+        <div className="flex-col">
           <button
-            className="flex justify-start rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
-            title="Confirm Payment"
+            className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
+            title="Confirm"
+            name="confirm"
             onClick={handlePay}
           >
-            Confirm Payment
+            Confirm
           </button>
           <button
-            className="flex justify-start rounded bg-red-600 text-white text-opacity-5 items-center font-bold  max-h-12 "
+            className="flex justify-end rounded bg-red-600 text-white text-opacity-5 items-center font-bold  max-h-12 "
             title="Cancel"
+            name="cancel"
             onClick={() => {
               toast.error("Masuk Ke Page Pembayaran");
               setTimeout(() => {
@@ -203,10 +219,10 @@ function CartPage(props) {
               }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
             }}
           >
-            X
+            Cancel
           </button>
         </div>
-      </ul>
+      </div>
       <ToastContainer
         position="bottom-center"
         autoClose={1500}
