@@ -112,13 +112,14 @@ exports.addToCart = async function addToCart(req, res) {
     }
 
     const middle = await pool.query(
-      "SELECT * FROM toko_inventory WHERE nama_album=$1",
+      "SELECT jumlah FROM toko_inventory WHERE nama_album=$1",
       [namaAlbum]
     );
 
-    const settle = await pool.query("SELECT * FROM cart WHERE nama_album=$1", [
-      namaAlbum,
-    ]);
+    const settle = await pool.query(
+      "SELECT jumlah FROM cart WHERE nama_album=$1 AND nama_user=$2",
+      [namaAlbum, namaUser]
+    );
 
     if (settle.rows[0].jumlah >= middle.rows[0].jumlah) {
       logger.warn("Jumlah sudah max!");

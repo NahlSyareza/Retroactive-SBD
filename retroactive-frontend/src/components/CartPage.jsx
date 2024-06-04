@@ -199,6 +199,7 @@ function CartPage(props) {
                           console.log(a);
                           setItems(changedItems);
                         }
+                        console.log(item.nama_album);
                         console.log(response.message);
                       })
                       .catch((err) => {
