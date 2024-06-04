@@ -4,6 +4,8 @@ import { MouseEvent, Fragment, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 function CartPage(props) {
   const [getSaldoUser, setSaldoUser] = useState(0.0);
@@ -13,6 +15,8 @@ function CartPage(props) {
   const navigate = useNavigate();
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const buttonText =
+    getTotal > getSaldoUser ? "Saldo Anda Tidak Cukup!" : "Confirm";
 
   const [itemShop, setItemShop] = useState([]);
 
@@ -204,19 +208,42 @@ function CartPage(props) {
                 >
                   +
                 </button>
-                <p className="font-bold">{item.cart_jumlah}</p>
+                <p className="font-bold">{item.cart_jumlah}</p>{" "}
+                {/* Progres123*/}
                 <button
                   className="flex justify-center rounded bg-red-600 text-white text-opacity-5 items-center font-bold  h-7 w-7 "
                   title="Delete"
                   onClick={() => {
-                    const changedItems = getItems.map((it, i) => {
-                      if (i == id) {
-                        it.cart_jumlah = it.cart_jumlah - 1;
-                      }
-                      return it;
-                    });
-                    console.log(changedItems);
-                    setItems(changedItems);
+                    axios
+                      .post("http://localhost:1466/shop/deleteFromCart", {
+                        namaUser: item.nama_user,
+                        namaAlbum: item.nama_album,
+                      })
+                      .then((res) => {
+                        const response = res.data;
+                        if (response.state) {
+                          const changedItems = getItems.map((it, i) => {
+                            if (i == id) {
+                              it.cart_jumlah = it.cart_jumlah - 1;
+                            }
+                            return it;
+                          });
+                          let a = 0;
+                          for (let i = 0; i < changedItems.length; i++) {
+                            const aa =
+                              changedItems[i].harga_media *
+                              changedItems[i].cart_jumlah;
+                            a += aa;
+                            setTotal(a);
+                          }
+                          console.log(a);
+                          setItems(changedItems);
+                        }
+                        console.log(response.message);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
                   }}
                 >
                   -
@@ -231,18 +258,6 @@ function CartPage(props) {
           <div className="mb-3 text-2xl flex font-bold text-center">
             Payment Information
           </div>
-
-          {/* <ul className="mt-2 mb-2 max-h-48 overflow-x-hidden overflow-y-auto">
-            {getItems.map((item, index) => (
-              <li className="mb-1 flex bg-gray-200 rounded-lg">
-                <p className="ml-1 text-nowrap">
-                  {index + 1}. {item.nama_album} - {item.nama_artis} -{" "}
-                  {item.jenis_media} - {item.harga_media} -{" "}
-                  {item.harga_media * 2}{" "}
-                </p>
-              </li>
-            ))}
-          </ul> */}
 
           <div className="text-xl flex font-semibold text-green-500">
             Saldo Anda : {getSaldoUser}{" "}
@@ -260,14 +275,45 @@ function CartPage(props) {
         </div>
 
         <div className="flex-col">
-          <button
-            className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
-            title="Confirm"
-            name="confirm"
-            onClick={handlePay}
+          <Popup
+            trigger={
+              <button
+                className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
+                title="Confirm"
+                name="confirm"
+              >
+                Confirm
+              </button>
+            }
+            modal
+            nested
           >
-            Confirm
-          </button>
+            <ul className="mt-2 mb-2 max-h-48 overflow-x-auto overflow-y-auto">
+              <div className="text-xl font-bold">Payment Detail</div>
+              {getItems.map((item, index) => (
+                <li className="mb-1 flex bg-gray-200 rounded-lg">
+                  <p className="ml-1 text-nowrap">
+                    {index + 1}. {item.nama_album} - {item.nama_artis} -{" "}
+                    {item.jenis_media} - {item.harga_media} -
+                    {item.harga_media * item.cart_jumlah}{" "}
+                  </p>
+                </li>
+              ))}
+              <button
+                className={
+                  getTotal > getSaldoUser
+                    ? "mb-3 flex justify-end rounded bg-red-500 text-white text-opacity-5 items-center font-bold max-h-12 "
+                    : "mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
+                }
+                title="Confirm"
+                name="confirm"
+                disabled={getTotal > getSaldoUser}
+                onClick={handlePay}
+              >
+                {buttonText}
+              </button>
+            </ul>{" "}
+          </Popup>
           <button
             className="flex justify-end rounded bg-red-600 text-white text-opacity-5 items-center font-bold  max-h-12 "
             title="Cancel"
