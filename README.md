@@ -1,4 +1,3 @@
-![alt text](https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt6f1392b30784e029/618d9da0d380f814d61f001c/WebUpdate_Chamber_KeyArt.png)
+![logo_transparent](https://github.com/NahlSyareza/Retroactive-SBD/assets/106501086/ea7eedaf-61a5-4696-915f-ff60bbe0062c)
 <br>
-THEY ARE SO DEAD
-YOU WANT TO PLAY? LET'S PLAY!
+THE BEST PLACE FOR VINTAGE MUSICS
