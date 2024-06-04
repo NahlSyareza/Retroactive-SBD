@@ -23,6 +23,8 @@ router.post("/deleteFromCart", tokoController.deleteFromCart);
 
 router.get("/getFromCart", tokoController.getFromCart);
 
+router.delete("/removeFromCart", tokoController.removeFromCart);
+
 router.get("/:id", tokoController.GetDetailFunction);
 // Route for Update
 router.put("/:id", tokoController.UpdateFunction);

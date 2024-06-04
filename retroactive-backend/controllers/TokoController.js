@@ -213,6 +213,41 @@ exports.getFromCart = async function getFromCart(req, res) {
   }
 };
 
+// Removes an item
+exports.removeFromCart = async function removeFromCart(req, res) {
+  const { namaUser, namaAlbum } = req.query;
+
+  try {
+    const result = await pool.query(
+      "DELETE FROM cart WHERE nama_user=$1 AND nama_album=$2",
+      [namaUser, namaAlbum]
+    );
+
+    if (!result) {
+      logger.warn("Barang tidak dapat ditemukan!");
+      return res.status(201).json({
+        state: false,
+        message: "Barang tidak dapat ditemukan!",
+        payload: null,
+      });
+    }
+
+    logger.info("Barang berhasil dihapus!");
+    return res.status(200).json({
+      state: true,
+      message: "Barang berhasil dihapus!",
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 // Controller for READ (Detail)
 exports.GetDetailFunction = async (req, res) => {
   try {

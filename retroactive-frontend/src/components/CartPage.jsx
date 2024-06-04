@@ -13,21 +13,38 @@ function CartPage(props) {
   const [getSaldoUser, setSaldoUser] = useState(0.0);
   const [getTotal, setTotal] = useState(0.0);
   const [getItems, setItems] = useState([]);
-  const [getCartDetail, setCartDetail] = useState([]);
   const navigate = useNavigate();
 
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [getSelectedIndex, setSelectedIndex] = useState(-1);
   const buttonText =
     getTotal > getSaldoUser ? "Saldo Anda Tidak Cukup!" : "Confirm";
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  function openModal() {
-    setModalIsOpen(true);
-  }
-
-  function closeModal() {
+  const closeModalDeny = () => {
     setModalIsOpen(false);
-  }
+  };
+
+  const closeModalAccept = () => {
+    setModalIsOpen(false);
+    const namaUser = getItems[getSelectedIndex].nama_user;
+    const namaAlbum = getItems[getSelectedIndex].nama_album;
+
+    axios
+      .delete("http://localhost:1466/shop/removeFromCart", {
+        params: {
+          namaUser: namaUser,
+          namaAlbum: namaAlbum,
+        },
+      })
+      .then((res) => {
+        const response = res.data;
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const [itemShop, setItemShop] = useState([]);
 
   const handlePay = () => {
@@ -157,9 +174,6 @@ function CartPage(props) {
                 //   : "list-group-item"
               }
               key={item.nama_album}
-              onClick={() => {
-                setSelectedIndex(id);
-              }}
             >
               <div className="flex">
                 <div className="w-20 justify-center text-wrap flex left-0 ">
@@ -184,7 +198,10 @@ function CartPage(props) {
                 <img
                   src={trash}
                   className="flex justify-center items-center h-7 w-7"
-                  onClick={openModal}
+                  onClick={() => {
+                    setModalIsOpen(true);
+                    setSelectedIndex(id);
+                  }}
                 ></img>
                 <button
                   className="flex justify-center rounded bg-green-500 text-white text-opacity-5 items-center font-bold h-7 w-7"
@@ -366,7 +383,8 @@ function CartPage(props) {
       <Modal
         className="bg-transparent"
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        onRequestClose={closeModalDeny}
+        ariaHideApp={false}
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -376,63 +394,34 @@ function CartPage(props) {
           },
         }}
       >
-        <div class="relative p-4 w-full max-w-md max-h-full mx-auto my-32">
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div className="relative p-4 w-full max-w-md max-h-full mx-auto my-32">
+          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button
               type="button"
-              class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
               data-modal-hide="popup-modal"
             >
-              <svg
-                class="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                />
-              </svg>
-              <span class="sr-only">Close modal</span>
+              <span className="sr-only">Close modal</span>
             </button>
-            <div class="p-4 md:p-5 text-center">
-              <svg
-                class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                />
-              </svg>
-              <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                Are you sure you want to delete this product?
+            <div className="p-4 md:p-5 text-center">
+              <h3 className="mb-5 text-lg font-sans text-gray-800">
+                Apakah Anda ingin menghapus barang ini dari cart?
               </h3>
               <button
                 data-modal-hide="popup-modal"
                 type="button"
-                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                className="font-sans text-white bg-red-600 rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                onClick={closeModalAccept}
               >
-                Yes, I'm sure
+                Ya
               </button>
               <button
                 data-modal-hide="popup-modal"
                 type="button"
-                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                onClick={closeModal}
+                className="font-sans py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200"
+                onClick={closeModalDeny}
               >
-                No, cancel
+                Tidak
               </button>
             </div>
           </div>
