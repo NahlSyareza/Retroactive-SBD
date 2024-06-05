@@ -19,7 +19,7 @@ router.get("/get", tokoController.getAllEvent);
 // Plis tolong komenin :D
 router.post("/addToCart", tokoController.addToCart);
 
-router.post("/deleteFromCart", tokoController.deleteFromCart);
+router.post("/subFromCart", tokoController.subFromCart);
 
 router.get("/getFromCart", tokoController.getFromCart);
 

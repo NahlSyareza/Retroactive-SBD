@@ -253,7 +253,7 @@ function CartPage(props) {
                     }
 
                     axios
-                      .post("http://localhost:1466/shop/deleteFromCart", {
+                      .post("http://localhost:1466/shop/subFromCart", {
                         namaUser: item.nama_user,
                         namaAlbum: item.nama_album,
                       })

@@ -147,7 +147,7 @@ exports.addToCart = async function addToCart(req, res) {
   }
 };
 
-exports.deleteFromCart = async function deleteFromCart(req, res) {
+exports.subFromCart = async function subFromCart(req, res) {
   const { namaUser, namaAlbum } = req.body;
 
   try {

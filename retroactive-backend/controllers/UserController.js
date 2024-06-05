@@ -141,7 +141,11 @@ exports.getEvent = async function getEvent(req, res) {
     });
   } catch (err) {
     logger.error(err);
-    return res.status(500).json(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
   }
 };
 
@@ -156,7 +160,11 @@ exports.getAllEvent = async function getAllEvent(req, res) {
     });
   } catch (err) {
     logger.error(err);
-    return res.status(500).json(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
   }
 };
 
@@ -221,51 +229,66 @@ exports.editEvent = async function editEvent(req, res) {
     });
   } catch (err) {
     logger.error(err);
-    res.status(500).json(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
   }
 };
 
 // Define an asynchronous function to handle balance top-up requests for a user.
 exports.topUpEvent = async function topUpEvent(req, res) {
-  const { balance, emailUser } = req.body; // Extract the balance and user email from the request body.
-  let error = "The email that you've entered is not valid."; // Error message for invalid email.
-  let noBalance = "Invalid balance because it's negative."; // Error message for negative balance input.
+  const { namaUser, saldoUser } = req.body; // Extract the balance and user email from the request body.
 
   try {
     // Execute an SQL query to find the user by email.
     const result = await pool.query(
-      "SELECT * FROM user_info WHERE email_user = $1",
-      [emailUser]
+      "SELECT * FROM user_info WHERE nama_user = $1",
+      [namaUser]
     );
 
     // Check if any user data was found.
-    if (result.rowCount < 0) {
+    if (result.rowCount <= 0) {
       // If no user data is found, respond with a 201 Unauthorized status and an error message.
-      res.status(201).json({ error: error });
+      logger.warn("User tidak dapat ditemukan!");
+      return res.status(201).json({
+        state: false,
+        message: "User tidak dapat ditemukan!",
+        payload: null,
+      });
     }
 
-    // Retrieve the first row from the result as the user to update.
-    const user = result.rows[0];
+    console.log(saldoUser);
 
     // Validate the provided balance to ensure it is not negative.
-    if (balance <= 0) {
+    if (saldoUser < 0) {
       // If the balance is negative, respond with a 400 Bad Request status and the corresponding error message.
-      res.status(400).json({ error: noBalance });
+      logger.warn("Jumlah saldo tidak bisa negatif");
+      return res.status(201).json({
+        state: false,
+        message: "Jumlah saldo tidak bisa negatif",
+        payload: null,
+      });
     }
 
     // Update the user's saldo_user field with the provided balance.
-    user.saldo_user = balance;
-
     // Execute an SQL query to update the user's saldo in the user_info table and return the updated row.
     const insert = await pool.query(
-      "INSERT INTO user_info (email_user, saldo_user) VALUES ($1, $2) RETURNING *",
-      [user.email_user, user.saldo_user]
+      "UPDATE user_info SET saldo_user=saldo_user+$1 WHERE nama_user=$2 RETURNING *",
+      [saldoUser, namaUser]
     );
     // Respond with a 200 OK status and the updated balance data.
-    res.status(200).json({ payload: insert.rows });
+    logger.info(`Berhasil topup saldo  ${saldoUser}!`);
+    return res.status(200).json({
+      state: true,
+      message: `Berhasil top up saldo ${saldoUser}!`,
+      payload: insert.rows[0],
+    });
   } catch (err) {
     // If an error occurs during processing, respond with a 500 Internal Server Error.
-    res.status(500).json(err);
+    logger.error(err);
+    return res.status(500).json({ state: false, message: err, payload: null });
   }
 };
 
@@ -318,21 +341,50 @@ exports.deleteEvent = async function deleteEvent(req, res) {
   }
 };
 
+exports.gacorEvent = async function gacorEvent(req, res) {
+  const { namaUser, taruhanUser } = req.body;
+
+  try {
+    const result = await pool.query(
+      "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user=$2 RETURNING *",
+      [taruhanUser, namaUser]
+    );
+
+    logger.info("GACOR!");
+    return res.status(200).json({
+      state: true,
+      message: "GACOR!",
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 exports.payEvent = async function payEvent(req, res) {
   const { totalBelanja, namaUser } = req.body;
 
   try {
     const result = await pool.query(
-      "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user=$2",
+      "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user=$2 RETURNING *",
       [totalBelanja, namaUser]
     );
 
     return res.status(200).json({
       state: true,
-      message: "User Payment Successfully",
+      message: "Berhasil membayar!",
       payload: result.rows[0],
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
   }
 };

@@ -18,6 +18,7 @@ function UserInfoPage() {
 
   useEffect(() => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
+    console.log(namaUser);
     const getUser = async () => {
       axios
         .get("http://localhost:1466/user/get", {
@@ -27,6 +28,7 @@ function UserInfoPage() {
         })
         .then((res) => {
           const response = res.data;
+          console.log(response);
           let isValid = response.message;
           if (isValid) {
             toast.success(response.message);
