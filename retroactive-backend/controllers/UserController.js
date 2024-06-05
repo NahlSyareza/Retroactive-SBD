@@ -43,6 +43,22 @@ exports.registerEvent = async function registerEvent(req, res) {
       }
     }
 
+    const initial = await pool.query(
+      "SELECT * FROM user_info WHERE nama_user=$1 OR email_user=$2",
+      [namaUser, emailUser]
+    );
+
+    const initialRes = initial.rowCount;
+
+    if (initialRes != 0) {
+      logger.warn("Nama atau email sudah diambil!");
+      return res.status(201).json({
+        state: false,
+        message: "Nama atau email sudah diambil!",
+        payload: null,
+      });
+    }
+
     const result = await pool.query(
       "INSERT INTO user_info (nama_user, email_user, password_user, saldo_user) VALUES ($1, $2, $3, 0) RETURNING *",
       [namaUser, emailUser, hashedPassword]
@@ -311,13 +327,11 @@ exports.payEvent = async function payEvent(req, res) {
       [totalBelanja, namaUser]
     );
 
-    return res
-      .status(200)
-      .json({
-        state: true,
-        message: "User Payment Successfully",
-        payload: result.rows[0],
-      });
+    return res.status(200).json({
+      state: true,
+      message: "User Payment Successfully",
+      payload: result.rows[0],
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

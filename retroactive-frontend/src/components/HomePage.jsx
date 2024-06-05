@@ -28,8 +28,8 @@ export const Shop = () => {
             onClick={() => {
               toast.success("Masuk Ke Page Cart");
               setTimeout(() => {
-                navigate("/cart");
-              }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                navigate("/user-cart");
+              }, 2000);
             }}
           ></img>
           <img
@@ -39,8 +39,8 @@ export const Shop = () => {
             onClick={() => {
               toast.success("Masuk Ke Profile Page");
               setTimeout(() => {
-                navigate("/info");
-              }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                navigate("/user-info");
+              }, 2000);
             }}
           ></img>
           <img
@@ -50,8 +50,8 @@ export const Shop = () => {
             onClick={() => {
               toast.success("Masuk Ke TopUp Page");
               setTimeout(() => {
-                navigate("/info");
-              }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+                navigate("/user-info");
+              }, 2000);
             }}
           ></img>
         </div>

@@ -112,17 +112,21 @@ function UserInfoPage() {
           theme="dark"
         />
       </div>
-      <div className="bg-amber-950 shadow-md rounded-3xl px-10 pb-8 mb-4 ml-3">
-        <div className="grid">
-          <img src={edit} className="ml-1 mt-3" onClick={handleOnEditClick} />
+      <div className="bg-amber-950 shadow-md rounded-3xl px-10 pb-8 mb-4 ml-3 grid items-center">
+        <div>
+          <img src={edit} onClick={handleOnEditClick} />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
             Edit
           </p>
-          <img src={topup} className="ml-1 mt-3" onClick={handleOnTopUpClick} />
+        </div>
+        <div>
+          <img src={topup} onClick={handleOnTopUpClick} />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
             Top Up
           </p>
-          <img src={spin} className="ml-1 mt-3" onClick={handleOnSpinClick} />
+        </div>
+        <div>
+          <img src={spin} onClick={handleOnSpinClick} />
           <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
             Spin
           </p>

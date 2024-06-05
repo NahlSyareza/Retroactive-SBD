@@ -359,7 +359,7 @@ function CartPage(props) {
             onClick={() => {
               toast.error("Pembayaran dibatalkan, kembali ke home");
               setTimeout(() => {
-                // navigate("/home");'
+                navigate("/home");
               }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
             }}
           >

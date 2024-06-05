@@ -15,14 +15,14 @@ function App() {
       {/* Import Dummy Data */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={"/login"} />} />
-          <Route path="/login" element={<UserLoginPage />} />
+          <Route path="/" element={<Navigate to={"/user-login"} />} />
+          <Route path="/user-login" element={<UserLoginPage />} />
           <Route path="/home" element={<Shop />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/register" element={<UserRegisterPage />} />
-          <Route path="/info" element={<UserInfoPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/edit" element={<UserEditpage />} />
+          <Route path="/toko-admin" element={<Admin />} />
+          <Route path="/user-register" element={<UserRegisterPage />} />
+          <Route path="/user-info" element={<UserInfoPage />} />
+          <Route path="/user-cart" element={<CartPage />} />
+          <Route path="/user-edit" element={<UserEditpage />} />
           <Route path="/dummy" element={<DummyPage />} />
         </Routes>
       </BrowserRouter>

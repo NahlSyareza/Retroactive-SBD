@@ -20,20 +20,29 @@ function UserRegisterPage() {
         passwordUser: getPasswordUser,
       })
       .then((res) => {
-        if (res.data.state) {
-          toast.success(res.data.message);
+        const response = res.data;
+        if (response.state) {
+          toast.success(response.message);
           setTimeout(() => {
-            navigate("/login");
-          }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+            navigate("/user-login");
+          }, 2000);
         } else {
-          toast.error(res.data.message);
+          toast.error(response.message);
         }
-        console.log(res);
+        console.log(response);
       })
       .catch((err) => {
         toast.error(err.message);
         console.log(err);
       });
+  };
+
+  const handleShowPassword = (e) => {
+    if (e.target.checked) {
+      setPasswordField("text");
+    } else {
+      setPasswordField("password");
+    }
   };
 
   const handleNamaChange = (event) => {
@@ -106,13 +115,7 @@ function UserRegisterPage() {
           <input
             type="checkbox"
             className="mr-3"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setPasswordField("text");
-              } else {
-                setPasswordField("password");
-              }
-            }}
+            onChange={handleShowPassword}
           />
           <span className="text-white text-sm">Show password</span>
         </div>

@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function UserLoginPage() {
-  const [dataUser, setDataUser] = useState("");
+  const [getDataUser, setDataUser] = useState("");
   const [passwordUser, setPasswordUser] = useState("");
   const [passwordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
@@ -18,10 +18,18 @@ function UserLoginPage() {
     setPasswordUser(event.target.value);
   };
 
+  const handleShowPassword = (e) => {
+    if (e.target.checked) {
+      setPasswordField("text");
+    } else {
+      setPasswordField("password");
+    }
+  };
+
   const handleLogin = () => {
     axios
       .post("http://localhost:1466/user/session", {
-        dataUser: dataUser,
+        dataUser: getDataUser,
         passwordUser: passwordUser,
       })
       .then((res) => {
@@ -60,14 +68,14 @@ function UserLoginPage() {
           </div>
           <label
             className="block font-sans text-gray-300 text-sm font-bold mb-2"
-            htmlFor="dataUser"
+            htmlFor="getDataUser"
           >
             Email or Username
           </label>
           <input
             className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            name="dataUser"
+            name="getDataUser"
             onChange={handleDataUserChange}
             placeholder="Email or Username"
           />
@@ -88,19 +96,13 @@ function UserLoginPage() {
             <input
               type="checkbox"
               className="mr-3"
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setPasswordField("text");
-                } else {
-                  setPasswordField("password");
-                }
-              }}
+              onChange={handleShowPassword}
             />
             <span className="text-white text-sm">Show password</span>
           </div>
           <div>
             <a
-              href="http://localhost:5173/register"
+              href="http://localhost:5173/user-register"
               className="text-orange-700 text-sm mt-3"
             >
               Belum memiliki akun? Silakan register!
