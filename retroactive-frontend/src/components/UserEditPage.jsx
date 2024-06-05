@@ -11,7 +11,7 @@ function UserEditPage() {
   const [getPasswordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
-  const handleOnEditClick = () => {
+  const handleEdit = () => {
     const currentLoggedAccount = localStorage.getItem(
       "StaticUtils_loggedNamaUser"
     );
@@ -28,7 +28,7 @@ function UserEditPage() {
           localStorage.setItem("StaticUtils_loggedNamaUser", getNamaUser);
           toast.success(response.message);
           setTimeout(() => {
-            navigate("/info");
+            navigate("/user-info");
           }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
         } else {
           toast.error(response.message);
@@ -53,6 +53,14 @@ function UserEditPage() {
     setPasswordUser(event.target.value);
   };
 
+  const handleShowPassword = (e) => {
+    if (e.target.checked) {
+      setPasswordField("text");
+    } else {
+      setPasswordField("password");
+    }
+  };
+
   return (
     <div className="w-full max-w-sm mx-auto mt-10">
       <div className="bg-amber-950 shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
@@ -71,7 +79,7 @@ function UserEditPage() {
           Username
         </label>
         <input
-          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="namaUser"
           onChange={handleNamaChange}
@@ -84,7 +92,7 @@ function UserEditPage() {
           Email User
         </label>
         <input
-          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline "
+          className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline "
           type="text"
           name="emailUser"
           onChange={handleEmailChange}
@@ -97,7 +105,7 @@ function UserEditPage() {
           Password User
         </label>
         <input
-          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
           type={getPasswordField}
           name="passwordUser"
           onChange={handlePasswordChange}
@@ -107,13 +115,7 @@ function UserEditPage() {
           <input
             type="checkbox"
             className="mr-3"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setPasswordField("text");
-              } else {
-                setPasswordField("password");
-              }
-            }}
+            onChange={handleShowPassword}
           />
           <span className="text-white text-sm">Show password</span>
         </div>
@@ -121,7 +123,7 @@ function UserEditPage() {
         <button
           className="bg-orange-900 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
-          onClick={handleOnEditClick}
+          onClick={handleEdit}
         >
           Edit
         </button>

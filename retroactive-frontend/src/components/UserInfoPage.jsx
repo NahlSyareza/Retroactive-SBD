@@ -8,6 +8,7 @@ import logo from "../assets/react.svg";
 import edit from "../assets/edit.svg";
 import topup from "../assets/topup.svg";
 import spin from "../assets/spin.svg";
+import home from "../assets/home.svg";
 
 function UserInfoPage() {
   const [getNamaUser, setNamaUser] = useState("");
@@ -44,21 +45,28 @@ function UserInfoPage() {
     getUser();
   }, []);
 
-  const handleOnEditClick = () => {
-    toast.success("Mengedit edit ya ges ya");
+  const handleEdit = () => {
+    toast.success("Mengedit info user");
     setTimeout(() => {
-      navigate("/edit");
+      navigate("/user-edit");
     }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
   };
 
-  const handleOnTopUpClick = () => {
-    toast.success("VOM");
+  const handleTopUp = () => {
+    toast.success("Masuk ke page topup!");
     // navigate("/topup");
   };
 
-  const handleOnSpinClick = () => {
-    toast.success("ZOBBOP");
+  const handleSpin = () => {
+    toast.success("Gacor kang!");
     // navigate("/spin");
+  };
+
+  const handleHome = () => {
+    toast.success("Kembali ke home");
+    setTimeout(() => {
+      navigate("/home");
+    }, 2000);
   };
 
   return (
@@ -87,18 +95,6 @@ function UserInfoPage() {
             Saldo : {getSaldoUser}
           </p>
         </div>
-        <button
-          className="flex justify-start rounded bg-orange-900 text-white"
-          title="Back"
-          onClick={() => {
-            toast.success("Kembali ke homepage");
-            setTimeout(() => {
-              navigate("/home");
-            }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
-          }}
-        >
-          Back
-        </button>
         <ToastContainer
           position="bottom-center"
           autoClose={1500}
@@ -113,22 +109,28 @@ function UserInfoPage() {
         />
       </div>
       <div className="bg-amber-950 shadow-md rounded-3xl px-10 pb-8 mb-4 ml-3 grid items-center">
-        <div>
-          <img src={edit} onClick={handleOnEditClick} />
-          <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
+        <div className="mt-4">
+          <img src={edit} onClick={handleEdit} />
+          <p className="text-sm text-white font-bold font-sans text-nowrap justify-center">
             Edit
           </p>
         </div>
         <div>
-          <img src={topup} onClick={handleOnTopUpClick} />
-          <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
+          <img src={topup} onClick={handleTopUp} />
+          <p className="text-sm text-white font-bold font-sans text-nowrap justify-center">
             Top Up
           </p>
         </div>
         <div>
-          <img src={spin} onClick={handleOnSpinClick} />
-          <p className="text-sm mt-2 text-white font-bold font-sans text-nowrap justify-center">
+          <img src={spin} onClick={handleSpin} />
+          <p className="text-sm text-white font-bold font-sans text-nowrap justify-center">
             Spin
+          </p>
+        </div>
+        <div>
+          <img src={home} onClick={handleHome} />
+          <p className="text-sm text-white font-bold font-sans text-nowrap justify-center">
+            Home
           </p>
         </div>
       </div>

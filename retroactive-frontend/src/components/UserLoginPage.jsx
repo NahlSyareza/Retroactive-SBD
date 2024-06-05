@@ -73,7 +73,7 @@ function UserLoginPage() {
             Email or Username
           </label>
           <input
-            className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="getDataUser"
             onChange={handleDataUserChange}
@@ -86,7 +86,7 @@ function UserLoginPage() {
             Password
           </label>
           <input
-            className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
             type={passwordField}
             name="passwordUser"
             onChange={handlePasswordChange}

@@ -79,7 +79,7 @@ function UserRegisterPage() {
           Username
         </label>
         <input
-          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="namaUser"
           onChange={handleNamaChange}
@@ -92,7 +92,7 @@ function UserRegisterPage() {
           Email User
         </label>
         <input
-          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline "
+          className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline "
           type="text"
           name="emailUser"
           onChange={handleEmailChange}
@@ -105,7 +105,7 @@ function UserRegisterPage() {
           Password User
         </label>
         <input
-          className="bg-amber-900 font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
           type={getPasswordField}
           name="passwordUser"
           onChange={handlePasswordChange}
