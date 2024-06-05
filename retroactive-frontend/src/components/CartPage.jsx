@@ -8,6 +8,8 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Modal from "react-modal";
 import trash from "../assets/delete.svg";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 function CartPage(props) {
   const [getSaldoUser, setSaldoUser] = useState(0.0);
@@ -18,6 +20,8 @@ function CartPage(props) {
   const [getSelectedIndex, setSelectedIndex] = useState(-1);
   const buttonText =
     getTotal > getSaldoUser ? "Saldo Anda Tidak Cukup!" : "Confirm";
+  const buttonPDF =
+    getTotal > getSaldoUser ? "Export to PDF" : "Confirm and Export to PDF";
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const closeModalDeny = () => {
@@ -45,7 +49,14 @@ function CartPage(props) {
       });
   };
 
-  const [itemShop, setItemShop] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const receiptOpen = () => setOpen(true);
+  const receiptClose = () => setOpen(false);
+  const [showButton, setShowButton] = useState(true);
+
+  const toggleButton = () => {
+    setShowButton(!showButton);
+  };
 
   const handlePay = () => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
@@ -96,38 +107,6 @@ function CartPage(props) {
       });
   }, []);
 
-  // useEffect(() => {
-  //   // const fetchData = async () => {
-  //   //   try {
-  //   //     const response = await fetch(`http://localhost:1466/shop`); // Fetching data from API
-  //   //     const result = await response.json(); // Parsing JSON response
-  //   //     setItemShop(result); // Updating state with fetched data
-  //   //   } catch (err) {
-  //   //     toast.error("Error fetching data"); // Showing error notification
-  //   //   }
-  //   // };
-
-  //   axios
-  //     .get("http://localhost:1466/shop", {
-  //       params: {
-  //         namaUser: namaUser,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       const response = res.data;
-  //       console.log(response);
-  //       setCartDetail(response.payload);
-  //       let a = 0;
-  //       for (let i = 0; i < response.payload.length; i++) {
-  //         a += response.payload[i].harga_media;
-  //         setTotal(a);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
   useEffect(() => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
     axios
@@ -152,6 +131,49 @@ function CartPage(props) {
         console.log(err.message);
       });
   }, []);
+
+  const exportToPDF = () => {
+    handlePay;
+    const doc = new jsPDF();
+    const tableColumn = [
+      "No",
+      "Nama Album",
+      "Nama Artis",
+      "Jenis Media",
+      "Harga Media",
+      "Jumlah Barang",
+      "Total",
+    ];
+    const tableRows = [];
+
+    getItems.forEach((item, index) => {
+      const itemData = [
+        index + 1,
+        item.nama_album,
+        item.nama_artis,
+        item.jenis_media,
+        item.harga_media,
+        item.cart_jumlah,
+        item.harga_media * item.cart_jumlah,
+      ];
+      tableRows.push(itemData);
+    });
+
+    // Menambahkan total row
+    const totalItems = getItems.reduce(
+      (acc, item) => acc + item.cart_jumlah,
+      0
+    );
+    tableRows.push(["", "", "", "", "Total Belanja", totalItems, getTotal]);
+
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 20,
+    });
+    doc.text("Payment Detail", 14, 15);
+    doc.save("receipt.pdf");
+  };
 
   return (
     <div className="flex-col justify-center items-center min-h-screen mt-3 mb-3 ml-64 mr-64">
@@ -313,45 +335,165 @@ function CartPage(props) {
         </div>
 
         <div className="flex-col">
-          <Popup
-            trigger={
-              <button
-                className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
-                title="Confirm"
-                name="confirm"
-              >
-                Confirm
-              </button>
-            }
-            modal
-            nested
+          <button
+            className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
+            title="Confirm"
+            name="confirm"
+            onClick={() => {
+              receiptOpen(true);
+            }}
           >
-            <ul className="mt-2 mb-2 max-h-48 overflow-x-auto overflow-y-auto">
-              <div className="text-xl font-bold">Payment Detail</div>
-              {getItems.map((item, index) => (
-                <li className="mb-1 flex bg-gray-200 rounded-lg">
-                  <p className="ml-1 text-nowrap">
-                    {index + 1}. {item.nama_album} - {item.nama_artis} -{" "}
-                    {item.jenis_media} - {item.harga_media} -
-                    {item.harga_media * item.cart_jumlah}{" "}
-                  </p>
-                </li>
-              ))}
-              <button
-                className={
-                  getTotal > getSaldoUser
-                    ? "mb-3 flex justify-end rounded bg-red-500 text-white text-opacity-5 items-center font-bold max-h-12 "
-                    : "mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
-                }
-                title="Confirm"
-                name="confirm"
-                disabled={getTotal > getSaldoUser}
-                onClick={handlePay}
-              >
-                {buttonText}
-              </button>
+            Confirm
+          </button>
+          <Modal
+            isOpen={open}
+            onClose={receiptClose}
+            className="bg-transparent"
+          >
+            <ul className="max-auto max-w-screen-xl overflow-x-auto relative mx-auto my-24  bg-white rounded-lg shadow dark:bg-gray-700">
+              <div className="mt-5 mx-3 mb-2 text-xl font-bold">
+                Payment Detail
+              </div>
+              <div>
+                <div className="overflow-x-auto overflow-y-auto max-h-96 x-96">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          No
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Nama Album
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Nama Artis
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Jenis Media
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Harga Media
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Jumlah
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Total
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {getItems.map((item, index) => (
+                        <tr key={index}>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {index + 1}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.nama_album}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.nama_artis}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.jenis_media}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.harga_media}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.cart_jumlah}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {item.harga_media * item.cart_jumlah}
+                          </td>
+                        </tr>
+                      ))}
+                      <tr className="bg-gray-50">
+                        <td
+                          className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          colSpan="5"
+                        >
+                          Total Belanja
+                        </td>
+                        <td className="px-4 py-2 text-left text-xs font-medium text-gray-900">
+                          {(() => {
+                            let totalItems = 0;
+                            for (let item of getItems) {
+                              totalItems += item.cart_jumlah;
+                            }
+                            return totalItems;
+                          })()}
+                        </td>
+
+                        <td className="px-4 py-2 text-left text-xs font-medium text-gray-900">
+                          {getTotal}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="flex space-x-4 max-h-12 mx-3 mb-2">
+                <button
+                  className={
+                    getTotal > getSaldoUser
+                      ? "mb-3 flex justify-end rounded bg-red-500 text-white text-opacity-5 items-center font-bold h-12 "
+                      : "mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold h-12 "
+                  }
+                  title="Confirm"
+                  name="confirm"
+                  disabled={getTotal > getSaldoUser}
+                  onClick={handlePay}
+                >
+                  {buttonText}
+                </button>
+                <button
+                  className={
+                    getTotal > getSaldoUser
+                      ? "bg-red-500 text-white rounded h-12 px-4"
+                      : "bg-blue-500 text-white rounded h-12 px-4"
+                  }
+                  // disabled={getTotal > getSaldoUser}
+                  onClick={() => {
+                    if (getTotal <= getSaldoUser) {
+                      handlePay(); // Jalankan handlePay jika total belanja tidak melebihi saldo
+                    }
+                    exportToPDF();
+                  }}
+                >
+                  {buttonPDF}
+                </button>
+                <button
+                  className="bg-red-500 text-white"
+                  onClick={receiptClose}
+                >
+                  X
+                </button>
+              </div>
             </ul>{" "}
-          </Popup>
+          </Modal>
+
           <button
             className="flex justify-end rounded bg-red-600 text-white text-opacity-5 items-center font-bold  max-h-12 "
             title="Cancel"
@@ -367,6 +509,7 @@ function CartPage(props) {
           </button>
         </div>
       </div>
+
       <ToastContainer
         position="bottom-center"
         autoClose={1500}
