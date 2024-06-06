@@ -25,6 +25,8 @@ router.get("/getFromCart", tokoController.getFromCart);
 
 router.delete("/removeFromCart", tokoController.removeFromCart);
 
+router.put("/subFromInventory", tokoController.subFromInventory);
+
 router.get("/:id", tokoController.GetDetailFunction);
 // Route for Update
 router.put("/:id", tokoController.UpdateFunction);

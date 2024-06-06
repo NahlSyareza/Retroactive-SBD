@@ -58,10 +58,58 @@ function CartPage(props) {
     setShowButton(!showButton);
   };
 
+  const handleConfirm = () => {
+    const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
+
+    if (getSaldoUser < getTotal) {
+      toast.error("Saldo user tidak cukup!");
+      return;
+    }
+
+    axios
+      .put("http://localhost:1466/user/pay", {
+        totalBelanja: getTotal,
+        namaUser: namaUser,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .put("http://localhost:1466/user/addToInventory", {
+        namaUser: namaUser,
+      })
+      .then((res) => {
+        const response = res.data;
+        console.log(response.message);
+        axios
+          .put("http://localhost:1466/shop/subFromInventory", {
+            namaUser: namaUser,
+          })
+          .then((res) => {
+            const response = res.data;
+            console.log(response.message);
+            toast.success("Berhasi membeli!");
+            setTimeout(() => {
+              navigate("/home");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handlePay = () => {
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
     axios
-      .post("http://localhost:1466/user/pay", {
+      .put("http://localhost:1466/user/pay", {
         totalBelanja: getTotal,
         namaUser: namaUser,
       })
@@ -79,8 +127,6 @@ function CartPage(props) {
   };
 
   useEffect(() => {
-    // fetchData();
-
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
 
     axios
@@ -339,9 +385,12 @@ function CartPage(props) {
             className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
             title="Confirm"
             name="confirm"
-            onClick={() => {
+            onClick={
+              handleConfirm
+              /*    () => {
               receiptOpen(true);
-            }}
+            }*/
+            }
           >
             Confirm
           </button>

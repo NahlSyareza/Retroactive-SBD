@@ -248,6 +248,55 @@ exports.removeFromCart = async function removeFromCart(req, res) {
   }
 };
 
+exports.subFromInventory = async (req, res) => {
+  const { namaUser } = req.body;
+  const successMessage = "Berhasil dikurangi!";
+  const warnAmountMessage = "Jumlah beli tidak bisa melebihi stok toko!";
+
+  try {
+    const initial = await pool.query(
+      "SELECT cart.nama_album,cart.jumlah AS cart_jumlah,toko_inventory.nama_album,toko_inventory.jumlah AS toko_jumlah FROM toko_inventory JOIN cart ON cart.nama_album=toko_inventory.nama_album AND cart.nama_user=$1;",
+      [namaUser]
+    );
+
+    const initialRes = initial.rows;
+
+    for (let i = 0; i < initial.rowCount; i++) {
+      if (initialRes[i].cart_jumlah > initialRes[i].toko_jumlah) {
+        logger.warn(warnAmountMessage);
+        return res.status(200).json({
+          state: false,
+          message: warnAmountMessage,
+          payload: null,
+        });
+      }
+    }
+
+    const result = await pool.query(
+      "WITH tr (nama_album,jumlah) AS (SELECT nama_album,jumlah FROM cart WHERE nama_user=$1) UPDATE toko_inventory SET jumlah=jumlah-(SELECT jumlah FROM tr WHERE tr.nama_album=toko_inventory.nama_album) WHERE nama_album IN (SELECT nama_album FROM tr) RETURNING *;",
+      [namaUser]
+    );
+
+    const next = await pool.query("DELETE FROM cart WHERE nama_user=$1", [
+      namaUser,
+    ]);
+
+    logger.info(successMessage);
+    return res.status(200).json({
+      state: true,
+      message: successMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 // Controller for READ (Detail)
 exports.GetDetailFunction = async (req, res) => {
   try {

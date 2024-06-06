@@ -10,7 +10,8 @@ router.get("/get", userController.getEvent);
 router.put("/topup", userController.topUpEvent);
 router.post("/inventory", userController.inventoryFunction);
 router.put("/gacor", userController.gacorEvent);
-router.post("/pay", userController.payEvent);
+router.put("/pay", userController.payEvent);
+router.put("/addToInventory", userController.addToInventory);
 router.delete("/delete", userController.deleteEvent);
 
 module.exports = router;

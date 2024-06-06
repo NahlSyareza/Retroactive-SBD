@@ -388,3 +388,49 @@ exports.payEvent = async function payEvent(req, res) {
     });
   }
 };
+
+exports.addToInventory = async function addToInventory(req, res) {
+  const { namaUser } = req.body;
+  const successInitialMessage = "Berhasil menambahkan awal!";
+  const successNextMessage = "Berhasil menambahkan!";
+
+  try {
+    const initial = await pool.query(
+      "SELECT * FROM user_inventory WHERE nama_user=$1 AND nama_album IN (SELECT nama_album FROM cart WHERE nama_user=$1)",
+      [namaUser]
+    );
+
+    if (initial.rowCount <= 0) {
+      const middle = await pool.query(
+        "INSERT INTO user_inventory SELECT cart.nama_user,toko_inventory.nama_album,toko_inventory.nama_artis,toko_inventory.jenis_media,cart.jumlah,toko_inventory.gambar_media FROM toko_inventory JOIN cart ON toko_inventory.nama_album IN (SELECT nama_album FROM cart WHERE nama_user=$1) AND cart.nama_user=$1 AND toko_inventory.nama_album=cart.nama_album RETURNING *;",
+        [namaUser]
+      );
+
+      logger.info(successInitialMessage);
+      return res.status(200).json({
+        state: true,
+        message: successInitialMessage,
+        payload: middle.rows[0],
+      });
+    }
+
+    const result = await pool.query(
+      "WITH cart (nama_user, nama_album, jumlah) AS (SELECT nama_user, nama_album, jumlah FROM cart WHERE nama_user=$1) UPDATE user_inventory SET jumlah = jumlah + (SELECT jumlah FROM cart WHERE cart.nama_album = user_inventory.nama_album) WHERE nama_album IN (SELECT nama_album FROM cart) AND nama_user = $1 RETURNING *;",
+      [namaUser]
+    );
+
+    logger.info(successNextMessage);
+    return res.status(200).json({
+      state: true,
+      message: successNextMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
