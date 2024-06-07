@@ -384,6 +384,73 @@ exports.getById = async (req, res) => {
   }
 };
 
+exports.addInventoryJumlah = async (req, res) => {
+  const { namaAlbum } = req.body;
+  const successMessage = "Berhasil menambahkan ke inventory toko!";
+
+  try {
+    const result = await pool.query(
+      "UPDATE toko_inventory SET jumlah=jumlah+1 WHERE nama_album=$1 RETURNING *",
+      [namaAlbum]
+    );
+
+    logger.info(successMessage);
+    return res.status(200).json({
+      state: true,
+      message: successMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
+exports.subInventoryJumlah = async (req, res) => {
+  const { namaAlbum } = req.body;
+  const successMessage = "Berhasil menambahkan ke inventory toko!";
+  const warnNoNegativeMessage = "Jumlah tidak bisa negatif!";
+
+  try {
+    const initial = await pool.query(
+      "SELECT jumlah FROM toko_inventory WHERE nama_album=$1",
+      [namaAlbum]
+    );
+
+    if (initial.rows[0].jumlah <= 1) {
+      logger.warn(warnNoNegativeMessage);
+      return res.status(201).json({
+        state: false,
+        message: warnNoNegativeMessage,
+        payload: null,
+      });
+    }
+
+    const result = await pool.query(
+      "UPDATE toko_inventory SET jumlah=jumlah-1 WHERE nama_album=$1 RETURNING *",
+      [namaAlbum]
+    );
+
+    logger.info(successMessage);
+    return res.status(200).json({
+      state: true,
+      message: successMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 // Controller for UPDATE
 exports.UpdateFunction = async (req, res) => {
   // Destructure fields from request body

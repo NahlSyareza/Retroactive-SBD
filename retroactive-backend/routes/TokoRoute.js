@@ -17,6 +17,10 @@ router.post("/register", tokoController.registerEvent);
 
 router.get("/login", tokoController.loginEvent);
 
+router.put("/addInventoryJumlah", tokoController.addInventoryJumlah);
+
+router.put("/subInventoryJumlah", tokoController.subInventoryJumlah);
+
 // Route for Read
 router.get("/getAll", tokoController.getAllEvent);
 

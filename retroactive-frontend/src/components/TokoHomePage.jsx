@@ -6,7 +6,7 @@ import logoretroactive from "../assets/logo.png";
 import logocart from "../assets/cart.svg";
 import logoprofile from "../assets/person.svg";
 import logotopup from "../assets/topup.svg";
-import logobusiness from "../assets/business.svg";
+import logohobbyist from "../assets/hobbyist.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios, { Axios } from "axios";
@@ -35,14 +35,18 @@ function TokoHomePage() {
   return (
     <>
       <div className="relative bg-amber-800 flex justify-between items-center p-4">
+        <img
+          src={logoretroactive}
+          className="flex justify-center items-center"
+        ></img>
         <div className="flex space-x-4">
           <img
-            src={logobusiness}
+            src={logohobbyist}
             className="flex justify-center items-center size-20"
             onClick={() => {
-              toast.success("Masuk ke manajemen toko!");
+              toast.success("Masuk ke pembeli user!");
               setTimeout(() => {
-                navigate("/toko-login");
+                navigate("/user-login");
               }, 2000);
             }}
           />
