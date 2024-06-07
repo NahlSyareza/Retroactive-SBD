@@ -69,6 +69,68 @@ exports.CreateFunction = async (req, res) => {
   }
 };
 
+exports.registerEvent = async (req, res) => {
+  const { namaToko, emailToko, passwordToko } = req.body;
+  const successMessage = `Sukses register toko ${namaToko}!`;
+
+  try {
+    const result = await pool.query(
+      "INSERT INTO toko_info VALUES ($1,$2,$3,0) RETURNING *",
+      [namaToko, emailToko, passwordToko]
+    );
+
+    logger.info(successMessage);
+    return res.status(200).json({
+      state: true,
+      message: successMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
+exports.loginEvent = async (req, res) => {
+  const { dataToko, passwordToko } = req.query;
+  const errorNotFoundMessage = "Toko tidak dapat ditemukan!";
+  const successMessage = `Berhasil login toko ${dataToko}`;
+
+  try {
+    const result = await pool.query(
+      "SELECT * FROM toko_info WHERE (nama_toko=$1 OR email_toko=$1) AND password_toko=$2",
+      [dataToko, passwordToko]
+    );
+
+    if (result.rowCount != 1) {
+      logger.info(errorNotFoundMessage);
+      return res.status(201).json({
+        state: false,
+        message: errorNotFoundMessage,
+        payload: null,
+      });
+    }
+
+    logger.info(successMessage);
+    return res.status(200).json({
+      state: true,
+      message: successMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 // Controller for READ (All items)
 exports.getAllEvent = async (req, res) => {
   try {
@@ -79,7 +141,7 @@ exports.getAllEvent = async (req, res) => {
     res.status(200).json({
       state: true,
       message: "Berhasil menarik data",
-      data: result.rows,
+      payload: result.rows,
     });
   } catch (error) {
     // Handle error
@@ -298,7 +360,7 @@ exports.subFromInventory = async (req, res) => {
 };
 
 // Controller for READ (Detail)
-exports.GetDetailFunction = async (req, res) => {
+exports.getById = async (req, res) => {
   try {
     // SQL query to select an item by id
     const query = "SELECT * FROM toko_inventory WHERE id = $1";
@@ -309,7 +371,11 @@ exports.GetDetailFunction = async (req, res) => {
       return res.status(404).json({ error: "Item not found" });
     }
     // Respond with the found item
-    res.json(rows[0]);
+    res.status(200).json({
+      state: true,
+      message: "Berhasil mendapatkan media!",
+      payload: rows[0],
+    });
   } catch (error) {
     // Handle error
     res

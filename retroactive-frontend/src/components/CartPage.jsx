@@ -94,7 +94,7 @@ function CartPage(props) {
             console.log(response.message);
             toast.success("Berhasi membeli!");
             setTimeout(() => {
-              navigate("/home");
+              navigate("/user-home");
             }, 2000);
           })
           .catch((err) => {
@@ -106,8 +106,16 @@ function CartPage(props) {
       });
   };
 
-  const handlePay = () => {
+  const handleConfirmPDF = () => {
+    exportToPDF();
+
     const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
+
+    if (getSaldoUser < getTotal) {
+      toast.error("Saldo user tidak cukup!");
+      return;
+    }
+
     axios
       .put("http://localhost:1466/user/pay", {
         totalBelanja: getTotal,
@@ -120,10 +128,32 @@ function CartPage(props) {
         console.log(err);
       });
 
-    toast.success("Pembayaran Berhasil!");
-    setTimeout(() => {
-      navigate("/home");
-    }, 2000);
+    axios
+      .put("http://localhost:1466/user/addToInventory", {
+        namaUser: namaUser,
+      })
+      .then((res) => {
+        const response = res.data;
+        console.log(response.message);
+        axios
+          .put("http://localhost:1466/shop/subFromInventory", {
+            namaUser: namaUser,
+          })
+          .then((res) => {
+            const response = res.data;
+            console.log(response.message);
+            toast.success("Berhasi membeli!");
+            setTimeout(() => {
+              navigate("/user-home");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -179,7 +209,8 @@ function CartPage(props) {
   }, []);
 
   const exportToPDF = () => {
-    handlePay;
+    const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
+
     const doc = new jsPDF();
     const tableColumn = [
       "No",
@@ -205,7 +236,6 @@ function CartPage(props) {
       tableRows.push(itemData);
     });
 
-    // Menambahkan total row
     const totalItems = getItems.reduce(
       (acc, item) => acc + item.cart_jumlah,
       0
@@ -218,7 +248,7 @@ function CartPage(props) {
       startY: 20,
     });
     doc.text("Payment Detail", 14, 15);
-    doc.save("receipt.pdf");
+    doc.save(`${namaUser}_receipt.pdf`);
   };
 
   return (
@@ -385,12 +415,9 @@ function CartPage(props) {
             className="mb-3 flex justify-end rounded bg-green-500 text-white text-opacity-5 items-center font-bold max-h-12 "
             title="Confirm"
             name="confirm"
-            onClick={
-              handleConfirm
-              /*    () => {
+            onClick={() => {
               receiptOpen(true);
-            }*/
-            }
+            }}
           >
             Confirm
           </button>
@@ -513,7 +540,7 @@ function CartPage(props) {
                   title="Confirm"
                   name="confirm"
                   disabled={getTotal > getSaldoUser}
-                  onClick={handlePay}
+                  onClick={handleConfirm}
                 >
                   {buttonText}
                 </button>
@@ -523,13 +550,7 @@ function CartPage(props) {
                       ? "bg-red-500 text-white rounded h-12 px-4"
                       : "bg-blue-500 text-white rounded h-12 px-4"
                   }
-                  // disabled={getTotal > getSaldoUser}
-                  onClick={() => {
-                    if (getTotal <= getSaldoUser) {
-                      handlePay(); // Jalankan handlePay jika total belanja tidak melebihi saldo
-                    }
-                    exportToPDF();
-                  }}
+                  onClick={handleConfirmPDF}
                 >
                   {buttonPDF}
                 </button>
@@ -550,7 +571,7 @@ function CartPage(props) {
             onClick={() => {
               toast.error("Pembayaran dibatalkan, kembali ke home");
               setTimeout(() => {
-                navigate("/home");
+                navigate("/user-home");
               }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
             }}
           >

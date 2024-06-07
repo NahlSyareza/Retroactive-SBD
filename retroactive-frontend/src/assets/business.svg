@@ -1,0 +1,17 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    id="vector">
+    <path
+        id="path"
+        d="M 15 17 L 17 17 L 17 14 L 18 14 L 18 12 L 17 7 L 2 7 L 1 12 L 1 14 L 2 14 L 2 20 L 11 20 L 11 14 L 15 14 L 15 17 Z M 9 18 L 4 18 L 4 14 L 9 14 L 9 18 Z"
+        fill="#caba9c"/>
+    <path
+        id="path_1"
+        d="M 2 4 L 17 4 L 17 6 L 2 6 Z"
+        fill="#caba9c"/>
+    <path
+        id="path_2"
+        d="M 20 18 L 20 15 L 18 15 L 18 18 L 15 18 L 15 20 L 18 20 L 18 23 L 20 23 L 20 20 L 23 20 L 23 18 Z"
+        fill="#caba9c"/>
+</svg>

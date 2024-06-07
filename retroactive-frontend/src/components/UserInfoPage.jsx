@@ -61,13 +61,13 @@ function UserInfoPage() {
 
   const handleSpin = () => {
     toast.success("Gacor kang!");
-    // navigate("/spin");
+    navigate("/gacor");
   };
 
   const handleHome = () => {
     toast.success("Kembali ke home");
     setTimeout(() => {
-      navigate("/home");
+      navigate("/user-home");
     }, 2000);
   };
 

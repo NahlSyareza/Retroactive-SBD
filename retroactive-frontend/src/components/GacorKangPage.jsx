@@ -74,6 +74,8 @@ function DummyPage() {
   };
 
   const handleSpin = () => {
+    const namaUser = localStorage.getItem("StaticUtils_loggedNamaUser");
+
     if (getTaruhanUser <= 0) {
       toast.error("Tidak bisa memulai dengan taruhan 0!");
       return;
@@ -81,7 +83,7 @@ function DummyPage() {
 
     axios
       .put("http://localhost:1466/user/gacor", {
-        namaUser: "Nahl",
+        namaUser: namaUser,
         taruhanUser: getTaruhanUser,
       })
       .then((res) => {
@@ -119,7 +121,7 @@ function DummyPage() {
       }
       axios
         .put("http://localhost:1466/user/topup", {
-          namaUser: "Nahl",
+          namaUser: namaUser,
           saldoUser: menangUser,
         })
         .then((res) => {
@@ -160,11 +162,19 @@ function DummyPage() {
         </div>
         <div>
           <div className="flex justify-between items-center mt-3 mx-auto bg-amber-950 max-w-xs rounded-3xl">
-            <button className="m-3 bg-green-600" onClick={handleAddTaruhan}>
+            <button
+              className="m-3 bg-green-600"
+              onClick={handleAddTaruhan}
+              disabled={!getSpinState}
+            >
               +
             </button>
             <p className="font-bold text-white m-3">{getTaruhanUser}</p>
-            <button className="m-3 bg-red-600" onClick={handleSubTaruhan}>
+            <button
+              className="m-3 bg-red-600"
+              onClick={handleSubTaruhan}
+              disabled={!getSpinState}
+            >
               -
             </button>
           </div>

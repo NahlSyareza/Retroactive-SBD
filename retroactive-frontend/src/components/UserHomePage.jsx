@@ -6,6 +6,7 @@ import logoretroactive from "../assets/logo.png";
 import logocart from "../assets/cart.svg";
 import logoprofile from "../assets/person.svg";
 import logotopup from "../assets/topup.svg";
+import logobusiness from "../assets/business.svg";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -21,6 +22,16 @@ export const Shop = () => {
           className="flex justify-center items-center"
         ></img>
         <div className="flex space-x-4">
+          <img
+            src={logobusiness}
+            className="flex justify-center items-center size-20"
+            onClick={() => {
+              toast.success("Masuk ke manajemen toko!");
+              setTimeout(() => {
+                navigate("/toko-login");
+              }, 2000);
+            }}
+          />
           <img
             src={logocart}
             className="flex justify-center items-center size-20"

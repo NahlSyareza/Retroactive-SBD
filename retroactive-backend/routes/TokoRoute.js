@@ -13,8 +13,12 @@ router.post("/", tokoController.CreateFunction);
 
 router.get("/", tokoController.GetFunction);
 
+router.post("/register", tokoController.registerEvent);
+
+router.get("/login", tokoController.loginEvent);
+
 // Route for Read
-router.get("/get", tokoController.getAllEvent);
+router.get("/getAll", tokoController.getAllEvent);
 
 // Plis tolong komenin :D
 router.post("/addToCart", tokoController.addToCart);
@@ -27,7 +31,7 @@ router.delete("/removeFromCart", tokoController.removeFromCart);
 
 router.put("/subFromInventory", tokoController.subFromInventory);
 
-router.get("/:id", tokoController.GetDetailFunction);
+router.get("/:id", tokoController.getById);
 // Route for Update
 router.put("/:id", tokoController.UpdateFunction);
 // Route for Delete

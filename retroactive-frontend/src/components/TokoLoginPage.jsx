@@ -4,18 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function UserLoginPage() {
-  const [getDataUser, setDataUser] = useState("");
-  const [passwordUser, setPasswordUser] = useState("");
+function TokoLoginPage() {
+  const [getDataToko, setDataToko] = useState("");
+  const [passwordToko, setPasswordToko] = useState("");
   const [passwordField, setPasswordField] = useState("password");
   const navigate = useNavigate();
 
-  const handleDataUserChange = (event) => {
-    setDataUser(event.target.value);
+  const handleDataTokoChange = (event) => {
+    setDataToko(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
-    setPasswordUser(event.target.value);
+    setPasswordToko(event.target.value);
   };
 
   const handleShowPassword = (e) => {
@@ -28,21 +28,23 @@ function UserLoginPage() {
 
   const handleLogin = () => {
     axios
-      .post("http://localhost:1466/user/session", {
-        dataUser: getDataUser,
-        passwordUser: passwordUser,
+      .get("http://localhost:1466/shop/login", {
+        params: {
+          dataToko: getDataToko,
+          passwordToko: passwordToko,
+        },
       })
       .then((res) => {
         const response = res.data;
         if (response.state) {
           localStorage.setItem(
-            "StaticUtils_loggedNamaUser",
-            response.payload.nama_user
+            "StaticUtils_loggedNamaToko",
+            response.payload.nama_Toko
           );
           toast.success(response.message);
           setTimeout(() => {
-            navigate("/user-home");
-          }, 2000); // Tambahkan delay agar user bisa melihat toast sebelum dialihkan
+            navigate("/toko-home");
+          }, 2000); // Tambahkan delay agar Toko bisa melihat toast sebelum dialihkan
         } else {
           toast.error(response.message);
         }
@@ -63,32 +65,32 @@ function UserLoginPage() {
               RETROACTIVE
             </h1>
             <h1 className="font-sans text-white flex text-2xl font-bold mt-2 justify-center">
-              User Login
+              Toko Login
             </h1>
           </div>
           <label
             className="block font-sans text-gray-300 text-sm font-bold mb-2"
-            htmlFor="getDataUser"
+            htmlFor="getDataToko"
           >
-            Email or Username
+            Email or name
           </label>
           <input
             className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            name="getDataUser"
-            onChange={handleDataUserChange}
-            placeholder="Email or Username"
+            name="getDataToko"
+            onChange={handleDataTokoChange}
+            placeholder="Email or Tokoname"
           />
           <label
             className="block font-sans text-gray-300 text-sm font-bold mb-2 mr-5"
-            htmlFor="passwordUser"
+            htmlFor="passwordToko"
           >
             Password
           </label>
           <input
             className="bg-white font-sans mb-3 shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline"
             type={passwordField}
-            name="passwordUser"
+            name="passwordToko"
             onChange={handlePasswordChange}
             placeholder="Password"
           />
@@ -102,7 +104,7 @@ function UserLoginPage() {
           </div>
           <div>
             <a
-              href="http://localhost:5173/user-register"
+              href="http://localhost:5173/toko-register"
               className="text-orange-700 text-sm mt-3"
             >
               Belum memiliki akun? Silakan register!
@@ -134,4 +136,4 @@ function UserLoginPage() {
   );
 }
 
-export default UserLoginPage;
+export default TokoLoginPage;
