@@ -3,7 +3,7 @@ import { Hero } from "./hero/Hero"; // Importing the Hero component from the spe
 import Popular from "./popular/PopularPage"; // Importing the Popular component from the specified path
 import AboutUs from "./AboutUsPage"; // Importing the AboutUs component from the specified path
 import logoretroactive from "../assets/logo.png";
-import logocart from "../assets/cart.svg";
+import logomusic from "../assets/music.svg";
 import logoprofile from "../assets/person.svg";
 import logotopup from "../assets/topup.svg";
 import logohobbyist from "../assets/hobbyist.svg";
@@ -51,7 +51,7 @@ function TokoHomePage() {
             }}
           />
           <img
-            src={logocart}
+            src={logomusic}
             className="flex justify-center items-center size-20"
             title="Open Cart"
             onClick={() => {
