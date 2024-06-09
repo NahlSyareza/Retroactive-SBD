@@ -53,7 +53,7 @@ function TokoHomePage() {
           <img
             src={logomusic}
             className="flex justify-center items-center size-20"
-            title="Open Cart"
+            title="Tambah Item"
             onClick={() => {
               toast.success("Menambahkan item baru");
               setTimeout(() => {

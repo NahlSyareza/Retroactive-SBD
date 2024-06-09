@@ -351,22 +351,27 @@ exports.deleteEvent = async function deleteEvent(req, res) {
   }
 };
 
+// This function handles updating a user's balance when they participate in a betting event.
 exports.gacorEvent = async function gacorEvent(req, res) {
   const { namaUser, taruhanUser } = req.body;
 
   try {
+    // Deducts the bet amount from the user's balance.
     const result = await pool.query(
       "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user=$2 RETURNING *",
       [taruhanUser, namaUser]
     );
 
+    // Logs the successful bet event.
     logger.info("GACOR!");
+    // Returns the updated user info including the new balance.
     return res.status(200).json({
       state: true,
       message: "GACOR!",
       payload: result.rows[0],
     });
   } catch (err) {
+    // Logs the error and returns a server error response.
     logger.error(err);
     return res.status(500).json({
       state: false,
@@ -376,21 +381,26 @@ exports.gacorEvent = async function gacorEvent(req, res) {
   }
 };
 
+
+// This function updates the user's balance by subtracting the total amount spent on a purchase.
 exports.payEvent = async function payEvent(req, res) {
   const { totalBelanja, namaUser } = req.body;
 
   try {
+    // Updates the balance after a purchase.
     const result = await pool.query(
       "UPDATE user_info SET saldo_user=saldo_user-$1 WHERE nama_user=$2 RETURNING *",
       [totalBelanja, namaUser]
     );
 
+    // Returns a success message with the updated user info.
     return res.status(200).json({
       state: true,
       message: "Berhasil membayar!",
       payload: result.rows[0],
     });
   } catch (err) {
+    // Logs and returns an error if the query fails.
     res.status(500).json({
       state: false,
       message: err,
@@ -399,17 +409,21 @@ exports.payEvent = async function payEvent(req, res) {
   }
 };
 
-exports.addToInventory = async function addToInventory(req, res) {
+
+// This function transfers items from the cart to the user's inventory after a purchase.
+exports.addToInventory = async function addToFormInventory(req, res) {
   const { namaUser } = req.body;
   const successInitialMessage = "Berhasil menambahkan awal!";
   const successNextMessage = "Berhasil menambahkan!";
 
   try {
+    // Checks if the user has any items in the user_inventory that are also in the cart.
     const initial = await pool.query(
       "SELECT * FROM user_inventory WHERE nama_user=$1 AND nama_album IN (SELECT nama_album FROM cart WHERE nama_user=$1)",
       [namaUser]
     );
 
+    // If no matching records found, insert cart items into user_inventory.
     if (initial.rowCount <= 0) {
       const middle = await pool.query(
         "INSERT INTO user_inventory SELECT cart.nama_user,toko_inventory.nama_album,toko_inventory.nama_artis,toko_inventory.jenis_media,cart.jumlah,toko_inventory.gambar_media FROM toko_inventory JOIN cart ON toko_inventory.nama_album IN (SELECT nama_album FROM cart WHERE nama_user=$1) AND cart.nama_user=$1 AND toko_inventory.nama_album=cart.nama_album RETURNING *;",
@@ -424,6 +438,7 @@ exports.addToInventory = async function addToInventory(req, res) {
       });
     }
 
+    // If items are already in the inventory, increase the quantities based on the cart contents.
     const result = await pool.query(
       "WITH cart (nama_user, nama_album, jumlah) AS (SELECT nama_user, nama_album, jumlah FROM cart WHERE nama_user=$1) UPDATE user_inventory SET jumlah = jumlah + (SELECT jumlah FROM cart WHERE cart.nama_album = user_inventory.nama_album) WHERE nama_album IN (SELECT nama_album FROM cart) AND nama_user = $1 RETURNING *;",
       [namaUser]
@@ -436,6 +451,7 @@ exports.addToInventory = async function addToInventory(req, res) {
       payload: result.rows[0],
     });
   } catch (err) {
+    // Logs and handles any errors that occur during the transaction.
     logger.error(err);
     return res.status(500).json({
       state: false,

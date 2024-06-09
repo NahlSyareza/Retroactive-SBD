@@ -1,46 +1,63 @@
-![logo_transparent](https://github.com/NahlSyareza/Retroactive-SBD/assets/106501086/ea7eedaf-61a5-4696-915f-ff60bbe0062c)
 
-# Retroactive
+# 🎵 Retroactive 🎵
 
-## Deskripsi
+## Overview
 
-Website ini adalah platform belanja online yang memungkinkan pengguna untuk membeli barang-barang retro yang unik dan langka. Kami menawarkan berbagai macam produk retro yang berfokus kepada musik seperti CD, Album, Kaset, Vinyl, dan sebagainya. Dengan tampilan yang menarik dan antarmuka yang mudah digunakan, pengguna dapat menjelajahi berbagai produk retro dan melakukan pembelian dengan mudah.
+Retroactive is an online shopping platform that allows users to purchase unique and rare retro items, focusing primarily on music-related products such as CDs, albums, cassettes, vinyl, and more. Designed with an attractive interface and user-friendly navigation, Retroactive provides a seamless shopping experience, making it easy for users to explore and purchase retro treasures.
 
-## Fitur Utama
+## Features
 
-- **Keranjang Belanja**: Pengguna dapat menambahkan produk ke keranjang belanja mereka dan melihat ringkasan belanja sebelum melakukan pembayaran.
-- **PDF Receipt**: Apabila anda ingin melihat detail transaksi barang yang telah anda beli, fitur ini akan mengirimkan struk dalam bentuk pdf yang dapat anda download.
-- **Top Up**: Kami menyediakan sistem pembayaran yang aman dan terpercaya untuk memastikan keamanan transaksi pengguna.
-- **Edit Profile**: Pengguna dapat mengedit email serta password yang sudah terdaftar.
-- **Spin Wheel**: Jika anda ingin mengadu nasib untuk mendapatkan saldo di website kami, spin wheel merupakan solusinya. Fitur ini akan menambahkan saldo anda apabila anda menang.
+- **Shopping Cart**: Add products to your cart and view a summary before checkout.
+- **PDF Receipt**: Receive detailed transaction receipts in PDF format for your purchases, downloadable directly from the platform.
+- **Top Up System**: Secure and reliable payment methods ensure the safety of your transactions.
+- **Profile Editing**: Update your registered email and password.
+- **Spin Wheel**: Try your luck with our Spin Wheel feature to win additional balance on our website.
 
-## Teknologi
+## Technologies
 
-Website ini dibangun menggunakan teknologi berikut:
+This website is built using the following technologies:
+- **Frontend**: React.js and Tailwind CSS for a responsive and styled user interface.
+- **Backend**: Node.js ensures robust server-side functionality.
+- **Database**: MongoDB for scalable, high-performance data storage.
+- **Authentication**: Implement secure and scalable user authentication.
 
-- **Frontend**: React.js, Tailwind CSS
-- **Backend**: Node.js
-- **Database**: MongoDB
-- **Autentikasi**:
+## Getting Started
 
-## Cara Menggunakan
+### Prerequisites
+Ensure you have Node.js and npm installed on your machine. These tools are necessary to install dependencies and run the project locally.
 
-1. **Instalasi Dependencies**: Jalankan perintah `npm install` untuk menginstal semua dependensi yang diperlukan.
-2. **Menjalankan Server**: Jalankan perintah `npm start` untuk menjalankan server dan membuka website di browser.
-3. **Menjelajahi Produk**: Telusuri produk dengan mengklik kategori yang diinginkan atau gunakan fitur pencarian untuk menemukan produk tertentu.
-4. **Menambahkan ke Keranjang**: Pilih produk yang ingin dibeli dan tambahkan ke keranjang belanja.
-5. **Pembayaran**: Lanjutkan ke pembayaran, isi detail pengiriman, dan pilih metode pembayaran yang diinginkan.
-6. **Konfirmasi Pembayaran**: Setelah pembayaran berhasil, Anda akan menerima konfirmasi pesanan serta opsional receipt dalam pdf jika anda memerlukan.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repository-link-here.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Retroactive-SBD
+   ```
+3. Install the necessary dependencies:
+   ```bash
+   npm install
+   ```
 
-## Kontribusi
+### Running the Application
+1. Start the server:
+   ```bash
+   npm start
+   ```
+   This command runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   
+2. Navigate through the application:
+   - Browse products by clicking on desired categories or using the search feature.
+   - Add items to the shopping cart.
+   - Proceed to checkout, fill in shipping details, and select a payment method.
+   - Confirm payment to complete your purchase.
 
-Kami sangat menghargai kontribusi dari pengguna terhadap pengembangan website ini. Jika Anda memiliki saran atau masukan, jangan ragu untuk membuka _issue_ atau mengirim _pull request_ di repository kami.
+## Authors
 
-## Penulis
+This project was developed by Group 31 with Assistant Lab (Aslab) RA for the final project in the Database Systems course. Contributors:
+- **Bintang Siahaan** - *2206024322* - [bintangsiahaan](https://github.com/bintangsiahaan)
+- **Muhamad Fauzan** - *2206819054* - [MFauzan29](https://github.com/MFauzan29)
+- **Nahl Syareza Rahidra** - *2206830340* - [NahlSyareza](https://github.com/NahlSyareza)
+- **Phoebe Ivana** - *2206820320* - [PhoebeIvana](https://github.com/PhoebeIvana)
 
-Website ini dikembangkan oleh kelompok 31 dengan aslab RA dalam rangka memenuhi tugas proyek akhir mata kuliah Sistem Basis Data dengan anggota:
-
-1. Bintang Siahaan (bintangsiahaan) - 2206024322
-2. Muhamad Fauzan (MFauzan29) - 2206819054
-3. Nahl Syareza Rahidra (NahlSyareza) - 2206830340
-4. Phoebe Ivana (PhoebeIvana) - 2206820320

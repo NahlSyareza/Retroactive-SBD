@@ -2,6 +2,7 @@ import React from "react"; // Importing the React library
 import { Link } from "react-router-dom"; // Importing the Link component from react-router-dom for navigation
 import cart from "../../assets/cart.svg";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 // Defining the Item functional component
 export const Item = ({
@@ -52,6 +53,7 @@ export const Item = ({
                 .then((res) => {
                   const response = res.data;
                   console.log(response);
+                  toast.success("Successfully added to cart.")
                 })
                 .catch((err) => {
                   console.log(err);

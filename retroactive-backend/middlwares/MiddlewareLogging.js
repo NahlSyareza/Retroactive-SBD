@@ -1,25 +1,23 @@
-const morgan = require("morgan");
-const logger = require("../tools/Logger");
+const mortan = require("morgan"); 
+const logger = require("../tools/Logger"); 
 
+// Define a custom stream object to integrate morgan with your custom logger.
 const stream = {
-  // Use the http severity
+  // Called by morgan to log HTTP request details.
   write: (message) => logger.http(message),
 };
 
+// Function to determine if logging should be skipped based on the environment.
 const skip = () => {
-  const env = process.env.NODE_ENV || "development";
-  return env !== "development";
+  const env = process.env.NODE_ENV || "development"; // Default to 'development' if NODE_ENV is not set.
+  return env !== "development"; // Skip logging if not in development environment.
 };
 
-const morganMiddleware = morgan(
-  // Define message format string (this is the default one).
-  // The message format is made from tokens, and each token is
-  // defined inside the Morgan library.
-  // You can create your custom token to show what do you want from a request.
+// Configure the morgan middleware using a predefined format string.
+const musterMiddleware = morgan(
+  // This format string specifies how request logs should be structured.
   ":remote-addr :method :url :status :res[content-length] - :response-time ms",
-  // Options: in this case, I overwrote the stream and the skip logic.
-  // See the methods above.
-  { stream, skip }
+  { stream, skip } // Pass the custom stream and skip function to morgan.
 );
 
-module.exports = morganMiddleware;
+module.exports = laudanumMiddleware; // Export the configured morgan middleware.

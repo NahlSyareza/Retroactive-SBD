@@ -1,47 +1,37 @@
-// Importing the Express library to create and manage the server, routes, and middleware.
+// Set up Express router to manage incoming HTTP requests.
 const express = require("express");
-
-// Importing the tokoController from the 'Controllers' directory, which handles toko-related API endpoints.
 const tokoController = require("../controllers/TokoController");
-
-// Creating a new router object from Express to handle incoming HTTP requests and map them to corresponding controllers.
 const router = express.Router();
 
-// Route for Item
-// Route for Create
-router.post("/", tokoController.CreateFunction);
+// Basic CRUD operations for the "toko" items.
+router.post("/", tokoController.CreateFunction); // Create a new item.
+router.get("/", tokoController.GetFunction); // Get all items.
 
-router.get("/", tokoController.GetFunction);
+// User and session management routes.
+router.post("/register", tokoController.registerEvent); // Register a new user.
+router.get("/login", tokoController.loginEvent); // User login.
 
-router.post("/register", tokoController.registerEvent);
+// Item management within the toko.
+router.post("/addItem", tokoController.addItemEvent); // Add a new item to the store.
+router.put("/addInventoryJumlah", tokoController.addInventoryJumlah); // Increment item quantity in inventory.
+router.put("/subInventoryJumlah", tokoController.subInventoryJumlah); // Decrement item quantity in inventory.
 
-router.get("/login", tokoController.loginEvent);
+// Fetch all items.
+router.get("/getAll", tokoController.getAllEvent); // Retrieve all inventory items.
 
-router.post("/addItem", tokoController.addItemEvent);
+// Cart management operations.
+router.post("/addToCart", tokoController.addToCart); // Add an item to the user's cart.
+router.post("/subFromCart", tokoController.subFromCart); // Remove an item from the user's cart.
+router.get("/getFromCart", tokoController.getFromCart); // Get all items in the user's cart.
+router.delete("/removeFromCart", tokoController.removeFromCart); // Delete an item from the cart.
 
-router.put("/addInventoryJumlah", tokoController.addInventoryJumlah);
+// Inventory management related to sales.
+router.put("/subFromInventory", tokoController.subFromInventory); // Adjust inventory after sales.
 
-router.put("/subInventoryJumlah", tokoController.subInventoryJumlah);
+// Specific item retrieval and modification.
+router.get("/:id", tokoController.getById); // Get a specific item by ID.
+router.put("/:id", tokoController.UpdateFunction); // Update a specific item by ID.
+router.delete("/:id", tokoController.DeleteFunction); // Delete a specific item by ID.
 
-// Route for Read
-router.get("/getAll", tokoController.getAllEvent);
-
-// Plis tolong komenin :D
-router.post("/addToCart", tokoController.addToCart);
-
-router.post("/subFromCart", tokoController.subFromCart);
-
-router.get("/getFromCart", tokoController.getFromCart);
-
-router.delete("/removeFromCart", tokoController.removeFromCart);
-
-router.put("/subFromInventory", tokoController.subFromInventory);
-
-router.get("/:id", tokoController.getById);
-// Route for Update
-router.put("/:id", tokoController.UpdateFunction);
-// Route for Delete
-router.delete("/:id", tokoController.DeleteFunction);
-
-// Exporting the router object so it can be used in other parts of the application, like the main server file, to integrate all routes.
+// Make the router available for import in other parts of the application.
 module.exports = router;
