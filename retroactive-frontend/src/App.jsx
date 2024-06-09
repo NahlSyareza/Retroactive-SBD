@@ -10,7 +10,9 @@ import UserEditpage from "./components/UserEditPage";
 import GacorKangPage from "./components/GacorKangPage";
 import TokoLoginPage from "./components/TokoLoginPage";
 import TokoHomePage from "./components/TokoHomePage";
+import TokoItemPage from "./components/TokoItemPage";
 import MediaDetailPage from "./components/MediaDetailPage";
+import UserTopUpPage from "./components/UserTopUpPage";
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
           <Route path="/gacor" element={<GacorKangPage />} />
           <Route path="/toko-login" element={<TokoLoginPage />} />
           <Route path="/toko-home" element={<TokoHomePage />} />
-          <Route path="media-detail/:id" element={<MediaDetailPage />} />
+          <Route path="/media-detail/:id" element={<MediaDetailPage />} />
+          <Route path="/toko-item" element={<TokoItemPage />} />
+          <Route path="/user-topup" element={<UserTopUpPage />} />
         </Routes>
       </BrowserRouter>
     </>

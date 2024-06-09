@@ -95,6 +95,50 @@ exports.registerEvent = async (req, res) => {
   }
 };
 
+exports.addItemEvent = async (req, res) => {
+  const {
+    namaToko,
+    namaAlbum,
+    namaArtis,
+    jenisMedia,
+    hargaMedia,
+    jumlah,
+    gambarMedia,
+  } = req.body;
+
+  const successMessage = `Berhasil menambahkan ${namaAlbum}, ${namaArtis}`;
+
+  try {
+    const result = await pool.query(
+      "INSERT INTO toko_inventory VALUES ($1, $2, $3, $4, $5, $6, default, $7) RETURNING *",
+      [
+        namaToko,
+        namaAlbum,
+        namaArtis,
+        jenisMedia,
+        hargaMedia,
+        jumlah,
+        gambarMedia,
+      ]
+    );
+
+    console.log(namaAlbum);
+    logger.info(successMessage);
+    return res.status(200).json({
+      state: true,
+      message: successMessage,
+      payload: result.rows[0],
+    });
+  } catch (err) {
+    logger.error(err);
+    return res.status(500).json({
+      state: false,
+      message: err,
+      payload: null,
+    });
+  }
+};
+
 exports.loginEvent = async (req, res) => {
   const { dataToko, passwordToko } = req.query;
   const errorNotFoundMessage = "Toko tidak dapat ditemukan!";

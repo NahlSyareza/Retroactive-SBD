@@ -56,7 +56,9 @@ function UserInfoPage() {
 
   const handleTopUp = () => {
     toast.success("Masuk ke page topup!");
-    // navigate("/topup");
+    setTimeout(() => {
+      navigate("/user-topup");
+    }, 2000);
   };
 
   const handleSpin = () => {

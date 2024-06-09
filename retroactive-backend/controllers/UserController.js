@@ -216,6 +216,16 @@ exports.editEvent = async function editEvent(req, res) {
       });
     }
 
+    const resnul = await pool.query(
+      "UPDATE cart SET nama_user=$1 WHERE nama_user=$2",
+      [namaUserNew, namaUserOld]
+    );
+
+    const reslun = await pool.query(
+      "UPDATE user_inventory SET nama_user=$1 WHERE nama_user=$2",
+      [namaUserNew, namaUserOld]
+    );
+
     const result = await pool.query(
       "UPDATE user_info SET nama_user=$1,email_user=$2,password_user=$3 WHERE nama_user=$4 RETURNING *",
       [namaUserNew, emailUserNew, hashedPassword, namaUserOld]

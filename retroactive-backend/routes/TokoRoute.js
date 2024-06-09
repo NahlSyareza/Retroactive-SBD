@@ -17,6 +17,8 @@ router.post("/register", tokoController.registerEvent);
 
 router.get("/login", tokoController.loginEvent);
 
+router.post("/addItem", tokoController.addItemEvent);
+
 router.put("/addInventoryJumlah", tokoController.addInventoryJumlah);
 
 router.put("/subInventoryJumlah", tokoController.subInventoryJumlah);
