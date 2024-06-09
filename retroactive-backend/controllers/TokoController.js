@@ -103,7 +103,7 @@ exports.registerEvent = async (req, res) => {
 
 
 // Function to add a new item to the inventory in the database.
-exports.addItemPararEvent = async (req, res) => {
+exports.addItemEvent = async (req, res) => {
   // Extract item details from the request body.
   const {
     namaToko,
