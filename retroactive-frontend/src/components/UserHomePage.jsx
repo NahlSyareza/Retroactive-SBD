@@ -61,7 +61,7 @@ export const Shop = () => {
             onClick={() => {
               toast.success("Masuk Ke TopUp Page");
               setTimeout(() => {
-                navigate("/user-info");
+                navigate("/user-topup");
               }, 2000);
             }}
           ></img>
