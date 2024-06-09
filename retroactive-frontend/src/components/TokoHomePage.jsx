@@ -61,28 +61,6 @@ function TokoHomePage() {
               }, 2000);
             }}
           ></img>
-          <img
-            src={logoprofile}
-            className="flex justify-center items-center size-20"
-            title="Open Profile Page"
-            onClick={() => {
-              toast.success("Masuk Ke Profile Page");
-              setTimeout(() => {
-                navigate("/user-info");
-              }, 2000);
-            }}
-          ></img>
-          <img
-            src={logotopup}
-            className="flex justify-center items-center size-20"
-            title="Open Profile Page"
-            onClick={() => {
-              toast.success("Masuk Ke TopUp Page");
-              setTimeout(() => {
-                navigate("/user-info");
-              }, 2000);
-            }}
-          ></img>
         </div>
       </div>
       <div className="mt-4 p-4 mr-4 ml-4 mb-4 bg-white bg-opacity-50 rounded-lg">
